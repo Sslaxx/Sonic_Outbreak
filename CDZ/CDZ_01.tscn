@@ -1,133 +1,178 @@
 [gd_scene load_steps=91 format=2]
 
-[ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Animations/sonic_idle.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Animations/run/sonic_run_0.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Animations/run/sonic_run_1.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Animations/run/sonic_run_2.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Animations/run/sonic_run_3.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Animations/run/sonic_run_4.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Animations/run/sonic_run_5.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Animations/run/sonic_run_6.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Animations/run/sonic_run_7.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_2.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_3.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_0.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_1.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_4.png" type="Texture" id=15]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_5.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_6.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_7.png" type="Texture" id=18]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_8.png" type="Texture" id=19]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_9.png" type="Texture" id=20]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_10.png" type="Texture" id=21]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_11.png" type="Texture" id=22]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_12.png" type="Texture" id=23]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_13.png" type="Texture" id=24]
-[ext_resource path="res://Sprites/Animations/fullSpeed/sonic_fullSpeed_spec.png" type="Texture" id=25]
-[ext_resource path="res://Sprites/Animations/walk/sonic_walk_0.png" type="Texture" id=26]
-[ext_resource path="res://Sprites/Animations/walk/sonic_walk_1.png" type="Texture" id=27]
-[ext_resource path="res://Sprites/Animations/walk/sonic_walk_2.png" type="Texture" id=28]
-[ext_resource path="res://Sprites/Animations/walk/sonic_walk_3.png" type="Texture" id=29]
-[ext_resource path="res://Sprites/Animations/walk/sonic_walk_4.png" type="Texture" id=30]
-[ext_resource path="res://Sprites/Animations/walk/sonic_walk_5.png" type="Texture" id=31]
-[ext_resource path="res://Sprites/Animations/walk/sonic_walk_6.png" type="Texture" id=32]
-[ext_resource path="res://Sprites/Animations/walk/sonic_walk_7.png" type="Texture" id=33]
-[ext_resource path="res://Sprites/Animations/walk/sonic_walk_8.png" type="Texture" id=34]
-[ext_resource path="res://Sprites/Animations/walk/sonic_walk_9.png" type="Texture" id=35]
-[ext_resource path="res://Sprites/Animations/walk/sonic_walk_10.png" type="Texture" id=36]
-[ext_resource path="res://Sprites/Animations/walk/sonic_walk_11.png" type="Texture" id=37]
-[ext_resource path="res://Sprites/Animations/fullSpeed/sonic_fullSpeed_0.png" type="Texture" id=38]
-[ext_resource path="res://Sprites/Animations/fullSpeed/sonic_fullSpeed_1.png" type="Texture" id=39]
-[ext_resource path="res://Sprites/Animations/fullSpeed/sonic_fullSpeed_2.png" type="Texture" id=40]
-[ext_resource path="res://Sprites/Animations/fullSpeed/sonic_fullSpeed_3.png" type="Texture" id=41]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_14.png" type="Texture" id=42]
-[ext_resource path="res://Sprites/Animations/jump/sonic_jump_15.png" type="Texture" id=43]
-[ext_resource path="res://Scripts/SonicCamera.gd" type="Script" id=44]
-[ext_resource path="res://Badniks/Buzzing_Pest_Test/Buzzing_Pest_Test.tscn" type="PackedScene" id=45]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/BigPink.png" type="Texture" id=46]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/SolidSkyColorBig.png" type="Texture" id=47]
-[ext_resource path="res://Scripts/Scrolling_Layer.gd" type="Script" id=48]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CloudBundle2.png" type="Texture" id=49]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZStarLayer5.png" type="Texture" id=50]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZStarLayer1.png" type="Texture" id=51]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZStarLayer2.png" type="Texture" id=52]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZStarLayer3.png" type="Texture" id=53]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZStarLayer4.png" type="Texture" id=54]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZLight2tp.png" type="Texture" id=55]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/LongGrid.png" type="Texture" id=56]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZFarBackBuildingsLong.png" type="Texture" id=57]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/DarkCDZLayer.png" type="Texture" id=58]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZParaLayer3CHANGE2.png" type="Texture" id=59]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZMidLayerBestDraft2.png" type="Texture" id=60]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZMidLayerBestDraft1 (1).png" type="Texture" id=61]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/LongFog75-2.png" type="Texture" id=62]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZLayer1Scroll2Change3.png" type="Texture" id=63]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZLayer1Scroll1Change2.png" type="Texture" id=64]
-[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZLayer1Scroll2Change1.png" type="Texture" id=65]
-[ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 0.png" type="Texture" id=66]
-[ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 1.png" type="Texture" id=67]
-[ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 2.png" type="Texture" id=68]
-[ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 3.png" type="Texture" id=69]
-[ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 4.png" type="Texture" id=70]
-[ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 5.png" type="Texture" id=71]
-[ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 6.png" type="Texture" id=72]
-[ext_resource path="res://TileSets/tls_CDZ_0.tres" type="TileSet" id=73]
-[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign1_0.png" type="Texture" id=74]
-[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign1_1.png" type="Texture" id=75]
-[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign2_0.png" type="Texture" id=76]
-[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign2_1.png" type="Texture" id=77]
-[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign3_0.png" type="Texture" id=78]
-[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign3_1.png" type="Texture" id=79]
-[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign4_0.png" type="Texture" id=80]
-[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign4_1.png" type="Texture" id=81]
-[ext_resource path="res://ui/hud_layer.tscn" type="PackedScene" id=82]
-[ext_resource path="res://ui/debug_hud_layer.tscn" type="PackedScene" id=83]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/BigPink.png" type="Texture" id=1]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/SolidSkyColorBig.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Scrolling_Layer.gd" type="Script" id=3]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CloudBundle2.png" type="Texture" id=4]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZStarLayer5.png" type="Texture" id=5]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZStarLayer1.png" type="Texture" id=6]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZStarLayer2.png" type="Texture" id=7]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZStarLayer3.png" type="Texture" id=8]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZStarLayer4.png" type="Texture" id=9]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZLight2tp.png" type="Texture" id=10]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/LongGrid.png" type="Texture" id=11]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZFarBackBuildingsLong.png" type="Texture" id=12]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/DarkCDZLayer.png" type="Texture" id=13]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZParaLayer3CHANGE2.png" type="Texture" id=14]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZMidLayerBestDraft2.png" type="Texture" id=15]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZMidLayerBestDraft1 (1).png" type="Texture" id=16]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/LongFog75-2.png" type="Texture" id=17]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZLayer1Scroll2Change3.png" type="Texture" id=18]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZLayer1Scroll1Change2.png" type="Texture" id=19]
+[ext_resource path="res://CDZ/CDZ_BG_ASSETS/CDZLayer1Scroll2Change1.png" type="Texture" id=20]
+[ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 0.png" type="Texture" id=21]
+[ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 1.png" type="Texture" id=22]
+[ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 2.png" type="Texture" id=23]
+[ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 3.png" type="Texture" id=24]
+[ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 4.png" type="Texture" id=25]
+[ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 5.png" type="Texture" id=26]
+[ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 6.png" type="Texture" id=27]
+[ext_resource path="res://TileSets/tls_CDZ_0.tres" type="TileSet" id=28]
+[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign1_0.png" type="Texture" id=29]
+[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign1_1.png" type="Texture" id=30]
+[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign2_0.png" type="Texture" id=31]
+[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign2_1.png" type="Texture" id=32]
+[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign3_0.png" type="Texture" id=33]
+[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign3_1.png" type="Texture" id=34]
+[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign4_0.png" type="Texture" id=35]
+[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign4_1.png" type="Texture" id=36]
+[ext_resource path="res://ui/hud_layer.tscn" type="PackedScene" id=37]
+[ext_resource path="res://ui/debug_hud_layer.tscn" type="PackedScene" id=38]
+[ext_resource path="res://Badniks/Buzzing_Pest_Test/Buzzing_Pest_Test.tscn" type="PackedScene" id=39]
+[ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=40]
+[ext_resource path="res://Sprites/Animations/sonic_idle.png" type="Texture" id=41]
+[ext_resource path="res://Sprites/Animations/run/sonic_run_0.png" type="Texture" id=42]
+[ext_resource path="res://Sprites/Animations/run/sonic_run_1.png" type="Texture" id=43]
+[ext_resource path="res://Sprites/Animations/run/sonic_run_2.png" type="Texture" id=44]
+[ext_resource path="res://Sprites/Animations/run/sonic_run_3.png" type="Texture" id=45]
+[ext_resource path="res://Sprites/Animations/run/sonic_run_4.png" type="Texture" id=46]
+[ext_resource path="res://Sprites/Animations/run/sonic_run_5.png" type="Texture" id=47]
+[ext_resource path="res://Sprites/Animations/run/sonic_run_6.png" type="Texture" id=48]
+[ext_resource path="res://Sprites/Animations/run/sonic_run_7.png" type="Texture" id=49]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_2.png" type="Texture" id=50]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_3.png" type="Texture" id=51]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_0.png" type="Texture" id=52]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_1.png" type="Texture" id=53]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_4.png" type="Texture" id=54]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_5.png" type="Texture" id=55]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_6.png" type="Texture" id=56]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_7.png" type="Texture" id=57]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_8.png" type="Texture" id=58]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_9.png" type="Texture" id=59]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_10.png" type="Texture" id=60]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_11.png" type="Texture" id=61]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_12.png" type="Texture" id=62]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_13.png" type="Texture" id=63]
+[ext_resource path="res://Sprites/Animations/fullSpeed/sonic_fullSpeed_spec.png" type="Texture" id=64]
+[ext_resource path="res://Sprites/Animations/walk/sonic_walk_0.png" type="Texture" id=65]
+[ext_resource path="res://Sprites/Animations/walk/sonic_walk_1.png" type="Texture" id=66]
+[ext_resource path="res://Sprites/Animations/walk/sonic_walk_2.png" type="Texture" id=67]
+[ext_resource path="res://Sprites/Animations/walk/sonic_walk_3.png" type="Texture" id=68]
+[ext_resource path="res://Sprites/Animations/walk/sonic_walk_4.png" type="Texture" id=69]
+[ext_resource path="res://Sprites/Animations/walk/sonic_walk_5.png" type="Texture" id=70]
+[ext_resource path="res://Sprites/Animations/walk/sonic_walk_6.png" type="Texture" id=71]
+[ext_resource path="res://Sprites/Animations/walk/sonic_walk_7.png" type="Texture" id=72]
+[ext_resource path="res://Sprites/Animations/walk/sonic_walk_8.png" type="Texture" id=73]
+[ext_resource path="res://Sprites/Animations/walk/sonic_walk_9.png" type="Texture" id=74]
+[ext_resource path="res://Sprites/Animations/walk/sonic_walk_10.png" type="Texture" id=75]
+[ext_resource path="res://Sprites/Animations/walk/sonic_walk_11.png" type="Texture" id=76]
+[ext_resource path="res://Sprites/Animations/fullSpeed/sonic_fullSpeed_0.png" type="Texture" id=77]
+[ext_resource path="res://Sprites/Animations/fullSpeed/sonic_fullSpeed_1.png" type="Texture" id=78]
+[ext_resource path="res://Sprites/Animations/fullSpeed/sonic_fullSpeed_2.png" type="Texture" id=79]
+[ext_resource path="res://Sprites/Animations/fullSpeed/sonic_fullSpeed_3.png" type="Texture" id=80]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_14.png" type="Texture" id=81]
+[ext_resource path="res://Sprites/Animations/jump/sonic_jump_15.png" type="Texture" id=82]
+[ext_resource path="res://Scripts/SonicCamera.gd" type="Script" id=83]
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+
+animations = [ {
+"frames": [ ExtResource( 29 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "Blink1",
+"speed": 2.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+
+animations = [ {
+"frames": [ ExtResource( 31 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "Blink2",
+"speed": 3.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+
+animations = [ {
+"frames": [ ExtResource( 33 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "Blink3",
+"speed": 4.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+
+animations = [ {
+"frames": [ ExtResource( 35 ), ExtResource( 36 ) ],
+"loop": true,
+"name": "Blink4",
+"speed": 3.0
+} ]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 41 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ) ],
 "loop": true,
 "name": "Run_2",
 "speed": 30.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"frames": [ ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ) ],
 "loop": true,
 "name": "Jump_2",
 "speed": 30.0
 }, {
-"frames": [ ExtResource( 25 ) ],
+"frames": [ ExtResource( 64 ) ],
 "loop": true,
 "name": "Run_spec",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ) ],
+"frames": [ ExtResource( 65 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 71 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 75 ), ExtResource( 76 ) ],
 "loop": true,
 "name": "Walk",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ) ],
+"frames": [ ExtResource( 77 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 80 ) ],
 "loop": true,
 "name": "fullSpeed",
 "speed": 30.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"frames": [ ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 81 ), ExtResource( 82 ), ExtResource( 62 ), ExtResource( 63 ) ],
 "loop": true,
 "name": "Jump_1",
 "speed": 16.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 18 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 24 ) ],
+"frames": [ ExtResource( 51 ), ExtResource( 52 ), ExtResource( 51 ), ExtResource( 53 ), ExtResource( 51 ), ExtResource( 54 ), ExtResource( 51 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 57 ), ExtResource( 59 ), ExtResource( 57 ), ExtResource( 62 ), ExtResource( 61 ), ExtResource( 63 ) ],
 "loop": true,
 "name": "Jump_3",
 "speed": 60.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ) ],
 "loop": true,
 "name": "Run_1",
 "speed": 20.0
@@ -139,56 +184,444 @@ custom_solver_bias = 0.0
 radius = 10.0
 height = 0.196381
 
-[sub_resource type="SpriteFrames" id=3]
-
-animations = [ {
-"frames": [ ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 71 ), ExtResource( 72 ), ExtResource( 72 ), ExtResource( 72 ), ExtResource( 71 ), ExtResource( 70 ), ExtResource( 69 ), ExtResource( 68 ), ExtResource( 67 ), ExtResource( 66 ), ExtResource( 66 ), ExtResource( 66 ), ExtResource( 66 ), ExtResource( 66 ), ExtResource( 66 ), ExtResource( 66 ), ExtResource( 66 ), ExtResource( 66 ), ExtResource( 66 ) ],
-"loop": true,
-"name": "default",
-"speed": 4.0
-} ]
-
-[sub_resource type="SpriteFrames" id=4]
-
-animations = [ {
-"frames": [ ExtResource( 74 ), ExtResource( 75 ) ],
-"loop": true,
-"name": "Blink1",
-"speed": 2.0
-} ]
-
-[sub_resource type="SpriteFrames" id=5]
-
-animations = [ {
-"frames": [ ExtResource( 76 ), ExtResource( 77 ) ],
-"loop": true,
-"name": "Blink2",
-"speed": 3.0
-} ]
-
-[sub_resource type="SpriteFrames" id=6]
-
-animations = [ {
-"frames": [ ExtResource( 78 ), ExtResource( 79 ) ],
-"loop": true,
-"name": "Blink3",
-"speed": 4.0
-} ]
-
-[sub_resource type="SpriteFrames" id=7]
-
-animations = [ {
-"frames": [ ExtResource( 80 ), ExtResource( 81 ) ],
-"loop": true,
-"name": "Blink4",
-"speed": 3.0
-} ]
-
 [node name="Level" type="Node2D" index="0"]
 
 z_as_relative = false
 
-[node name="Player" type="KinematicBody2D" parent="." index="0"]
+[node name="CDZ_Parallax_Background" type="ParallaxBackground" parent="." index="0"]
+
+editor/display_folded = true
+layer = -2
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = false
+
+[node name="Pink1" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="0"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.1, 0 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Pink1" index="0"]
+
+position = Vector2( 0, 83.4788 )
+scale = Vector2( 1, 0.732286 )
+texture = ExtResource( 1 )
+
+[node name="Purple1" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="1"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.1, 0.3 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Purple1" index="0"]
+
+position = Vector2( -5.38811, -535.005 )
+texture = ExtResource( 2 )
+
+[node name="Cloud2" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="2"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.2, 0.2 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 800, 0 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Motion" ]
+movement_factor = Vector2( 5, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Cloud2" index="0"]
+
+position = Vector2( 259.999, -458.671 )
+texture = ExtResource( 4 )
+
+[node name="Sky5" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="3"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.2, 0.2 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1000, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Sky5" index="0"]
+
+position = Vector2( -6.34836, -711.975 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Sky1" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="4"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.1, 0.2 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1000, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Sky1" index="0"]
+
+position = Vector2( -20.0447, -526.688 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="Sky2" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="5"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.125, 0.2 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1000, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Sky2" index="0"]
+
+position = Vector2( -5.92935, -576.786 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="Sky3" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="6"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.15, 0.2 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1000, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Sky3" index="0"]
+
+position = Vector2( -0.816345, -629.876 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="Sky4" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="7"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.175, 0.2 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1000, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Sky4" index="0"]
+
+position = Vector2( -4.45178, -664.735 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="Light" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="8"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.1, 0.2 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 52, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Light" index="0"]
+
+position = Vector2( 3.89929, -260.547 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="Grid" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="9"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.3, 0.2 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 97, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Grid" index="0"]
+
+position = Vector2( 2.90259, -365.363 )
+texture = ExtResource( 11 )
+centered = false
+
+[node name="BackBuildings" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="10"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.3, 0.2 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 640, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/BackBuildings" index="0"]
+
+position = Vector2( 7.29163, -426.781 )
+texture = ExtResource( 12 )
+centered = false
+
+[node name="MediumBuildings2" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="11"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.38, 0.25 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 648, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/MediumBuildings2" index="0"]
+
+position = Vector2( -33.9176, -419.131 )
+texture = ExtResource( 13 )
+centered = false
+
+[node name="MediumBuildings1" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="12"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.4, 0.25 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 512, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/MediumBuildings1" index="0"]
+
+position = Vector2( 4.53043, -512.434 )
+texture = ExtResource( 14 )
+centered = false
+
+[node name="MediumBuildings4" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="13"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.43, 0.25 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 768, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/MediumBuildings4" index="0"]
+
+position = Vector2( 6.78827, -333.17 )
+texture = ExtResource( 15 )
+centered = false
+
+[node name="MediumBuildings3" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="14"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.47, 0.25 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 768, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/MediumBuildings3" index="0"]
+
+position = Vector2( 6.14948, -285.259 )
+texture = ExtResource( 16 )
+centered = false
+
+[node name="Fog1" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="15"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.7, 0.3 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1024, 0 )
+script = ExtResource( 3 )
+movement_factor = Vector2( 25, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Fog1" index="0"]
+
+position = Vector2( 448.107, -68.9678 )
+texture = ExtResource( 17 )
+
+[node name="Fog6" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="16"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.7, 0.25 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1024, 0 )
+script = ExtResource( 3 )
+movement_factor = Vector2( 25, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Fog6" index="0"]
+
+position = Vector2( 511, -50.9984 )
+texture = ExtResource( 17 )
+
+[node name="BigBuildings3" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="17"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.5, 0.3 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/BigBuildings3" index="0"]
+
+position = Vector2( 2.50006, -175.082 )
+texture = ExtResource( 18 )
+centered = false
+
+[node name="Fog4" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="18"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.7, 0.3 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1024, 0 )
+script = ExtResource( 3 )
+movement_factor = Vector2( 25, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Fog4" index="0"]
+
+position = Vector2( 493.041, -30.9118 )
+texture = ExtResource( 17 )
+
+[node name="BigBuildings1" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="19"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.6, 0.4 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/BigBuildings1" index="0"]
+
+position = Vector2( -86.0284, -120.257 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="Fog3" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="20"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.7, 0.4 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1024, 0 )
+script = ExtResource( 3 )
+movement_factor = Vector2( 25, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Fog3" index="0"]
+
+position = Vector2( 499.819, 37.2187 )
+texture = ExtResource( 17 )
+
+[node name="BigBuildings2" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="21"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.7, 0.5 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/BigBuildings2" index="0"]
+
+position = Vector2( -171.868, -55.2079 )
+texture = ExtResource( 20 )
+centered = false
+
+[node name="Fog5" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="22"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.7, 0.4 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1024, 0 )
+script = ExtResource( 3 )
+movement_factor = Vector2( 25, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Fog5" index="0"]
+
+position = Vector2( 383.012, 127.168 )
+texture = ExtResource( 17 )
+
+[node name="BigBuildings4" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="23"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.8, 0.6 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CDZ_Parallax_Background/BigBuildings4" index="0"]
+
+position = Vector2( 421.957, 156.51 )
+frames = SubResource( 3 )
+animation = "default"
+frame = 14
+playing = true
+
+[node name="Fog2" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="24"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.7, 0.4 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1024, 0 )
+script = ExtResource( 3 )
+movement_factor = Vector2( 25, 0 )
+
+[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Fog2" index="0"]
+
+position = Vector2( 419.149, 213.919 )
+texture = ExtResource( 17 )
+
+[node name="TileMaps" type="Node" parent="." index="1"]
+
+editor/display_folded = true
+
+[node name="tls_CDZ_0" type="TileMap" parent="TileMaps" index="0"]
+
+z_index = -1
+mode = 0
+tile_set = ExtResource( 28 )
+cell_size = Vector2( 8, 8 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -17170408, 139, 0, -17170404, 139, 0, -17170400, 139, 0, -17039360, 141, 0, -17039358, 135, 0, -17039354, 137, 0, -17039350, 138, 0, -17039346, 139, 0, -17039342, 135, 0, -17039338, 137, 0, -17039326, 139, 0, -17039322, 136, 0, -17039318, 138, 0, -17039314, 139, 0, -17039306, 136, 0, -17039302, 141, 0, -16908252, 141, 0, -16908238, 139, 0, -16777216, 123, 0, -16777214, 132, 0, -16777213, 132, 0, -16777212, 132, 0, -16777211, 132, 0, -16777210, 132, 0, -16777209, 132, 0, -16777208, 132, 0, -16777207, 132, 0, -16777206, 132, 0, -16777205, 132, 0, -16777204, 132, 0, -16777203, 132, 0, -16777202, 132, 0, -16777201, 132, 0, -16777200, 132, 0, -16777198, 126, 0, -16777196, 96, 0, -16777194, 96, 0, -16777192, 96, 0, -16777190, 96, 0, -16777188, 96, 0, -16777186, 96, 0, -16777184, 96, 0, -16777182, 96, 0, -16777180, 96, 0, -16777178, 96, 0, -16777176, 123, 0, -16777174, 132, 0, -16777173, 132, 0, -16777172, 132, 0, -16777171, 132, 0, -16777170, 132, 0, -16777169, 132, 0, -16777168, 132, 0, -16777167, 132, 0, -16777166, 132, 0, -16777165, 132, 0, -16777164, 132, 0, -16777163, 132, 0, -16777162, 132, 0, -16777161, 132, 0, -16777160, 132, 0, -16777158, 126, 0, -16646144, 96, 0, -16646142, 96, 0, -16646140, 96, 0, -16646138, 96, 0, -16646136, 96, 0, -16646134, 96, 0, -16646132, 96, 0, -16646130, 96, 0, -16646128, 96, 0, -16646126, 96, 0, -16646124, 123, 0, -16646122, 132, 0, -16646121, 132, 0, -16646120, 132, 0, -16646119, 132, 0, -16646118, 132, 0, -16646117, 132, 0, -16646116, 132, 0, -16646115, 132, 0, -16646114, 132, 0, -16646113, 132, 0, -16646112, 132, 0, -16646111, 132, 0, -16646110, 132, 0, -16646109, 132, 0, -16646108, 132, 0, -16646106, 126, 0, -16646104, 96, 0, -16646102, 96, 0, -16646100, 96, 0, -16646098, 96, 0, -16646096, 96, 0, -16646094, 96, 0, -16646092, 96, 0, -16646090, 96, 0, -16646088, 96, 0, -16646086, 96, 0, -16515072, 123, 0, -16515070, 132, 0, -16515069, 132, 0, -16515068, 132, 0, -16515067, 132, 0, -16515066, 132, 0, -16515065, 132, 0, -16515064, 132, 0, -16515063, 132, 0, -16515062, 132, 0, -16515061, 132, 0, -16515060, 132, 0, -16515059, 132, 0, -16515058, 132, 0, -16515057, 132, 0, -16515056, 132, 0, -16515055, 132, 0, -16515054, 126, 0, -16515052, 96, 0, -16515050, 96, 0, -16515048, 96, 0, -16515046, 96, 0, -16515044, 96, 0, -16515042, 96, 0, -16515040, 96, 0, -16515038, 96, 0, -16515036, 96, 0, -16515034, 96, 0, -16515032, 123, 0, -16515030, 132, 0, -16515029, 132, 0, -16515028, 132, 0, -16515027, 132, 0, -16515026, 132, 0, -16515025, 132, 0, -16515024, 132, 0, -16515023, 132, 0, -16515022, 132, 0, -16515021, 132, 0, -16515020, 132, 0, -16515019, 132, 0, -16515018, 132, 0, -16515017, 132, 0, -16515016, 132, 0, -16515014, 126, 0, -16384000, 96, 0, -16383998, 96, 0, -16383996, 96, 0, -16383994, 96, 0, -16383992, 96, 0, -16383990, 96, 0, -16383988, 96, 0, -16383986, 96, 0, -16383984, 96, 0, -16383982, 96, 0, -16383980, 123, 0, -16383978, 132, 0, -16383977, 132, 0, -16383976, 132, 0, -16383975, 132, 0, -16383974, 132, 0, -16383973, 132, 0, -16383972, 132, 0, -16383971, 132, 0, -16383970, 132, 0, -16383969, 132, 0, -16383968, 132, 0, -16383967, 132, 0, -16383966, 132, 0, -16383965, 132, 0, -16383964, 132, 0, -16383962, 126, 0, -16383960, 96, 0, -16383958, 96, 0, -16383956, 96, 0, -16383954, 96, 0, -16383952, 96, 0, -16383950, 96, 0, -16383948, 96, 0, -16383946, 96, 0, -16383944, 96, 0, -16383942, 96, 0, -16252928, 123, 0, -16252926, 132, 0, -16252925, 132, 0, -16252924, 132, 0, -16252923, 132, 0, -16252922, 132, 0, -16252921, 132, 0, -16252920, 132, 0, -16252919, 132, 0, -16252918, 132, 0, -16252917, 132, 0, -16252916, 132, 0, -16252915, 132, 0, -16252914, 132, 0, -16252913, 132, 0, -16252912, 132, 0, -16252911, 132, 0, -16252910, 126, 0, -16252908, 96, 0, -16252906, 96, 0, -16252904, 96, 0, -16252902, 96, 0, -16252900, 96, 0, -16252898, 96, 0, -16252896, 96, 0, -16252894, 96, 0, -16252892, 96, 0, -16252890, 96, 0, -16252888, 123, 0, -16252886, 132, 0, -16252885, 132, 0, -16252884, 132, 0, -16252883, 132, 0, -16252882, 132, 0, -16252881, 132, 0, -16252880, 132, 0, -16252879, 132, 0, -16252878, 132, 0, -16252877, 132, 0, -16252876, 132, 0, -16252875, 132, 0, -16252874, 132, 0, -16252873, 132, 0, -16252872, 132, 0, -16252870, 126, 0, -16121856, 96, 0, -16121854, 96, 0, -16121852, 96, 0, -16121850, 96, 0, -16121848, 96, 0, -16121846, 96, 0, -16121844, 96, 0, -16121842, 96, 0, -16121840, 96, 0, -16121838, 96, 0, -16121836, 123, 0, -16121834, 132, 0, -16121833, 132, 0, -16121832, 132, 0, -16121831, 132, 0, -16121830, 132, 0, -16121829, 132, 0, -16121828, 132, 0, -16121827, 132, 0, -16121826, 132, 0, -16121824, 132, 0, -16121823, 132, 0, -16121822, 132, 0, -16121821, 132, 0, -16121820, 132, 0, -16121819, 132, 0, -16121818, 126, 0, -16121816, 96, 0, -16121814, 96, 0, -16121812, 96, 0, -16121810, 96, 0, -16121808, 96, 0, -16121806, 96, 0, -16121804, 96, 0, -16121802, 96, 0, -16121800, 96, 0, -16121798, 96, 0, -15990784, 66, 0, -15990780, 65, 0, -15990776, 65, 0, -15990772, 65, 0, -15990768, 67, 0, -15990764, 66, 0, -15990760, 65, 0, -15990756, 65, 0, -15990752, 65, 0, -15990748, 67, 0, -15990744, 66, 0, -15990740, 65, 0, -15990736, 65, 0, -15990732, 65, 0, -15990728, 67, 0, -15990724, 71, 0, -15728640, 62, 0, -15728636, 63, 0, -15728632, 63, 0, -15728628, 63, 0, -15728624, 62, 0, -15728620, 64, 0, -15728616, 64, 0, -15728612, 64, 0, -15728608, 64, 0, -15728604, 64, 0, -15728600, 62, 0, -15728596, 63, 0, -15728592, 63, 0, -15728588, 63, 0, -15728584, 62, 0, -15728564, 71, 0, -15466496, 22, 0, -15466492, 64, 0, -15466488, 64, 0, -15466484, 64, 0, -15466480, 22, 0, -15466476, 98, 0, -15466472, 41, 0, -15466468, 42, 0, -15466464, 41, 0, -15466460, 98, 0, -15466456, 22, 0, -15466452, 64, 0, -15466448, 64, 0, -15466444, 64, 0, -15466440, 22, 0, -15466404, 71, 0, -15466272, 92, 0, -15466270, 122, 0, -15466264, 122, 0, -15466262, 92, 0, -15466260, 92, 0, -15466258, 122, 0, -15466252, 122, 0, -15466250, 92, 0, -15400708, 74, 0, -15335404, 99, 0, -15335388, 99, 0, -15335200, 92, 0, -15335198, 122, 0, -15335196, 122, 0, -15335194, 122, 0, -15335192, 122, 0, -15335190, 92, 0, -15335188, 92, 0, -15335186, 122, 0, -15335184, 122, 0, -15335182, 122, 0, -15335180, 122, 0, -15335178, 92, 0, -15204352, 21, 0, -15204348, 40, 0, -15204344, 42, 0, -15204340, 40, 0, -15204336, 21, 0, -15204332, 27, 0, -15204328, 94, 0, -15204326, 101, 0, -15204318, 94, 0, -15204316, 34, 0, -15204312, 21, 0, -15204308, 40, 0, -15204304, 42, 0, -15204300, 40, 0, -15204296, 21, 0, -15204244, 71, 0, -15204128, 92, 0, -15204126, 122, 0, -15204124, 92, 0, -15204122, 92, 0, -15204120, 122, 0, -15204118, 92, 0, -15204116, 92, 0, -15204114, 122, 0, -15204112, 92, 0, -15204110, 92, 0, -15204108, 122, 0, -15204106, 92, 0, -15073256, 94, 0, -15073246, 94, 0, -15073056, 92, 0, -15073054, 92, 0, -15073048, 92, 0, -15073046, 92, 0, -15073044, 92, 0, -15073042, 92, 0, -15073036, 92, 0, -15073034, 92, 0, -14942208, 21, 0, -14942204, 51, 0, -14942202, 58, 0, -14942200, 58, 0, -14942198, 58, 0, -14942196, 58, 0, -14942194, 52, 0, -14942192, 21, 0, -14942188, 39, 0, -14942184, 94, 0, -14942174, 94, 0, -14942172, 35, 0, -14942168, 21, 0, -14942164, 96, 0, -14942162, 106, 0, -14942160, 49, 0, -14942158, 121, 0, -14942156, 96, 0, -14942154, 106, 0, -14942152, 21, 0, -14942084, 71, 0, -14941984, 92, 0, -14941982, 137, 0, -14941978, 135, 0, -14941974, 92, 0, -14941972, 92, 0, -14941970, 138, 0, -14941966, 139, 0, -14941962, 92, 0, -14811132, 61, 0, -14811130, 96, 0, -14811128, 96, 0, -14811126, 96, 0, -14811124, 96, 0, -14811122, 60, 0, -14811112, 94, 0, -14811102, 94, 0, -14811092, 106, 0, -14811090, 96, 0, -14811088, 121, 0, -14811086, 49, 0, -14811084, 106, 0, -14811082, 96, 0, -14810912, 92, 0, -14810902, 92, 0, -14810900, 92, 0, -14810890, 92, 0, -14680064, 23, 0, -14680060, 61, 0, -14680058, 98, 0, -14680054, 99, 0, -14680050, 60, 0, -14680048, 23, 0, -14680044, 39, 0, -14680040, 94, 0, -14680038, 101, 0, -14680030, 94, 0, -14680028, 35, 0, -14680024, 23, 0, -14680020, 96, 0, -14680018, 106, 0, -14680016, 49, 0, -14680014, 121, 0, -14680012, 96, 0, -14680010, 106, 0, -14680008, 23, 0, -14679924, 71, 0, -14679840, 92, 0, -14679838, 92, 0, -14679832, 92, 0, -14679830, 92, 0, -14679828, 92, 0, -14679826, 92, 0, -14679820, 92, 0, -14679818, 92, 0, -14679812, 72, 0, -14548988, 61, 0, -14548986, 96, 0, -14548984, 96, 0, -14548982, 96, 0, -14548980, 96, 0, -14548978, 56, 0, -14548968, 94, 0, -14548958, 94, 0, -14548948, 106, 0, -14548946, 96, 0, -14548944, 121, 0, -14548942, 49, 0, -14548940, 106, 0, -14548938, 96, 0, -14548768, 92, 0, -14548766, 122, 0, -14548764, 92, 0, -14548762, 92, 0, -14548760, 122, 0, -14548758, 92, 0, -14548756, 92, 0, -14548754, 122, 0, -14548752, 92, 0, -14548750, 92, 0, -14548748, 122, 0, -14548746, 92, 0, -14417900, 39, 0, -14417896, 94, 0, -14417886, 94, 0, -14417884, 35, 0, -14417764, 71, 0, -14417696, 92, 0, -14417694, 122, 0, -14417692, 122, 0, -14417690, 122, 0, -14417688, 122, 0, -14417686, 92, 0, -14417684, 92, 0, -14417682, 122, 0, -14417680, 122, 0, -14417678, 122, 0, -14417676, 122, 0, -14417674, 92, 0, -14286824, 94, 0, -14286814, 94, 0, -14286624, 92, 0, -14286622, 122, 0, -14286616, 122, 0, -14286614, 92, 0, -14286612, 92, 0, -14286610, 122, 0, -14286604, 122, 0, -14286602, 92, 0, -14155756, 38, 0, -14155752, 37, 0, -14155748, 37, 0, -14155744, 37, 0, -14155740, 36, 0, -14155604, 71, 0, -14155572, 69, 0, -14155552, 66, 0, -14155548, 65, 0, -14155544, 65, 0, -14155540, 65, 0, -14155536, 65, 0, -14155532, 65, 0, -14155528, 65, 0, -13893444, 71, 0 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Signs" type="Node2D" parent="." index="2"]
+
+editor/display_folded = true
+
+[node name="PinkSign0" type="AnimatedSprite" parent="Signs" index="0"]
+
+position = Vector2( 1772, -1847.01 )
+frames = SubResource( 4 )
+animation = "Blink1"
+frame = 1
+playing = true
+
+[node name="BlueSign0" type="AnimatedSprite" parent="Signs" index="1"]
+
+position = Vector2( 509.036, -2001.86 )
+frames = SubResource( 5 )
+animation = "Blink2"
+playing = true
+
+[node name="ReverieIslandSign0" type="AnimatedSprite" parent="Signs" index="2"]
+
+position = Vector2( 240.585, -2060.97 )
+frames = SubResource( 6 )
+animation = "Blink3"
+playing = true
+
+[node name="PurpleSign0" type="AnimatedSprite" parent="Signs" index="3"]
+
+position = Vector2( 440.061, -1976.96 )
+frames = SubResource( 7 )
+animation = "Blink4"
+playing = true
+
+[node name="hud_layer" parent="." index="3" instance=ExtResource( 37 )]
+
+[node name="debug_hud_layer" parent="." index="4" instance=ExtResource( 38 )]
+
+[node name="Start_Position" type="Position2D" parent="." index="5"]
+
+position = Vector2( 41, -1979 )
+
+[node name="Badniks" type="Node2D" parent="." index="6"]
+
+editor/display_folded = true
+
+[node name="Buzzing_Pest" parent="Badniks" index="0" instance=ExtResource( 39 )]
+
+position = Vector2( 590, -2006 )
+z_as_relative = false
+
+[node name="Buzzing_Pest2" parent="Badniks" index="1" instance=ExtResource( 39 )]
+
+position = Vector2( 1899, -1811 )
+z_as_relative = false
+
+[node name="Player" type="KinematicBody2D" parent="." index="7"]
 
 editor/display_folded = true
 position = Vector2( 41, -1979 )
@@ -197,7 +630,7 @@ input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.002
-script = ExtResource( 1 )
+script = ExtResource( 40 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -237,7 +670,7 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 44 )
+script = ExtResource( 83 )
 
 [node name="FloorDetect" type="RayCast2D" parent="Player" index="3"]
 
@@ -261,439 +694,5 @@ enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 24 )
 collision_mask = 1
-
-[node name="Badniks" type="Node" parent="." index="1"]
-
-editor/display_folded = true
-
-[node name="Buzzing_Pest" parent="Badniks" index="0" instance=ExtResource( 45 )]
-
-position = Vector2( 590, -2006 )
-z_as_relative = false
-
-[node name="Buzzing_Pest2" parent="Badniks" index="1" instance=ExtResource( 45 )]
-
-position = Vector2( 1899, -1811 )
-z_as_relative = false
-
-[node name="CDZ_Parallax_Background" type="ParallaxBackground" parent="." index="2"]
-
-editor/display_folded = true
-layer = -2
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-scroll_offset = Vector2( 0, 0 )
-scroll_base_offset = Vector2( 0, 0 )
-scroll_base_scale = Vector2( 1, 1 )
-scroll_limit_begin = Vector2( 0, 0 )
-scroll_limit_end = Vector2( 0, 0 )
-scroll_ignore_camera_zoom = false
-
-[node name="Pink1" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="0"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.1, 0 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1024, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Pink1" index="0"]
-
-position = Vector2( 0, 83.4788 )
-scale = Vector2( 1, 0.732286 )
-texture = ExtResource( 46 )
-
-[node name="Purple1" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="1"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.1, 0.3 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1024, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Purple1" index="0"]
-
-position = Vector2( -5.38811, -535.005 )
-texture = ExtResource( 47 )
-
-[node name="Cloud2" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="2"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.2, 0.2 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 800, 0 )
-script = ExtResource( 48 )
-_sections_unfolded = [ "Motion" ]
-movement_factor = Vector2( 5, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Cloud2" index="0"]
-
-position = Vector2( 259.999, -458.671 )
-texture = ExtResource( 49 )
-
-[node name="Sky5" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="3"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.2, 0.2 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1000, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Sky5" index="0"]
-
-position = Vector2( -6.34836, -711.975 )
-texture = ExtResource( 50 )
-centered = false
-
-[node name="Sky1" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="4"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.1, 0.2 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1000, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Sky1" index="0"]
-
-position = Vector2( -20.0447, -526.688 )
-texture = ExtResource( 51 )
-centered = false
-
-[node name="Sky2" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="5"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.125, 0.2 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1000, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Sky2" index="0"]
-
-position = Vector2( -5.92935, -576.786 )
-texture = ExtResource( 52 )
-centered = false
-
-[node name="Sky3" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="6"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.15, 0.2 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1000, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Sky3" index="0"]
-
-position = Vector2( -0.816345, -629.876 )
-texture = ExtResource( 53 )
-centered = false
-
-[node name="Sky4" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="7"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.175, 0.2 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1000, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Sky4" index="0"]
-
-position = Vector2( -4.45178, -664.735 )
-texture = ExtResource( 54 )
-centered = false
-
-[node name="Light" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="8"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.1, 0.2 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 52, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Light" index="0"]
-
-position = Vector2( 3.89929, -260.547 )
-texture = ExtResource( 55 )
-centered = false
-
-[node name="Grid" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="9"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.3, 0.2 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 97, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Grid" index="0"]
-
-position = Vector2( 2.90259, -365.363 )
-texture = ExtResource( 56 )
-centered = false
-
-[node name="BackBuildings" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="10"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.3, 0.2 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 640, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/BackBuildings" index="0"]
-
-position = Vector2( 7.29163, -426.781 )
-texture = ExtResource( 57 )
-centered = false
-
-[node name="MediumBuildings2" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="11"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.38, 0.25 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 648, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/MediumBuildings2" index="0"]
-
-position = Vector2( -33.9176, -419.131 )
-texture = ExtResource( 58 )
-centered = false
-
-[node name="MediumBuildings1" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="12"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.4, 0.25 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 512, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/MediumBuildings1" index="0"]
-
-position = Vector2( 4.53043, -512.434 )
-texture = ExtResource( 59 )
-centered = false
-
-[node name="MediumBuildings4" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="13"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.43, 0.25 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 768, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/MediumBuildings4" index="0"]
-
-position = Vector2( 6.78827, -333.17 )
-texture = ExtResource( 60 )
-centered = false
-
-[node name="MediumBuildings3" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="14"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.47, 0.25 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 768, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/MediumBuildings3" index="0"]
-
-position = Vector2( 6.14948, -285.259 )
-texture = ExtResource( 61 )
-centered = false
-
-[node name="Fog1" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="15"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.7, 0.3 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1024, 0 )
-script = ExtResource( 48 )
-movement_factor = Vector2( 25, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Fog1" index="0"]
-
-position = Vector2( 448.107, -68.9678 )
-texture = ExtResource( 62 )
-
-[node name="Fog6" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="16"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.7, 0.25 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1024, 0 )
-script = ExtResource( 48 )
-movement_factor = Vector2( 25, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Fog6" index="0"]
-
-position = Vector2( 511, -50.9984 )
-texture = ExtResource( 62 )
-
-[node name="BigBuildings3" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="17"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.5, 0.3 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1024, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/BigBuildings3" index="0"]
-
-position = Vector2( 2.50006, -175.082 )
-texture = ExtResource( 63 )
-centered = false
-
-[node name="Fog4" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="18"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.7, 0.3 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1024, 0 )
-script = ExtResource( 48 )
-movement_factor = Vector2( 25, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Fog4" index="0"]
-
-position = Vector2( 493.041, -30.9118 )
-texture = ExtResource( 62 )
-
-[node name="BigBuildings1" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="19"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.6, 0.4 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1024, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/BigBuildings1" index="0"]
-
-position = Vector2( -86.0284, -120.257 )
-texture = ExtResource( 64 )
-centered = false
-
-[node name="Fog3" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="20"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.7, 0.4 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1024, 0 )
-script = ExtResource( 48 )
-movement_factor = Vector2( 25, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Fog3" index="0"]
-
-position = Vector2( 499.819, 37.2187 )
-texture = ExtResource( 62 )
-
-[node name="BigBuildings2" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="21"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.7, 0.5 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1024, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/BigBuildings2" index="0"]
-
-position = Vector2( -171.868, -55.2079 )
-texture = ExtResource( 65 )
-centered = false
-
-[node name="Fog5" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="22"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.7, 0.4 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1024, 0 )
-script = ExtResource( 48 )
-movement_factor = Vector2( 25, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Fog5" index="0"]
-
-position = Vector2( 383.012, 127.168 )
-texture = ExtResource( 62 )
-
-[node name="BigBuildings4" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="23"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.8, 0.6 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1024, 0 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="CDZ_Parallax_Background/BigBuildings4" index="0"]
-
-position = Vector2( 421.957, 156.51 )
-frames = SubResource( 3 )
-animation = "default"
-frame = 22
-playing = true
-
-[node name="Fog2" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="24"]
-
-editor/display_folded = true
-motion_scale = Vector2( 0.7, 0.4 )
-motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 1024, 0 )
-script = ExtResource( 48 )
-movement_factor = Vector2( 25, 0 )
-
-[node name="Sprite" type="Sprite" parent="CDZ_Parallax_Background/Fog2" index="0"]
-
-position = Vector2( 419.149, 213.919 )
-texture = ExtResource( 62 )
-
-[node name="TileMaps" type="Node" parent="." index="3"]
-
-editor/display_folded = true
-
-[node name="tls_CDZ_0" type="TileMap" parent="TileMaps" index="0"]
-
-z_index = -1
-mode = 0
-tile_set = ExtResource( 73 )
-cell_size = Vector2( 8, 8 )
-cell_quadrant_size = 16
-cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-cell_half_offset = 2
-cell_tile_origin = 0
-cell_y_sort = false
-cell_clip_uv = false
-collision_use_kinematic = false
-collision_friction = 1.0
-collision_bounce = 0.0
-collision_layer = 1
-collision_mask = 1
-occluder_light_mask = 1
-format = 1
-tile_data = PoolIntArray( -17170408, 139, 0, -17170404, 139, 0, -17170400, 139, 0, -17039360, 141, 0, -17039358, 135, 0, -17039354, 137, 0, -17039350, 138, 0, -17039346, 139, 0, -17039342, 135, 0, -17039338, 137, 0, -17039326, 139, 0, -17039322, 136, 0, -17039318, 138, 0, -17039314, 139, 0, -17039306, 136, 0, -17039302, 141, 0, -16908252, 141, 0, -16908238, 139, 0, -16777216, 123, 0, -16777214, 132, 0, -16777213, 132, 0, -16777212, 132, 0, -16777211, 132, 0, -16777210, 132, 0, -16777209, 132, 0, -16777208, 132, 0, -16777207, 132, 0, -16777206, 132, 0, -16777205, 132, 0, -16777204, 132, 0, -16777203, 132, 0, -16777202, 132, 0, -16777201, 132, 0, -16777200, 132, 0, -16777198, 126, 0, -16777196, 96, 0, -16777194, 96, 0, -16777192, 96, 0, -16777190, 96, 0, -16777188, 96, 0, -16777186, 96, 0, -16777184, 96, 0, -16777182, 96, 0, -16777180, 96, 0, -16777178, 96, 0, -16777176, 123, 0, -16777174, 132, 0, -16777173, 132, 0, -16777172, 132, 0, -16777171, 132, 0, -16777170, 132, 0, -16777169, 132, 0, -16777168, 132, 0, -16777167, 132, 0, -16777166, 132, 0, -16777165, 132, 0, -16777164, 132, 0, -16777163, 132, 0, -16777162, 132, 0, -16777161, 132, 0, -16777160, 132, 0, -16777158, 126, 0, -16646144, 96, 0, -16646142, 96, 0, -16646140, 96, 0, -16646138, 96, 0, -16646136, 96, 0, -16646134, 96, 0, -16646132, 96, 0, -16646130, 96, 0, -16646128, 96, 0, -16646126, 96, 0, -16646124, 123, 0, -16646122, 132, 0, -16646121, 132, 0, -16646120, 132, 0, -16646119, 132, 0, -16646118, 132, 0, -16646117, 132, 0, -16646116, 132, 0, -16646115, 132, 0, -16646114, 132, 0, -16646113, 132, 0, -16646112, 132, 0, -16646111, 132, 0, -16646110, 132, 0, -16646109, 132, 0, -16646108, 132, 0, -16646106, 126, 0, -16646104, 96, 0, -16646102, 96, 0, -16646100, 96, 0, -16646098, 96, 0, -16646096, 96, 0, -16646094, 96, 0, -16646092, 96, 0, -16646090, 96, 0, -16646088, 96, 0, -16646086, 96, 0, -16515072, 123, 0, -16515070, 132, 0, -16515069, 132, 0, -16515068, 132, 0, -16515067, 132, 0, -16515066, 132, 0, -16515065, 132, 0, -16515064, 132, 0, -16515063, 132, 0, -16515062, 132, 0, -16515061, 132, 0, -16515060, 132, 0, -16515059, 132, 0, -16515058, 132, 0, -16515057, 132, 0, -16515056, 132, 0, -16515055, 132, 0, -16515054, 126, 0, -16515052, 96, 0, -16515050, 96, 0, -16515048, 96, 0, -16515046, 96, 0, -16515044, 96, 0, -16515042, 96, 0, -16515040, 96, 0, -16515038, 96, 0, -16515036, 96, 0, -16515034, 96, 0, -16515032, 123, 0, -16515030, 132, 0, -16515029, 132, 0, -16515028, 132, 0, -16515027, 132, 0, -16515026, 132, 0, -16515025, 132, 0, -16515024, 132, 0, -16515023, 132, 0, -16515022, 132, 0, -16515021, 132, 0, -16515020, 132, 0, -16515019, 132, 0, -16515018, 132, 0, -16515017, 132, 0, -16515016, 132, 0, -16515014, 126, 0, -16384000, 96, 0, -16383998, 96, 0, -16383996, 96, 0, -16383994, 96, 0, -16383992, 96, 0, -16383990, 96, 0, -16383988, 96, 0, -16383986, 96, 0, -16383984, 96, 0, -16383982, 96, 0, -16383980, 123, 0, -16383978, 132, 0, -16383977, 132, 0, -16383976, 132, 0, -16383975, 132, 0, -16383974, 132, 0, -16383973, 132, 0, -16383972, 132, 0, -16383971, 132, 0, -16383970, 132, 0, -16383969, 132, 0, -16383968, 132, 0, -16383967, 132, 0, -16383966, 132, 0, -16383965, 132, 0, -16383964, 132, 0, -16383962, 126, 0, -16383960, 96, 0, -16383958, 96, 0, -16383956, 96, 0, -16383954, 96, 0, -16383952, 96, 0, -16383950, 96, 0, -16383948, 96, 0, -16383946, 96, 0, -16383944, 96, 0, -16383942, 96, 0, -16252928, 123, 0, -16252926, 132, 0, -16252925, 132, 0, -16252924, 132, 0, -16252923, 132, 0, -16252922, 132, 0, -16252921, 132, 0, -16252920, 132, 0, -16252919, 132, 0, -16252918, 132, 0, -16252917, 132, 0, -16252916, 132, 0, -16252915, 132, 0, -16252914, 132, 0, -16252913, 132, 0, -16252912, 132, 0, -16252911, 132, 0, -16252910, 126, 0, -16252908, 96, 0, -16252906, 96, 0, -16252904, 96, 0, -16252902, 96, 0, -16252900, 96, 0, -16252898, 96, 0, -16252896, 96, 0, -16252894, 96, 0, -16252892, 96, 0, -16252890, 96, 0, -16252888, 123, 0, -16252886, 132, 0, -16252885, 132, 0, -16252884, 132, 0, -16252883, 132, 0, -16252882, 132, 0, -16252881, 132, 0, -16252880, 132, 0, -16252879, 132, 0, -16252878, 132, 0, -16252877, 132, 0, -16252876, 132, 0, -16252875, 132, 0, -16252874, 132, 0, -16252873, 132, 0, -16252872, 132, 0, -16252870, 126, 0, -16121856, 96, 0, -16121854, 96, 0, -16121852, 96, 0, -16121850, 96, 0, -16121848, 96, 0, -16121846, 96, 0, -16121844, 96, 0, -16121842, 96, 0, -16121840, 96, 0, -16121838, 96, 0, -16121836, 123, 0, -16121834, 132, 0, -16121833, 132, 0, -16121832, 132, 0, -16121831, 132, 0, -16121830, 132, 0, -16121829, 132, 0, -16121828, 132, 0, -16121827, 132, 0, -16121826, 132, 0, -16121824, 132, 0, -16121823, 132, 0, -16121822, 132, 0, -16121821, 132, 0, -16121820, 132, 0, -16121819, 132, 0, -16121818, 126, 0, -16121816, 96, 0, -16121814, 96, 0, -16121812, 96, 0, -16121810, 96, 0, -16121808, 96, 0, -16121806, 96, 0, -16121804, 96, 0, -16121802, 96, 0, -16121800, 96, 0, -16121798, 96, 0, -15990784, 66, 0, -15990780, 65, 0, -15990776, 65, 0, -15990772, 65, 0, -15990768, 67, 0, -15990764, 66, 0, -15990760, 65, 0, -15990756, 65, 0, -15990752, 65, 0, -15990748, 67, 0, -15990744, 66, 0, -15990740, 65, 0, -15990736, 65, 0, -15990732, 65, 0, -15990728, 67, 0, -15990724, 71, 0, -15728640, 62, 0, -15728636, 63, 0, -15728632, 63, 0, -15728628, 63, 0, -15728624, 62, 0, -15728620, 64, 0, -15728616, 64, 0, -15728612, 64, 0, -15728608, 64, 0, -15728604, 64, 0, -15728600, 62, 0, -15728596, 63, 0, -15728592, 63, 0, -15728588, 63, 0, -15728584, 62, 0, -15728564, 71, 0, -15466496, 22, 0, -15466492, 64, 0, -15466488, 64, 0, -15466484, 64, 0, -15466480, 22, 0, -15466476, 98, 0, -15466472, 41, 0, -15466468, 42, 0, -15466464, 41, 0, -15466460, 98, 0, -15466456, 22, 0, -15466452, 64, 0, -15466448, 64, 0, -15466444, 64, 0, -15466440, 22, 0, -15466404, 71, 0, -15466272, 92, 0, -15466270, 122, 0, -15466264, 122, 0, -15466262, 92, 0, -15466260, 92, 0, -15466258, 122, 0, -15466252, 122, 0, -15466250, 92, 0, -15400708, 74, 0, -15335404, 99, 0, -15335388, 99, 0, -15335200, 92, 0, -15335198, 122, 0, -15335196, 122, 0, -15335194, 122, 0, -15335192, 122, 0, -15335190, 92, 0, -15335188, 92, 0, -15335186, 122, 0, -15335184, 122, 0, -15335182, 122, 0, -15335180, 122, 0, -15335178, 92, 0, -15204352, 21, 0, -15204348, 40, 0, -15204344, 42, 0, -15204340, 40, 0, -15204336, 21, 0, -15204332, 27, 0, -15204328, 94, 0, -15204326, 101, 0, -15204318, 94, 0, -15204316, 34, 0, -15204312, 21, 0, -15204308, 40, 0, -15204304, 42, 0, -15204300, 40, 0, -15204296, 21, 0, -15204244, 71, 0, -15204128, 92, 0, -15204126, 122, 0, -15204124, 92, 0, -15204122, 92, 0, -15204120, 122, 0, -15204118, 92, 0, -15204116, 92, 0, -15204114, 122, 0, -15204112, 92, 0, -15204110, 92, 0, -15204108, 122, 0, -15204106, 92, 0, -15073256, 94, 0, -15073246, 94, 0, -15073056, 92, 0, -15073054, 92, 0, -15073048, 92, 0, -15073046, 92, 0, -15073044, 92, 0, -15073042, 92, 0, -15073036, 92, 0, -15073034, 92, 0, -14942208, 21, 0, -14942204, 51, 0, -14942202, 58, 0, -14942200, 58, 0, -14942198, 58, 0, -14942196, 58, 0, -14942194, 52, 0, -14942192, 21, 0, -14942188, 39, 0, -14942184, 94, 0, -14942174, 94, 0, -14942172, 35, 0, -14942168, 21, 0, -14942164, 96, 0, -14942162, 106, 0, -14942160, 49, 0, -14942158, 121, 0, -14942156, 96, 0, -14942154, 106, 0, -14942152, 21, 0, -14942084, 71, 0, -14941984, 92, 0, -14941982, 137, 0, -14941978, 135, 0, -14941974, 92, 0, -14941972, 92, 0, -14941970, 138, 0, -14941966, 139, 0, -14941962, 92, 0, -14811132, 61, 0, -14811130, 96, 0, -14811128, 96, 0, -14811126, 96, 0, -14811124, 96, 0, -14811122, 60, 0, -14811112, 94, 0, -14811102, 94, 0, -14811092, 106, 0, -14811090, 96, 0, -14811088, 121, 0, -14811086, 49, 0, -14811084, 106, 0, -14811082, 96, 0, -14810912, 92, 0, -14810902, 92, 0, -14810900, 92, 0, -14810890, 92, 0, -14680064, 23, 0, -14680060, 61, 0, -14680058, 98, 0, -14680054, 99, 0, -14680050, 60, 0, -14680048, 23, 0, -14680044, 39, 0, -14680040, 94, 0, -14680038, 101, 0, -14680030, 94, 0, -14680028, 35, 0, -14680024, 23, 0, -14680020, 96, 0, -14680018, 106, 0, -14680016, 49, 0, -14680014, 121, 0, -14680012, 96, 0, -14680010, 106, 0, -14680008, 23, 0, -14679924, 71, 0, -14679840, 92, 0, -14679838, 92, 0, -14679832, 92, 0, -14679830, 92, 0, -14679828, 92, 0, -14679826, 92, 0, -14679820, 92, 0, -14679818, 92, 0, -14679812, 72, 0, -14548988, 61, 0, -14548986, 96, 0, -14548984, 96, 0, -14548982, 96, 0, -14548980, 96, 0, -14548978, 56, 0, -14548968, 94, 0, -14548958, 94, 0, -14548948, 106, 0, -14548946, 96, 0, -14548944, 121, 0, -14548942, 49, 0, -14548940, 106, 0, -14548938, 96, 0, -14548768, 92, 0, -14548766, 122, 0, -14548764, 92, 0, -14548762, 92, 0, -14548760, 122, 0, -14548758, 92, 0, -14548756, 92, 0, -14548754, 122, 0, -14548752, 92, 0, -14548750, 92, 0, -14548748, 122, 0, -14548746, 92, 0, -14417900, 39, 0, -14417896, 94, 0, -14417886, 94, 0, -14417884, 35, 0, -14417764, 71, 0, -14417696, 92, 0, -14417694, 122, 0, -14417692, 122, 0, -14417690, 122, 0, -14417688, 122, 0, -14417686, 92, 0, -14417684, 92, 0, -14417682, 122, 0, -14417680, 122, 0, -14417678, 122, 0, -14417676, 122, 0, -14417674, 92, 0, -14286824, 94, 0, -14286814, 94, 0, -14286624, 92, 0, -14286622, 122, 0, -14286616, 122, 0, -14286614, 92, 0, -14286612, 92, 0, -14286610, 122, 0, -14286604, 122, 0, -14286602, 92, 0, -14155756, 38, 0, -14155752, 37, 0, -14155748, 37, 0, -14155744, 37, 0, -14155740, 36, 0, -14155604, 71, 0, -14155572, 69, 0, -14155552, 66, 0, -14155548, 65, 0, -14155544, 65, 0, -14155540, 65, 0, -14155536, 65, 0, -14155532, 65, 0, -14155528, 65, 0, -13893444, 71, 0 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
-
-[node name="Signs" type="Node2D" parent="." index="4"]
-
-editor/display_folded = true
-
-[node name="PinkSign0" type="AnimatedSprite" parent="Signs" index="0"]
-
-position = Vector2( 1772, -1847.01 )
-frames = SubResource( 4 )
-animation = "Blink1"
-playing = true
-
-[node name="BlueSign0" type="AnimatedSprite" parent="Signs" index="1"]
-
-position = Vector2( 509.036, -2001.86 )
-frames = SubResource( 5 )
-animation = "Blink2"
-frame = 1
-playing = true
-
-[node name="ReverieIslandSign0" type="AnimatedSprite" parent="Signs" index="2"]
-
-position = Vector2( 240.585, -2060.97 )
-frames = SubResource( 6 )
-animation = "Blink3"
-playing = true
-
-[node name="PurpleSign0" type="AnimatedSprite" parent="Signs" index="3"]
-
-position = Vector2( 440.061, -1976.96 )
-frames = SubResource( 7 )
-animation = "Blink4"
-frame = 1
-playing = true
-
-[node name="hud_layer" parent="." index="5" instance=ExtResource( 82 )]
-
-[node name="debug_hud_layer" parent="." index="6" instance=ExtResource( 83 )]
-
-[node name="Start_Position" type="Position2D" parent="." index="7"]
-
-position = Vector2( 41, -1979 )
 
 
