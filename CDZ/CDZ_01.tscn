@@ -84,7 +84,7 @@
 [ext_resource path="res://Sprites/Animations/jump/sonic_jump_15.png" type="Texture" id=82]
 [ext_resource path="res://Scripts/SonicCamera.gd" type="Script" id=83]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 21 ) ],
@@ -93,7 +93,7 @@ animations = [ {
 "speed": 4.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
 "frames": [ ExtResource( 29 ), ExtResource( 30 ) ],
@@ -102,7 +102,7 @@ animations = [ {
 "speed": 2.0
 } ]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=3]
 
 animations = [ {
 "frames": [ ExtResource( 31 ), ExtResource( 32 ) ],
@@ -111,7 +111,7 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=4]
 
 animations = [ {
 "frames": [ ExtResource( 33 ), ExtResource( 34 ) ],
@@ -120,7 +120,7 @@ animations = [ {
 "speed": 4.0
 } ]
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=5]
 
 animations = [ {
 "frames": [ ExtResource( 35 ), ExtResource( 36 ) ],
@@ -129,7 +129,7 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=6]
 
 animations = [ {
 "frames": [ ExtResource( 41 ) ],
@@ -178,7 +178,7 @@ animations = [ {
 "speed": 20.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=7]
 
 custom_solver_bias = 0.0
 radius = 10.0
@@ -518,9 +518,9 @@ motion_mirroring = Vector2( 1024, 0 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CDZ_Parallax_Background/BigBuildings4" index="0"]
 
 position = Vector2( 421.957, 156.51 )
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 animation = "default"
-frame = 14
+frame = 19
 playing = true
 
 [node name="Fog2" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="24"]
@@ -537,13 +537,16 @@ movement_factor = Vector2( 25, 0 )
 position = Vector2( 419.149, 213.919 )
 texture = ExtResource( 17 )
 
-[node name="TileMaps" type="Node" parent="." index="1"]
+[node name="TileMaps" type="Node2D" parent="." index="1"]
 
 editor/display_folded = true
+z_index = -1
+z_as_relative = false
 
 [node name="tls_CDZ_0" type="TileMap" parent="TileMaps" index="0"]
 
 z_index = -1
+z_as_relative = false
 mode = 0
 tile_set = ExtResource( 28 )
 cell_size = Vector2( 8, 8 )
@@ -569,11 +572,13 @@ __meta__ = {
 [node name="Signs" type="Node2D" parent="." index="2"]
 
 editor/display_folded = true
+z_index = -1
+z_as_relative = false
 
 [node name="PinkSign0" type="AnimatedSprite" parent="Signs" index="0"]
 
 position = Vector2( 1772, -1847.01 )
-frames = SubResource( 4 )
+frames = SubResource( 2 )
 animation = "Blink1"
 frame = 1
 playing = true
@@ -581,22 +586,25 @@ playing = true
 [node name="BlueSign0" type="AnimatedSprite" parent="Signs" index="1"]
 
 position = Vector2( 509.036, -2001.86 )
-frames = SubResource( 5 )
+frames = SubResource( 3 )
 animation = "Blink2"
+frame = 1
 playing = true
 
 [node name="ReverieIslandSign0" type="AnimatedSprite" parent="Signs" index="2"]
 
 position = Vector2( 240.585, -2060.97 )
-frames = SubResource( 6 )
+frames = SubResource( 4 )
 animation = "Blink3"
+frame = 1
 playing = true
 
 [node name="PurpleSign0" type="AnimatedSprite" parent="Signs" index="3"]
 
 position = Vector2( 440.061, -1976.96 )
-frames = SubResource( 7 )
+frames = SubResource( 5 )
 animation = "Blink4"
+frame = 1
 playing = true
 
 [node name="hud_layer" parent="." index="3" instance=ExtResource( 37 )]
@@ -623,7 +631,6 @@ z_as_relative = false
 
 [node name="Player" type="KinematicBody2D" parent="." index="7"]
 
-editor/display_folded = true
 position = Vector2( 41, -1979 )
 z_as_relative = false
 input_pickable = false
@@ -637,14 +644,14 @@ __meta__ = {
 
 [node name="Sprite" type="AnimatedSprite" parent="Player" index="0"]
 
-frames = SubResource( 1 )
+frames = SubResource( 6 )
 animation = "Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" index="1"]
 
 position = Vector2( 1.15583, -0.200698 )
 scale = Vector2( 1.45078, 1.82535 )
-shape = SubResource( 2 )
+shape = SubResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="Player" index="2"]
 
