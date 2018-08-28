@@ -1,7 +1,9 @@
-### Buzzing pest (test)!
-# A try at a (very) simple badnik. Just flies left to right (within a range specified).
-# If the player collides with it, it'll be destroyed.
-# TODO: Collision detection should, likely, be handled here directly.
+"""
+   Buzzing pest (test)!
+   A try at a (very) simple badnik. Just flies left to right (within a range specified).
+   If the player collides with it, it'll be destroyed.
+   TODO: Collision detection should, likely, be handled here directly.
+"""
 
 extends KinematicBody2D
 

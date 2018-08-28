@@ -1,15 +1,19 @@
-### For the Sonic the Hedgehog fan-game:
-# Sonic: Imperial Outbreak
-# Code written by Jesse, Ryan, Sofox, Sslaxx
-# with additional assistance from the Sonic Physics Guide
+"""
+   For the Sonic the Hedgehog fan-game:
+   Sonic: Imperial Outbreak
+   Code written by Jesse, Ryan, Sofox, Sslaxx
+   with additional assistance from the Sonic Physics Guide
+"""
 
-extends KinematicBody2D	# Needed to create our own physics.
+extends KinematicBody2D
 
-# Script extension for "Player"
+# TODO: Make this into a generic script for player character scripts to extend from.
+# TODO: I.e. this script -> player character specific script.
 
 const UP = Vector2 (0, -1)		# Vectors use x and y values; negatives on the y-axis are "up" in Godot.
 
-var special_number = 60					# Special Number; Delta x 60. FIXME: This mean that keeping framerate to 60 may be optimal?
+# Special Number; Delta x 60. FIXME: This mean that fixing framerate to 60 may be optimal?
+var special_number = 60
 var GRAVITY = 0.21875 * special_number	# Gravity Speed
 
 var velocity = Vector2 (0, 0)
@@ -21,7 +25,7 @@ var accel = 0.046875 * special_number		# Acceleration
 var decel = 0.5 * special_number 			# Deceleration
 var friction = 0.046875 * special_number 	# Friction
 var top_speed = 6 * special_number 			# Top Speed
-var air = 0.09375 * special_number 	# 		Air
+var air = 0.09375 * special_number 			# Air
 
 var slope = 0.125 * special_number			# Slope
 
@@ -55,18 +59,24 @@ func _physics_process (delta):
 		left = false	# Make sure the movement variables are set to false.
 		right = false	# FIXME: Does jumping need to be in this block?
 
-	var rays = [$FloorDetect, $FloorDetectLeft, $FloorDetectRight]
+	# FIXME: This bit is broken! Or at least contributing to something else broken.
+	# FIXME: See https://github.com/BlitzerSIO/grass-cheetah/issues/2 for more info about this one.
+	var rays = [$FloorDetectCenter, $FloorDetectLeft, $FloorDetectRight]
 	for ray in rays:
 		is_on_floor = ray.is_colliding ()
+		# FIXME: This is pretty hacky, so need to find a better way of handling all this.
+		if ($FloorDetectRight.is_colliding() && $FloorDetectLeft.is_colliding() && !$FloorDetectCenter.is_colliding()):
+			ground_normal = $FloorDetectCenter.get_collision_normal()
+			break
 		if (is_on_floor):
+			print (ray.name)
 			ground_normal = ray.get_collision_normal ()
+#			print (ray.name, " ", ground_normal)	# FOR DEBUGGING ONLY. Print which ray is colliding.
 			break
 
 	var hitting_floor = (is_on_floor == true and was_on_floor == false)
 	was_on_floor = is_on_floor
 
-#	print ("XSP: ", velocity.x)
-#	print ("YSP: ", velocity.y)
 	var run_speed = (ground_speed if is_on_floor else velocity.x)
 
 	# Very hazy animation states; will need to put these in a MATCH state machine
@@ -93,12 +103,15 @@ func _physics_process (delta):
 
 	if (is_on_floor):	# Major condition, determines whether we're going by groundspeed or traditional
 		jumping = false
-		var ground_speed_vector = ground_normal.rotated (PI/2)	# Vector that points "forward" along the ground that Sonic stands on
+		# Vector that points "forward" along the ground that Sonic stands on.
+		var ground_speed_vector = ground_normal.rotated (PI/2)
 
-		if (hitting_floor):	# If we've landed on floor, recalculate ground_speed
+		if (hitting_floor):
+			# If we've landed on floor, recalculate ground_speed.
 			ground_speed = velocity.dot (ground_speed_vector)
 			rotation = ground_angle
 #			print (ground_angle)
+#			move_and_collide ((-400) * ground_normal)
 			move_and_slide ((-400) * ground_normal, UP)
 
 		ground_speed += slope * sin (ground_speed_vector.angle ())
@@ -174,6 +187,6 @@ func _physics_process (delta):
 		var last_collision = get_slide_collision (collision_count - 1)
 		if (last_collision.collider is preload ("res://Scripts/Badniks/Buzzing_Pest_Test.gd")):
 			last_collision.collider.hit_the_pest ()
-#		print ((last_collision.normal*-1).angle())
+#		print ((last_collision.normal*-1).angle ())
 #		print ("last_collision: ", last_collision.collider)
 	return

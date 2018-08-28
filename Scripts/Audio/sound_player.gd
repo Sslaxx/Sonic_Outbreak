@@ -1,9 +1,11 @@
-### For playing general sound effects (mostly UI, but other stuff too as required).
-# Sound effects MUST be specified in Sound_Library along the lines of "<name>": preload ("<filename>").
-# (Or <name> = preload ("<filename>"), your choice.) (Or "<name>": load ("<filename>") etc etc.)
-# Sound effects can be played using sound_player.play_sound ([<name>])
+"""
+   For playing general sound effects (mostly UI, but other stuff too as required).
+   Sound effects MUST be specified in Sound_Library along the lines of "<name>": preload ("<filename>").
+   (Or <name> = preload ("<filename>"), your choice.) (Or "<name>": load ("<filename>") etc etc.)
+   Sound effects can be played using sound_player.play_sound ([<name>])
 
-# Note it uses neither 2D or 3D effects; it's best used for UI sounds or other sounds that don't need to consider their positions.
+   Note it doesn't use 2D or 3D effects; it's best used for UI sounds or other sounds that don't need to consider their positions.
+"""
 
 extends AudioStreamPlayer
 

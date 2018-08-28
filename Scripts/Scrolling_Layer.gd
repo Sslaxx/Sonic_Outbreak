@@ -1,7 +1,9 @@
-### Makes a ParallaxLayer scroll on its own. It can move x and/or y-axis independently.
-# To use:
-# 1 - Attach this script to a ParallaxLayer node/scene.
-# 2 - Use the "Movement Factor" property in the inspector to set the speed/direction required.
+"""
+   Makes a ParallaxLayer scroll on its own. It can move x and/or y-axis independently.
+   To use:
+   1 - Attach this script to a ParallaxLayer node/scene.
+   2 - Use the "Movement Factor" property in the inspector to set the speed/direction required.
+"""
 
 extends ParallaxLayer
 

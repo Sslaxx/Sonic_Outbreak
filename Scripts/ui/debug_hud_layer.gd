@@ -1,5 +1,7 @@
-### The debug HUD.
-# Shows frame rate, X and Y position, if on the ground or in the air, etc.
+"""
+   The debug HUD.
+   Shows frame rate, X and Y position, if on the ground or in the air, etc.
+"""
 
 extends CanvasLayer
 
@@ -8,15 +10,11 @@ func _ready ():
 		print ("DEBUGGING HUD ENABLED.")
 	else:	# Make sure this HUD doesn't do anything (or show anything) if not running in debug mode.
 		print ("NO DEBUGGING HUD.")	# TODO: REMOVE THIS LINE ON RELEASE!
-		$"FPS".text = ""
-		$"Position".text = ""
-		$"Velocity".text = ""
-		$"Is_On_Floor".text = ""
-		$"Was_On_Floor".text = ""
-		set_process (false)
+		queue_free ()	# Remove this HUD from the game.
 	return
 
-# NOTE: The debug HUD gets updated every frame. So it's not a good idea to have this enabled in any public-facing releases.
+## Makes sure the debug HUD is up to date.
+# NOTE: The debug HUD gets updated every frame. So it's NOT a good idea to have this enabled in any public-facing releases.
 func _process (delta):
 	# Display FPS in the label
 	$"FPS".text = "FPS: " + str (Engine.get_frames_per_second ())
@@ -32,5 +30,5 @@ func _process (delta):
 		if ($"../Player".was_on_floor):	# Was the player on the floor?
 			$"Was_On_Floor".text = "WAS ON FLOOR"	# FIXME: Is this working correctly? If it is there's a bug somewhere.
 		else:
-			$"Was_On_Floor".text = "WASN'T ON FLOOR"	# FIXME: Also, is this useful?
+			$"Was_On_Floor".text = "WASN'T ON FLOOR"	# FIXME: Also, is this one useful?
 	return

@@ -1,5 +1,7 @@
-### The HUD layer controller.
-# Updated the HUD and plays animations as necessary; most of this is controlled in game scripts.
+"""
+   The HUD layer controller.
+   Updated the HUD and plays animations as necessary; most of this is controlled in game scripts.
+"""
 
 extends CanvasLayer
 

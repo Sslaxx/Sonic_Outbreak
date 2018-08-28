@@ -1,5 +1,7 @@
-### music_player - a singleton to be used to play music (normally looped, but whatever is necessary).
-# For more advanced stuff (music that relies on signals and so on), do it in the scene directly.
+"""
+   music_player - a singleton to be used to play music (normally looped, but whatever is necessary).
+   For more advanced stuff (music that relies on signals and so on), do it in the scene directly.
+"""
 
 extends AudioStreamPlayer
 
