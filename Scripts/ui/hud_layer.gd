@@ -1,6 +1,6 @@
 """
    The HUD layer controller.
-   Updated the HUD and plays animations as necessary; most of this is controlled in game scripts.
+   Updates the HUD and plays animations as necessary; most of this is controlled in (and called through) game scripts.
 """
 
 extends CanvasLayer
@@ -16,14 +16,17 @@ func _ready ():
 	update_hud ()	# Make sure the HUD is initialised from the get-go!
 	return
 
-## update_hud
-# Updates the HUD text and makes sure it does any effects as required.
-# When should this be called?
-# - Automatically whenever the hud_layer scene is instantiated via _ready.
-# - Whenever score, rings or lives are changed (via a setter).
-# - Whenever the game starts, an act starts or the game is paused and then unpaused.
-# - Any other cases that may not be described above.
+"""
+   update_hud
+   Updates the HUD text and makes sure it does any effects as required.
+   When should this be called?
+    - Automatically whenever the hud_layer scene is instantiated via _ready.
+    - Whenever score, rings or lives are changed (via a setter).
+    - Whenever the game starts, an act starts or the game is paused and then unpaused.
+    - Any other cases that may not be described above.
+"""
 func update_hud ():
+	var pretty_me_up = ""	# Used for prettying up/formatting text.
 	## Update the HUD values as needed.
 	# TODO: How are rings, score etc. going to be stored in the project? This needs deciding!
 	## Make sure that the counters are flashing if need be.

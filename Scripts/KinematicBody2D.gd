@@ -65,11 +65,11 @@ func _physics_process (delta):
 	for ray in rays:
 		is_on_floor = ray.is_colliding ()
 		# FIXME: This is pretty hacky, so need to find a better way of handling all this.
-		if ($FloorDetectRight.is_colliding() && $FloorDetectLeft.is_colliding() && !$FloorDetectCenter.is_colliding()):
-			ground_normal = $FloorDetectCenter.get_collision_normal()
+		if ($FloorDetectRight.is_colliding () && $FloorDetectLeft.is_colliding () && !$FloorDetectCenter.is_colliding ()):
+			ground_normal = $FloorDetectCenter.get_collision_normal ()
 			break
 		if (is_on_floor):
-			print (ray.name)
+#			print (ray.name)
 			ground_normal = ray.get_collision_normal ()
 #			print (ray.name, " ", ground_normal)	# FOR DEBUGGING ONLY. Print which ray is colliding.
 			break
@@ -79,7 +79,7 @@ func _physics_process (delta):
 
 	var run_speed = (ground_speed if is_on_floor else velocity.x)
 
-	# Very hazy animation states; will need to put these in a MATCH state machine
+	# Very hazy animation states; will need to put these in a MATCH state machine.
 	if (jumping):
 			$Sprite.play ("Jump_2")
 	elif ((run_speed >= -0.01 and run_speed <= 2.8126) or run_speed == 0):
@@ -87,9 +87,9 @@ func _physics_process (delta):
 		# FIXME: This seems an odd bug/error. Try to reproduce/recreate it? Try to identify what causes it?
 		$Sprite.play ("Idle")
 	elif ((run_speed >= 360) or (run_speed <= -360) and (run_speed < 799.9 or run_speed > -799.9)):
-		$Sprite.play("Run_1")
+		$Sprite.play ("Run_1")
 		if ((run_speed >= 800) or (run_speed <= -800)):
-			$Sprite.play("fullSpeed")
+			$Sprite.play ("fullSpeed")
 	else:
 		$Sprite.play ("Walk")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=2]
+[gd_scene load_steps=91 format=2]
 
 [ext_resource path="res://CDZ/CDZ_BG_ASSETS/BigPink.png" type="Texture" id=1]
 [ext_resource path="res://CDZ/CDZ_BG_ASSETS/SolidSkyColorBig.png" type="Texture" id=2]
@@ -82,6 +82,7 @@
 [ext_resource path="res://Sprites/Animations/fullSpeed/sonic_fullSpeed_3.png" type="Texture" id=80]
 [ext_resource path="res://Sprites/Animations/jump/sonic_jump_14.png" type="Texture" id=81]
 [ext_resource path="res://Sprites/Animations/jump/sonic_jump_15.png" type="Texture" id=82]
+[ext_resource path="res://CDZ/Barrier.tscn" type="PackedScene" id=83]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -519,7 +520,7 @@ motion_mirroring = Vector2( 1024, 0 )
 position = Vector2( 421.957, 156.51 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 10
+frame = 13
 playing = true
 
 [node name="Fog2" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="24"]
@@ -593,6 +594,7 @@ playing = true
 position = Vector2( 240.585, -2060.97 )
 frames = SubResource( 4 )
 animation = "Blink3"
+frame = 1
 playing = true
 
 [node name="PurpleSign0" type="AnimatedSprite" parent="Signs" index="3"]
@@ -627,7 +629,7 @@ z_as_relative = false
 [node name="Player" type="KinematicBody2D" parent="." index="7"]
 
 editor/display_folded = true
-position = Vector2( 41, -1979 )
+position = Vector2( 63, -1979 )
 z_as_relative = false
 input_pickable = false
 collision_layer = 1
@@ -697,5 +699,9 @@ enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 24 )
 collision_mask = 1
+
+[node name="Barrier" parent="." index="8" instance=ExtResource( 83 )]
+
+position = Vector2( -2, -1973 )
 
 

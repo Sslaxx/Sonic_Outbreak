@@ -4,7 +4,7 @@
    (Or <name> = preload ("<filename>"), your choice.) (Or "<name>": load ("<filename>") etc etc.)
    Sound effects can be played using sound_player.play_sound ([<name>])
 
-   Note it doesn't use 2D or 3D effects; it's best used for UI sounds or other sounds that don't need to consider their positions.
+   Note it doesn't use 2D or 3D; it's best used for UI sounds or other sounds that don't need to consider their positions.
 """
 
 extends AudioStreamPlayer
@@ -20,10 +20,12 @@ func _ready ():
 	printerr ("Sound player ready.")
 	return
 
-## play_sound
-# play_sound (item)
-# Looks for item in Sound_Library and if it's there, play it.
-# Returns true if the item was found and the sound played, false otherwise.
+"""
+   play_sound
+   play_sound (item)
+   Looks for item in Sound_Library and if it's there, play it.
+   Returns true if the item was found and the sound played, false otherwise.
+"""
 func play_sound (item = "No_Sound"):
 	if (item in Sound_Library):
 		# The sound exists in the library, so play it out and return true.
@@ -34,8 +36,10 @@ func play_sound (item = "No_Sound"):
 	printerr ("ERROR: \"", item, "\" not found!")
 	return (false)
 
-## stop_sound
-# Stops the sound player (if you're using looped sound effects, for example).
+"""
+   stop_sound
+   Stops the sound player (if you're using looped sound effects, for example).
+"""
 func stop_sound ():
 	stop ()
 	return

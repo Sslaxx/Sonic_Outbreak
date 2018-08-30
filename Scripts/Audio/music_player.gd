@@ -5,15 +5,17 @@
 
 extends AudioStreamPlayer
 
-func _ready():
+func _ready ():
 	printerr ("Music player ready.")
 	return
 
-## play_music
-# music_player.play_music (path_to_music, play_from)
-# Plays a specified music file (path_to_music). If it's left blank, it'll just play (assuming there was a music file loaded before).
-# Will play from a specific point in the music (in seconds) if told to.
-# Returns true if it plays something, otherwise false.
+"""
+   play_music
+   music_player.play_music (path_to_music, play_from)
+   Plays a specified music file (path_to_music). If it's left blank, it'll just play (if there was a music file loaded before).
+   Will play from a specific point in the music (in seconds) if told to.
+   Returns true if it plays something, otherwise false.
+"""
 ## TODO: This could make use of typed GDScript, in theory, as path_to_music is a string.
 func play_music (path_to_music = "", play_from = 0.0):
 	var play_me = null	# This will be used to set the stream data.
@@ -28,12 +30,14 @@ func play_music (path_to_music = "", play_from = 0.0):
 			printerr ("NOTE: ", path_to_music, " was specified as the file to play.")
 		return (false)
 	stream = play_me	# Everything's OK, so set the stream as needed...
-	play (play_from)				# ...play the music...
+	play (play_from)	# ...play the music...
 	return (true)		# ...and return true.
 
-## stop_music
-# music_player.stop_music ()
-# Just a bit of syntactic sugar. Stops the currently playing music.
+"""
+  stop_music
+   music_player.stop_music ()
+   Just a bit of syntactic sugar. Stops the currently playing music.
+"""
 func stop_music ():
 	stop ()
 	return

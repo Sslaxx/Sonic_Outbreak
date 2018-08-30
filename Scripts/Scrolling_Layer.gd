@@ -2,7 +2,7 @@
    Makes a ParallaxLayer scroll on its own. It can move x and/or y-axis independently.
    To use:
    1 - Attach this script to a ParallaxLayer node/scene.
-   2 - Use the "Movement Factor" property in the inspector to set the speed/direction required.
+   2 - Use the "Movement Factor" property in the inspector to set the speed/direction required (x direction, y direction).
 """
 
 extends ParallaxLayer
@@ -14,6 +14,9 @@ func _ready ():
 		print (name, " is moving at ", movement_factor, ".")
 	return
 
+"""
+   Make the layer move!
+"""
 func _process (delta):
 	motion_offset += (movement_factor * delta)	# Move the background, in the directions and speed required.
 	return
