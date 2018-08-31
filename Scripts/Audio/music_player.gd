@@ -34,7 +34,7 @@ func play_music (path_to_music = "", play_from = 0.0):
 	return (true)		# ...and return true.
 
 """
-  stop_music
+   stop_music
    music_player.stop_music ()
    Just a bit of syntactic sugar. Stops the currently playing music.
 """

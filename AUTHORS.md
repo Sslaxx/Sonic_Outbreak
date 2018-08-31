@@ -14,7 +14,7 @@ Powered by the **[Godot Engine](https://godotengine.org/)**.
 - Sslaxx - Coding: UI
 
 **CONCEPT ARTISTS:**
-- Out of Discord for a while. - Concept Artist - Character Designs
+- AaronKasarion - Concept Artist - Character Designs
 - vinpie - Character Painting
 
 **2D ARTISTS:**
