@@ -7,7 +7,10 @@ path="res://.import/CDZFixedLayerDraft2.png-de1c9de2a3d04f7ec4b3f99c17773194.ste
 [deps]
 
 source_file="res://CDZ/CDZ_BG_ASSETS/CDZFixedLayerDraft2.png"
+source_md5="b612cad7cef6e08b53ff226e19088016"
+
 dest_files=[ "res://.import/CDZFixedLayerDraft2.png-de1c9de2a3d04f7ec4b3f99c17773194.stex" ]
+dest_md5="ff0e3646ef4e3979510f3c7e62a08ffb"
 
 [params]
 

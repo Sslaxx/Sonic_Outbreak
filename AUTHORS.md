@@ -5,17 +5,19 @@ Powered by the **[Godot Engine](https://godotengine.org/)**.
 - Viizen - Creative Director, Project Management, Concept Artist
 
 **LEVEL DESIGN:**
-- Cris Nail Bidoof - Level Designer, Conceptualizer
-- Kalin - Level Designer
-- jubbalub - Level Designer
-- Ozaleto - Level Designer, FM OST
+- Cris Nail Bidoof - Level designer, conceptualizer
+- Kalin - Level designer
+- jubbalub - Level designer
+- Ozaleto - Level designer, FM OST
 
 **CODERS:**
 - Sslaxx - Coding: UI
 
 **CONCEPT ARTISTS:**
-- AaronKasarion - Concept Artist - Character Designs
-- vinpie - Character Painting
+- AaronKasarion - Concept Artist, character designs
+- AzureBurst - Concept Artist, character designs
+- Coy Fish - Tileset ideas, stage gimmicks
+- vinpie - Character painting
 
 **2D ARTISTS:**
 - /b/ - Spriter - Characters, Enemies

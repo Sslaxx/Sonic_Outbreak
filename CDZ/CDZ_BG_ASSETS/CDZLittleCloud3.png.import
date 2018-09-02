@@ -7,7 +7,10 @@ path="res://.import/CDZLittleCloud3.png-4be701a8db95586dc9448740e00cd214.stex"
 [deps]
 
 source_file="res://CDZ/CDZ_BG_ASSETS/CDZLittleCloud3.png"
+source_md5="ae2f8743623b050e553568a75f6a1e75"
+
 dest_files=[ "res://.import/CDZLittleCloud3.png-4be701a8db95586dc9448740e00cd214.stex" ]
+dest_md5="b97a6088d1aefeda4e90dbf7cd9d3533"
 
 [params]
 

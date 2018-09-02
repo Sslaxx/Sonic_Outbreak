@@ -7,7 +7,10 @@ path="res://.import/SolidSkyColorBig.png-d2582dd890f9172637e6c7547cf51dfb.stex"
 [deps]
 
 source_file="res://CDZ/CDZ_BG_ASSETS/SolidSkyColorBig.png"
+source_md5="40018da46d4d3c6eed09359a77ba4f54"
+
 dest_files=[ "res://.import/SolidSkyColorBig.png-d2582dd890f9172637e6c7547cf51dfb.stex" ]
+dest_md5="1710cd5e6e44edcd466002c3a281e90d"
 
 [params]
 

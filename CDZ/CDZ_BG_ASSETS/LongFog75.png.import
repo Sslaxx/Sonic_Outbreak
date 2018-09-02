@@ -7,7 +7,10 @@ path="res://.import/LongFog75.png-84498a393dcbc97b34433c34440e3ed0.stex"
 [deps]
 
 source_file="res://CDZ/CDZ_BG_ASSETS/LongFog75.png"
+source_md5="4283866c3221c58a05f5b2fa2d533d46"
+
 dest_files=[ "res://.import/LongFog75.png-84498a393dcbc97b34433c34440e3ed0.stex" ]
+dest_md5="c9ced67d93393e6392c9f43b7261188e"
 
 [params]
 

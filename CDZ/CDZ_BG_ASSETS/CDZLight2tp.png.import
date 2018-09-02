@@ -7,7 +7,10 @@ path="res://.import/CDZLight2tp.png-90d75007acd51aaca9075fa4dd8fed68.stex"
 [deps]
 
 source_file="res://CDZ/CDZ_BG_ASSETS/CDZLight2tp.png"
+source_md5="b576cf9a5da14fac73a739522fccbe49"
+
 dest_files=[ "res://.import/CDZLight2tp.png-90d75007acd51aaca9075fa4dd8fed68.stex" ]
+dest_md5="cc5ffb4d787a59aaff5e73c60ca37a9d"
 
 [params]
 

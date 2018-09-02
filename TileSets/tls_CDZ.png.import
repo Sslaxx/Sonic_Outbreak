@@ -7,7 +7,10 @@ path="res://.import/tls_CDZ.png-77d351ff35732fe10eb42e8ce16bb6ea.stex"
 [deps]
 
 source_file="res://TileSets/tls_CDZ.png"
+source_md5="3fb75628dae9b220ade04469e02bcb89"
+
 dest_files=[ "res://.import/tls_CDZ.png-77d351ff35732fe10eb42e8ce16bb6ea.stex" ]
+dest_md5="1e715fe7fc98673ac3697f900b18161d"
 
 [params]
 

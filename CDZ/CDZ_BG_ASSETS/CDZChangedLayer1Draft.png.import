@@ -7,7 +7,10 @@ path="res://.import/CDZChangedLayer1Draft.png-59a1689f716b467e4bd54eb71d11a07c.s
 [deps]
 
 source_file="res://CDZ/CDZ_BG_ASSETS/CDZChangedLayer1Draft.png"
+source_md5="72600aac4926d4e0191b169de7eb9ac9"
+
 dest_files=[ "res://.import/CDZChangedLayer1Draft.png-59a1689f716b467e4bd54eb71d11a07c.stex" ]
+dest_md5="4487d2855729d5242a4f723d765b24af"
 
 [params]
 

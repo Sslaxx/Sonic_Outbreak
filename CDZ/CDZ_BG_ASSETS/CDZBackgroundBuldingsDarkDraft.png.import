@@ -7,7 +7,10 @@ path="res://.import/CDZBackgroundBuldingsDarkDraft.png-5408caa1fb87fa308657082db
 [deps]
 
 source_file="res://CDZ/CDZ_BG_ASSETS/CDZBackgroundBuldingsDarkDraft.png"
+source_md5="2f05a873963359dd76f09c188231657d"
+
 dest_files=[ "res://.import/CDZBackgroundBuldingsDarkDraft.png-5408caa1fb87fa308657082dbf393059.stex" ]
+dest_md5="ad4d5a7402d4a8d734530747b762f7e9"
 
 [params]
 
