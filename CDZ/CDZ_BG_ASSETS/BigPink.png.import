@@ -7,10 +7,7 @@ path="res://.import/BigPink.png-b90d62095201827e7e18e5e7a6e97a0c.stex"
 [deps]
 
 source_file="res://CDZ/CDZ_BG_ASSETS/BigPink.png"
-source_md5="99660236c99afb678349a566fea54a87"
-
 dest_files=[ "res://.import/BigPink.png-b90d62095201827e7e18e5e7a6e97a0c.stex" ]
-dest_md5="1644815fe368220cc903d08e3f353722"
 
 [params]
 

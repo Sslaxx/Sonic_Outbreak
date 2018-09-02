@@ -7,10 +7,7 @@ path="res://.import/CDZStarLayer2.png-c3d78b450eda2197b7853c50851513e2.stex"
 [deps]
 
 source_file="res://CDZ/CDZ_BG_ASSETS/CDZStarLayer2.png"
-source_md5="4314673c78a03d3ffb8f6a2a19d4436d"
-
 dest_files=[ "res://.import/CDZStarLayer2.png-c3d78b450eda2197b7853c50851513e2.stex" ]
-dest_md5="7a77d1695248737a6fd8ced7f12c89e8"
 
 [params]
 

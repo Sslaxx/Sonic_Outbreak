@@ -7,10 +7,7 @@ path="res://.import/CDZFarBackBuildingsLong.png-d0a7bb4caae2e00b15e5d72b41539ebe
 [deps]
 
 source_file="res://CDZ/CDZ_BG_ASSETS/CDZFarBackBuildingsLong.png"
-source_md5="2151e3571d849e1e8800249821006849"
-
 dest_files=[ "res://.import/CDZFarBackBuildingsLong.png-d0a7bb4caae2e00b15e5d72b41539ebe.stex" ]
-dest_md5="063e71656ce5e34e64bdaf053a8cc39c"
 
 [params]
 

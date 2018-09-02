@@ -7,10 +7,7 @@ path="res://.import/DarkCDZLayer.png-6c2671d945dcd4c0e56d1e7f415567d7.stex"
 [deps]
 
 source_file="res://CDZ/CDZ_BG_ASSETS/DarkCDZLayer.png"
-source_md5="acc3fd22dc755bfd8a6955182365e9c1"
-
 dest_files=[ "res://.import/DarkCDZLayer.png-6c2671d945dcd4c0e56d1e7f415567d7.stex" ]
-dest_md5="c42f2ce0ca8b9093134216e6a952c76f"
 
 [params]
 

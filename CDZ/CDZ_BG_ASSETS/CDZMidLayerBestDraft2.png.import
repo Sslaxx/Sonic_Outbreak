@@ -7,10 +7,7 @@ path="res://.import/CDZMidLayerBestDraft2.png-40d4cec47fbf3f437897bafc9a00af06.s
 [deps]
 
 source_file="res://CDZ/CDZ_BG_ASSETS/CDZMidLayerBestDraft2.png"
-source_md5="207c465e3db39b0d4e6b9b3b15028d66"
-
 dest_files=[ "res://.import/CDZMidLayerBestDraft2.png-40d4cec47fbf3f437897bafc9a00af06.stex" ]
-dest_md5="1986ff2040a872f260dcdacc1b6a753d"
 
 [params]
 

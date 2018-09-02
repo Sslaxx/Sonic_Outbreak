@@ -7,10 +7,7 @@ path="res://.import/CloudBundle1.png-5f6d85cd0ff0dc8df3478da568360f26.stex"
 [deps]
 
 source_file="res://CDZ/CDZ_BG_ASSETS/CloudBundle1.png"
-source_md5="bd8c036a7fb81a09359f099b119a8d81"
-
 dest_files=[ "res://.import/CloudBundle1.png-5f6d85cd0ff0dc8df3478da568360f26.stex" ]
-dest_md5="59bdbc95742fa6c9978b552212ef2b25"
 
 [params]
 

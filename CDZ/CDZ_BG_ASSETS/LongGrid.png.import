@@ -7,10 +7,7 @@ path="res://.import/LongGrid.png-58ce197b24ff8fa3d7e5029ef232fd33.stex"
 [deps]
 
 source_file="res://CDZ/CDZ_BG_ASSETS/LongGrid.png"
-source_md5="35f94bcdfa3551fc5e0d656820d55925"
-
 dest_files=[ "res://.import/LongGrid.png-58ce197b24ff8fa3d7e5029ef232fd33.stex" ]
-dest_md5="cc88f48ae4298fdab6fedf39fec0e463"
 
 [params]
 

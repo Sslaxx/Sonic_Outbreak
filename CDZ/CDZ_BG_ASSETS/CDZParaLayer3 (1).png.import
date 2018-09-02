@@ -7,10 +7,7 @@ path="res://.import/CDZParaLayer3 (1).png-13baaf039580912ed88e5aa3554e686c.stex"
 [deps]
 
 source_file="res://CDZ/CDZ_BG_ASSETS/CDZParaLayer3 (1).png"
-source_md5="420c427fca697d15c0cb1cb35e7365af"
-
 dest_files=[ "res://.import/CDZParaLayer3 (1).png-13baaf039580912ed88e5aa3554e686c.stex" ]
-dest_md5="b5f090eb3432c987f3f02374dbc513c0"
 
 [params]
 

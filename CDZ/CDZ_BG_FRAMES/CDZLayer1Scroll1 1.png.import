@@ -7,10 +7,7 @@ path="res://.import/CDZLayer1Scroll1 1.png-2f7d4e58d5acc23fcf36c329c9a29a7d.stex
 [deps]
 
 source_file="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 1.png"
-source_md5="29ea521460abdf2c6a9905c7011c51ba"
-
 dest_files=[ "res://.import/CDZLayer1Scroll1 1.png-2f7d4e58d5acc23fcf36c329c9a29a7d.stex" ]
-dest_md5="fd4adf5e806c6764a9271bceb44a45c8"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/tls_CDZ_Sign1_0.png-89f428da4a52b70a2f72a4048b69006c.stex"
 [deps]
 
 source_file="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign1_0.png"
-source_md5="55fd5fd142ade43ed82b431036360d8e"
-
 dest_files=[ "res://.import/tls_CDZ_Sign1_0.png-89f428da4a52b70a2f72a4048b69006c.stex" ]
-dest_md5="73fed5f630aa0b57bafd271aecc766bd"
 
 [params]
 
