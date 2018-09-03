@@ -520,7 +520,6 @@ motion_mirroring = Vector2( 1024, 0 )
 position = Vector2( 421.957, 156.51 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 13
 playing = true
 
 [node name="Fog2" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="24"]
@@ -580,7 +579,6 @@ z_as_relative = false
 position = Vector2( 2827.72, -1937.98 )
 frames = SubResource( 2 )
 animation = "Blink1"
-frame = 1
 playing = true
 
 [node name="BlueSign0" type="AnimatedSprite" parent="Signs" index="1"]
@@ -604,7 +602,6 @@ playing = true
 position = Vector2( 240.585, -2060.97 )
 frames = SubResource( 4 )
 animation = "Blink3"
-frame = 1
 playing = true
 
 [node name="PurpleSign0" type="AnimatedSprite" parent="Signs" index="4"]
@@ -639,7 +636,12 @@ editor/display_folded = true
 position = Vector2( 590, -2006 )
 z_as_relative = false
 
-[node name="Buzzing_Pest2" parent="Badniks" index="1" instance=ExtResource( 39 )]
+[node name="Buzzing_Pest3" parent="Badniks" index="1" instance=ExtResource( 39 )]
+
+position = Vector2( 2881, -1377 )
+z_as_relative = false
+
+[node name="Buzzing_Pest2" parent="Badniks" index="2" instance=ExtResource( 39 )]
 
 position = Vector2( 3006, -1931 )
 z_as_relative = false
