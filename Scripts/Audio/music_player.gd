@@ -6,7 +6,8 @@
 extends AudioStreamPlayer
 
 func _ready ():
-	printerr ("Music player ready.")
+	if (OS.is_debug_build ()):
+		printerr ("Music player ready.")
 	return
 
 """

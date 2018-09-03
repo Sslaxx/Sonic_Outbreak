@@ -520,7 +520,7 @@ motion_mirroring = Vector2( 1024, 0 )
 position = Vector2( 421.957, 156.51 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 19
+frame = 13
 playing = true
 
 [node name="Fog2" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="24"]

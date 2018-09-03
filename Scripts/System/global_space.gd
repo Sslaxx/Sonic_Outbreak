@@ -1,5 +1,5 @@
 """
-   This sets a global space for application-wide settings, flags, variables etc. which need to be easily
+   This is a global space for application-wide settings, flags, variables etc. which need to be easily
    passed around from scene/node to scene/node. It'd be better to set up other singletons to use for
    actual gameplay-related stuff.
 """
