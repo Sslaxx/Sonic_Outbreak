@@ -41,13 +41,13 @@ If movement is to be a "state machine", using a bitmask to determine state(s), c
 - 256 == Collision *other enviromentals, e.g. zone gimmicks or moving floors/ceilings/walls*
 - 512 == Cutscene/no player control
 
-Velocity and speed should be separate. Velocity (the directional speed the player travels at) is determined by Speed. The direction of the speed is controlled by movement. -1 is left/up (x/y), 0 is none, 1 is down/right. Holding down left or right, or jump, should increase speed in the appropriate direction (up to the maximum); releasing/not holding them will decrease speed (to 0). Friction etc. is applied to this speed to determine velocity, and it is this velocity which controls movement.
+Velocity and speed should be separate. Velocity (the directional speed the player travels at) is determined by Speed. The direction of the speed is controlled by movement. -1 is left/up (x, y), 0 is none, 1 is down/right. Holding down left or right, or jump, should increase speed in the appropriate direction (up to the maximum); releasing/not holding them will decrease speed (to 0). Friction etc. is applied to this speed to determine velocity, and it is this velocity which controls movement.
 
-Left and should should *always* be mutually exclusive movement states. Movement states in general should only ever be changed either by each other. Movement and collision states could be separate if this would make it easier to handle.
+Left and right should should *always* be mutually exclusive movement states. Movement and collision states could be separate if this would make it easier to handle.
 
-Having movement be separate states means that if the player suddenly starts to move in the other direction state and movement can be used together to control deceleration/turning, with the movement state being changed to whichever direction the player is moving in when deceleration has finished. While there's movement (acceleration is > 0) the movement direction *must not be changed*; movement state should be considered to determine which direction the player *will* move in, but not which direction the player *is currently moving* in.
+Having movement be separate states means that if the player suddenly starts to move in the other direction state and movement can be used together to control deceleration/turning, with the movement state being changed to whichever direction the player is moving in when deceleration has finished. While there's movement (speed is > 0) the movement direction **must not be changed**; movement state should be considered to determine which direction the player *will* move in, but not necessarily which direction the player *is currently moving* in.
 
-So: maybe three Vector2s - Movement (x/y values from -1 to 1), Speed (whatever the current speeds of the player are - independent x/y?) and Velocity (the actual current movement of the player). One variable holding the state - determined by the bitmasks.
+So: maybe three Vector2s - Movement (x, y values from -1 to 1), Speed (whatever the current speeds of the player are - independent x, y?) and Velocity (the actual current movement of the player). One variable holding the state - determined by the bitmasks.
 
 ### What complicates this?
 
