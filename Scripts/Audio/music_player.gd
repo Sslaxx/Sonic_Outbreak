@@ -5,6 +5,8 @@
 
 extends AudioStreamPlayer
 
+onready var bus_index = AudioServer.get_bus_index ("Music")
+
 func _ready ():
 	if (OS.is_debug_build ()):
 		printerr ("Music player ready.")
@@ -14,7 +16,7 @@ func _ready ():
    play_music
    music_player.play_music (path_to_music, play_from)
    Plays a specified music file (path_to_music). If it's left blank, it'll just play (if there was a music file loaded before).
-   Will play from a specific point in the music (in seconds) if told to.
+   Will play from a specific point in the music (in seconds) if told to, unmuting the Music bus if need be.
    Returns true if it plays something, otherwise false.
 """
 ## TODO: This could make use of typed GDScript, in theory, as path_to_music is a string.
@@ -31,6 +33,8 @@ func play_music (path_to_music = "", play_from = 0.0):
 			printerr ("NOTE: ", path_to_music, " was specified as the file to play.")
 		return (false)
 	stream = play_me	# Everything's OK, so set the stream as needed...
+	if (AudioServer.is_bus_mute (bus_index)):	# Unmute Music if it's muted.
+		AudioServer.set_bus_mute (bus_index, false)
 	play (play_from)	# ...play the music...
 	return (true)		# ...and return true.
 

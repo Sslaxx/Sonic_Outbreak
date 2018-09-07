@@ -520,6 +520,7 @@ motion_mirroring = Vector2( 1024, 0 )
 position = Vector2( 421.957, 156.51 )
 frames = SubResource( 1 )
 animation = "default"
+frame = 11
 playing = true
 
 [node name="Fog2" type="ParallaxLayer" parent="CDZ_Parallax_Background" index="24"]
@@ -586,7 +587,6 @@ playing = true
 position = Vector2( 509.036, -2001.86 )
 frames = SubResource( 3 )
 animation = "Blink2"
-frame = 1
 playing = true
 
 [node name="BlueSign1" type="AnimatedSprite" parent="Signs" index="2"]
@@ -594,7 +594,6 @@ playing = true
 position = Vector2( 2773.01, -1417.89 )
 frames = SubResource( 3 )
 animation = "Blink2"
-frame = 1
 playing = true
 
 [node name="ReverieIslandSign0" type="AnimatedSprite" parent="Signs" index="3"]
@@ -602,6 +601,7 @@ playing = true
 position = Vector2( 240.585, -2060.97 )
 frames = SubResource( 4 )
 animation = "Blink3"
+frame = 1
 playing = true
 
 [node name="PurpleSign0" type="AnimatedSprite" parent="Signs" index="4"]
@@ -609,7 +609,6 @@ playing = true
 position = Vector2( 440.061, -1976.96 )
 frames = SubResource( 5 )
 animation = "Blink4"
-frame = 1
 playing = true
 
 [node name="PurpleSign1" type="AnimatedSprite" parent="Signs" index="5"]
@@ -617,6 +616,7 @@ playing = true
 position = Vector2( 3816.14, -1817.35 )
 frames = SubResource( 5 )
 animation = "Blink4"
+frame = 1
 playing = true
 
 [node name="hud_layer" parent="." index="3" instance=ExtResource( 37 )]

@@ -63,11 +63,11 @@ func _physics_process (delta):
 	# FIXME: See https://github.com/BlitzerSIO/grass-cheetah/issues/2 for more info about this one.
 	var rays = [$FloorDetectCenter, $FloorDetectLeft, $FloorDetectRight]
 	for ray in rays:
-		is_on_floor = ray.is_colliding ()
 		# FIXME: This is pretty hacky, so need to find a better way of handling all this.
 		if ($FloorDetectRight.is_colliding () && $FloorDetectLeft.is_colliding () && !$FloorDetectCenter.is_colliding ()):
 			ground_normal = $FloorDetectCenter.get_collision_normal ()
 			break
+		is_on_floor = ray.is_colliding ()
 		if (is_on_floor):
 #			print (ray.name)
 			ground_normal = ray.get_collision_normal ()
@@ -95,8 +95,10 @@ func _physics_process (delta):
 
 	var ground_angle = (UP.angle_to (ground_normal))
 
-	if ((ground_angle >= (PI/2.01) or ground_angle <= (-PI/2.01)) and ground_speed < fall):
+	# FIXME: This piece of code seems to not be called at all!
+	if ((ground_angle >= (PI/2.01) || ground_angle <= (-PI/2.01)) && ground_speed < fall):
 		# Depending on angle/position the player may not be on the floor.
+#		print (is_on_floor)
 		is_on_floor = false
 		ground_speed = 0
 		horizontal_lock_timer = 0.5

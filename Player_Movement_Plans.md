@@ -20,7 +20,9 @@ In addition, any movement code needs to take into account the following:
 - Cutscenes (no movement or anything else possible during them, this includes end-of-act tally, act/zone transitions etc.)
 - Physics (aim for feel of "classic" Sonic games; accuracy is desirable but using the exact numbers from the Sonic Physics Guide would likely be less than ideal)
 
-The current code *mostly* does the job, but it's not handling collisions with some slope angles, or properly in enclosed spaces. [That has caused this issue.](https://github.com/BlitzerSIO/grass-cheetah/issues/2) Trying to fix that issue may require a different approach than to write (what could be potentially endless) exceptions in the code handling it and/or change collision shapes and detection raycasts.
+### Problems
+
+The current code *mostly* does the job, but it's not handling collisions with some slope angles, or properly in enclosed spaces. [That has caused this issue.](https://github.com/BlitzerSIO/grass-cheetah/issues/2) Trying to fix that issue may require a different approach than to write (what could be potentially endless) exceptions in the code handling it and/or change collision shapes and detection raycasts, never mind dealing with some of the staples of Sonic levels such as loops.
 
 **Keeping it simple** is key. It's not going to be particularly simple anyway, especially if dealing with potential multiple player characters, but simplicity (of design, of code) wherever possible is desirable. Also, remember that *simple is not the same as easy*.
 
@@ -45,9 +47,30 @@ Velocity and speed should be separate. Velocity (the directional speed the playe
 
 Left and right should should *always* be mutually exclusive movement states. Movement and collision states could be separate if this would make it easier to handle.
 
+If so, perhaps like these?
+
+**Movement/actions**
+0. No movement.
+1. Move left
+2. Move right
+4. Jump (upwards)
+8. Jump (downwards)
+16. Spindash/squat
+32. Cutscene/no player control
+
+Some actions could be combinations of states and/or player input (e.g., dropdash could be Spindash/squat and jump (downwards)).
+
+**Collision**
+0. No collision
+1. Colliding with *walls, ceilings, floors*
+2. *badniks*
+4. *spikes*
+8. *monitor boxes*
+16. *other environmentals, e.g. zone gimmicks or moving floors/ceilings/walls*
+
 Having movement be separate states means that if the player suddenly starts to move in the other direction state and movement can be used together to control deceleration/turning, with the movement state being changed to whichever direction the player is moving in when deceleration has finished. While there's movement (speed is > 0) the movement direction **must not be changed**; movement state should be considered to determine which direction the player *will* move in, but not necessarily which direction the player *is currently moving* in.
 
-So: maybe three Vector2s - Movement (x, y values from -1 to 1), Speed (whatever the current speeds of the player are - independent x, y?) and Velocity (the actual current movement of the player). One variable holding the state - determined by the bitmasks.
+So: maybe three Vector2s - Movement (x, y values from -1 to 1), Speed (whatever the current speeds of the player are - independent x, y?) and Velocity (the actual current movement of the player). Variable(s) holding the state(s) - determined by the bitmasks.
 
 ### What complicates this?
 

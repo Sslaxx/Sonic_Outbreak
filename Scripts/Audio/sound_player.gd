@@ -9,6 +9,8 @@
 
 extends AudioStreamPlayer
 
+onready var bus_index = AudioServer.get_bus_index ("SFX")
+
 onready var Sound_Library = {
 	# Put all the sound effects to be used globally here.
 	No_Sound = preload ("res://Audio/Sound/No_Sound.ogg"),	# Keep this as the first item in the list.

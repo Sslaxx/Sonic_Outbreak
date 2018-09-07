@@ -9,6 +9,8 @@
 
 extends AudioStreamPlayer
 
+onready var bus_index = AudioServer.get_bus_index ("Jingles")
+
 var unmute_music = true	# True (the default) will unmute the Music bus, false will not.
 
 func _ready ():
@@ -31,10 +33,10 @@ func play_jingle (path_to_jingle = "", music_unmute = true):
 	if (path_to_jingle != ""):	# A path was specified, so load that up.
 		play_me = load (path_to_jingle)
 	else:	# No path was specified, so error out.
-		print_err ("No jingle file specified to play!")
+		printerr ("No jingle file specified to play!")
 		return (false)
 	stream = play_me														# Everything's OK, so set the stream as needed...
-	AudioServer.set_bus_mute (AudioServer.get_bus_index ("Music"), true)	# ...mute the Music bus...
+	AudioServer.set_bus_mute (music_player.bus_index, true)	# ...mute the Music bus...
 	play ()																	# ...play the jingle...
 	return (true)															# ...and return true.
 
@@ -47,6 +49,6 @@ func play_jingle (path_to_jingle = "", music_unmute = true):
 func stop_jingle ():
 	stop ()	# Shouldn't be necessary as this should only be called via signal, but just in case.
 	if (unmute_music):	# The default - unmute the music bus if this is true.
-		AudioServer.set_bus_mute (AudioServer.get_bus_index ("Music"), false)
+		AudioServer.set_bus_mute (music_player.bus_index, false)
 	unmute_music = true	# As this is a singleton, reset unmute_music after the check!
 	return
