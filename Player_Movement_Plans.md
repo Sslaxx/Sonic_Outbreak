@@ -50,23 +50,25 @@ Left and right should should *always* be mutually exclusive movement states. Mov
 If so, perhaps like these?
 
 **Movement/actions**
-0. No movement.
-1. Move left
-2. Move right
-4. Jump (upwards)
-8. Jump (downwards)
-16. Spindash/squat
-32. Cutscene/no player control
+
+- 0 No movement.
+- 1 Move left
+- 2 Move right
+- 4 Jump (upwards)
+- 8 Jump (downwards)
+- 16 Spindash/squat
+- 32 Cutscene/no player control
 
 Some actions could be combinations of states and/or player input (e.g., dropdash could be Spindash/squat and jump (downwards)).
 
 **Collision**
-0. No collision
-1. Colliding with *walls, ceilings, floors*
-2. *badniks*
-4. *spikes*
-8. *monitor boxes*
-16. *other environmentals, e.g. zone gimmicks or moving floors/ceilings/walls*
+
+- 0 No collision
+- 1 Colliding with *walls, ceilings, floors*
+- 2 *badniks*
+- 4 *spikes*
+- 8 *monitor boxes*
+- 16 *other environmentals, e.g. zone gimmicks or moving floors/ceilings/walls*
 
 Having movement be separate states means that if the player suddenly starts to move in the other direction state and movement can be used together to control deceleration/turning, with the movement state being changed to whichever direction the player is moving in when deceleration has finished. While there's movement (speed is > 0) the movement direction **must not be changed**; movement state should be considered to determine which direction the player *will* move in, but not necessarily which direction the player *is currently moving* in.
 
@@ -81,3 +83,5 @@ There may well be corner cases/situations I'm not seeing with this idea either.
 ### What would make this simpler?
 
 Making this as simple as possible is a good idea. But the problem is balancing it with what it may need to do as detailed above.
+
+Maybe look at an existing FSM plugin, and see if they'd either be a good fit, or if they'd give pointers on how to implement my own solution.
