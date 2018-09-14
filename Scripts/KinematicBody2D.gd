@@ -10,10 +10,19 @@ extends KinematicBody2D
 # TODO: Make this into a generic script for player character scripts to extend from.
 # TODO: I.e. this script -> player character specific script.
 
+# FIXME: This script needs re-writing to be better able to handle, among other things, collision issues.
+# FIXME: As defined in Player_Movement_Plans.md - so state machine(s)(?).
+# FIXME: And cycle of processing should be input -> modify movement vectors/check collision/etc -> move.
+# FIXME: Taking into account potentially different playstyles/character abilities will make this trickier.
+# FIXME: The SPG's numbers may be broadly fine for a Megadrive, but work poorly with Godot.
+# FIXME: An easy solution may be to multiply all the numbers by 60 (explicitly, as opposed to using a var).
+# FIXME: i.e. accel = 28.125 as opposed to accel = 0.46875 * special_number (as done currently).
+# FIXME: Assuming of course values are all pixels/second or frames/second. Doubt it's going to be that straightforward.
+
 const UP = Vector2 (0, -1)		# Vectors use x and y values; negatives on the y-axis are "up" in Godot.
+const special_number = 60
 
 # Special Number; Delta x 60. FIXME: This mean that fixing framerate to 60 may be optimal?
-var special_number = 60
 var GRAVITY = 0.21875 * special_number	# Gravity Speed
 
 var velocity = Vector2 (0, 0)

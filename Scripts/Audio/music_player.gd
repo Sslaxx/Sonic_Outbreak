@@ -1,4 +1,32 @@
 """
+   This file is part of:
+   GODOT SONIC ENGINE
+
+   Copyright (c) 2018- Stuart Moore.
+
+   Licenced under the terms of the MIT "expat" license.
+
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+   "Software"), to deal in the Software without restriction, including
+   without limitation the rights to use, copy, modify, merge, publish,
+   distribute, sublicense, and/or sell copies of the Software, and to
+   permit persons to whom the Software is furnished to do so, subject to
+   the following conditions:
+
+   The above copyright notice and this permission notice shall be
+   included in all copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.*/
+   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+"""
+
+"""
    music_player - a singleton to be used to play music (normally looped, but whatever is necessary).
    For more advanced stuff (music that relies on signals and so on), do it in the scene directly.
 """
@@ -33,7 +61,7 @@ func play_music (path_to_music = "", play_from = 0.0):
 			printerr ("NOTE: ", path_to_music, " was specified as the file to play.")
 		return (false)
 	stream = play_me	# Everything's OK, so set the stream as needed...
-	if (AudioServer.is_bus_mute (bus_index)):	# Unmute Music if it's muted.
+	if (AudioServer.is_bus_mute (bus_index)):	# ...unmute Music if it's muted...
 		AudioServer.set_bus_mute (bus_index, false)
 	play (play_from)	# ...play the music...
 	return (true)		# ...and return true.
