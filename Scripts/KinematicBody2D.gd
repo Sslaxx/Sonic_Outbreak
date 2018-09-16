@@ -70,10 +70,11 @@ func _physics_process (delta):
 
 	# FIXME: This bit is broken! Or at least contributing to something else broken.
 	# FIXME: See https://github.com/BlitzerSIO/grass-cheetah/issues/2 for more info about this one.
-	var rays = [$FloorDetectCenter, $FloorDetectLeft, $FloorDetectRight]
-	for ray in rays:
+	var floor_rays = [$FloorDetectCenter, $FloorDetectLeft, $FloorDetectRight]
+	for ray in floor_rays:
 		# FIXME: This is pretty hacky, so need to find a better way of handling all this.
 		if ($FloorDetectRight.is_colliding () && $FloorDetectLeft.is_colliding () && !$FloorDetectCenter.is_colliding ()):
+			is_on_floor = $FloorDetectCenter.is_colliding ()
 			ground_normal = $FloorDetectCenter.get_collision_normal ()
 			break
 		is_on_floor = ray.is_colliding ()

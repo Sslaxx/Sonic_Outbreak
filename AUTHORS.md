@@ -1,7 +1,7 @@
 Powered by the **[Godot Engine](https://godotengine.org/)**.
 
 **HEADS:**
-- Jesse (Blitzer) - Creative Director, Project Management, Coding, Level Designer, Background Artist
+- Lazlo - Creative Director
 - Viizen - Creative Director, Project Management, Concept Artist
 
 **LEVEL DESIGN:**
@@ -38,4 +38,4 @@ Powered by the **[Godot Engine](https://godotengine.org/)**.
 
 **PREVIOUS TEAM MEMBERS:**
 - RSM
-
+- Jesse (Blitzer)
