@@ -1,79 +1,82 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://CDZ/CDZ_Parallax_Background.tscn" type="PackedScene" id=1]
-[ext_resource path="res://CDZ/CDZ_Pink_Sign.tscn" type="PackedScene" id=2]
-[ext_resource path="res://CDZ/CDZ_Blue_Sign.tscn" type="PackedScene" id=3]
-[ext_resource path="res://CDZ/CDZ_Reverie_Island_Sign.tscn" type="PackedScene" id=4]
-[ext_resource path="res://CDZ/CDZ_Purple_Sign.tscn" type="PackedScene" id=5]
-[ext_resource path="res://ui/hud_layer.tscn" type="PackedScene" id=6]
-[ext_resource path="res://ui/debug_hud_layer.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Badniks/Buzzing_Pest_Test/Buzzing_Pest_Test.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Player/player_sonic.tscn" type="PackedScene" id=9]
+[ext_resource path="res://CDZ/CDZ_Pink_Sign.tscn" type="PackedScene" id=1]
+[ext_resource path="res://CDZ/CDZ_Blue_Sign.tscn" type="PackedScene" id=2]
+[ext_resource path="res://CDZ/CDZ_Reverie_Island_Sign.tscn" type="PackedScene" id=3]
+[ext_resource path="res://CDZ/CDZ_Purple_Sign.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/player_sonic.tscn" type="PackedScene" id=5]
+[ext_resource path="res://CDZ/CDZ_Parallax_Background.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/hud_layer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ui/debug_hud_layer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Badniks/Buzzing_Pest_Test/Buzzing_Pest_Test.tscn" type="PackedScene" id=9]
 [ext_resource path="res://CDZ/Barrier.tscn" type="PackedScene" id=10]
 [ext_resource path="res://TileSets/tls_CDZ_0.tres" type="TileSet" id=11]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" index="0"]
 
 z_as_relative = false
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
 
-[node name="Parallax_Background" parent="." index="0" instance=ExtResource( 1 )]
-
-[node name="Signs" type="Node2D" parent="." index="1"]
+[node name="Signs" type="Node2D" parent="." index="0"]
 
 editor/display_folded = true
 z_as_relative = false
 
-[node name="Pink_Sign" parent="Signs" index="0" instance=ExtResource( 2 )]
+[node name="Pink_Sign" parent="Signs" index="0" instance=ExtResource( 1 )]
 
-[node name="Blue_Sign" parent="Signs" index="1" instance=ExtResource( 3 )]
+[node name="Blue_Sign" parent="Signs" index="1" instance=ExtResource( 2 )]
 
-frame = 0
-
-[node name="Blue_Sign2" parent="Signs" index="2" instance=ExtResource( 3 )]
+[node name="Blue_Sign2" parent="Signs" index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 2773, -1417 )
-frame = 0
 _sections_unfolded = [ "Transform" ]
 
-[node name="Reverie_Island_Sign" parent="Signs" index="3" instance=ExtResource( 4 )]
+[node name="Reverie_Island_Sign" parent="Signs" index="3" instance=ExtResource( 3 )]
 
-frame = 0
+[node name="Purple_Sign" parent="Signs" index="4" instance=ExtResource( 4 )]
 
-[node name="Purple_Sign" parent="Signs" index="4" instance=ExtResource( 5 )]
+frame = 1
 
-[node name="Purple_Sign2" parent="Signs" index="5" instance=ExtResource( 5 )]
+[node name="Purple_Sign2" parent="Signs" index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 3816, -1817 )
+frame = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="hud_layer" parent="." index="2" instance=ExtResource( 6 )]
+[node name="Player" parent="." index="1" instance=ExtResource( 5 )]
 
-[node name="debug_hud_layer" parent="." index="3" instance=ExtResource( 7 )]
+position = Vector2( 42, -1979 )
 
-[node name="Start_Position" type="Position2D" parent="." index="4"]
+[node name="Parallax_Background" parent="." index="2" instance=ExtResource( 6 )]
+
+[node name="hud_layer" parent="." index="3" instance=ExtResource( 7 )]
+
+[node name="debug_hud_layer" parent="." index="4" instance=ExtResource( 8 )]
+
+[node name="Start_Position" type="Position2D" parent="." index="5"]
 
 position = Vector2( 41, -1979 )
 
-[node name="Badniks" type="Node2D" parent="." index="5"]
+[node name="Badniks" type="Node2D" parent="." index="6"]
 
 editor/display_folded = true
 
-[node name="Buzzing_Pest" parent="Badniks" index="0" instance=ExtResource( 8 )]
+[node name="Buzzing_Pest" parent="Badniks" index="0" instance=ExtResource( 9 )]
 
 position = Vector2( 590, -2006 )
 z_as_relative = false
 
-[node name="Buzzing_Pest3" parent="Badniks" index="1" instance=ExtResource( 8 )]
-
-position = Vector2( 2881, -1377 )
-z_as_relative = false
-
-[node name="Buzzing_Pest2" parent="Badniks" index="2" instance=ExtResource( 8 )]
+[node name="Buzzing_Pest2" parent="Badniks" index="1" instance=ExtResource( 9 )]
 
 position = Vector2( 3006, -1931 )
 z_as_relative = false
 
-[node name="Player" parent="." index="6" instance=ExtResource( 9 )]
+[node name="Buzzing_Pest3" parent="Badniks" index="2" instance=ExtResource( 9 )]
+
+position = Vector2( 2881, -1377 )
+z_as_relative = false
 
 [node name="Barrier" parent="." index="7" instance=ExtResource( 10 )]
 

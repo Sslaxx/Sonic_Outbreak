@@ -1,32 +1,4 @@
 """
-   This file is part of:
-   GODOT SONIC ENGINE
-
-   Copyright (c) 2018- Stuart Moore.
-
-   Licenced under the terms of the MIT "expat" license.
-
-   Permission is hereby granted, free of charge, to any person obtaining
-   a copy of this software and associated documentation files (the
-   "Software"), to deal in the Software without restriction, including
-   without limitation the rights to use, copy, modify, merge, publish,
-   distribute, sublicense, and/or sell copies of the Software, and to
-   permit persons to whom the Software is furnished to do so, subject to
-   the following conditions:
-
-   The above copyright notice and this permission notice shall be
-   included in all copies or substantial portions of the Software.
-
-   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.*/
-   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-"""
-
-"""
    jingles_player - a singleton to play music as a jingle.
    What this does is as follows:
    1 - Mutes the Music bus. This way any music will carry on playing, just silently.
@@ -57,26 +29,33 @@ func _ready ():
 ## TODO: This could make use of typed GDScript, in theory, as path_to_jingle is a string.
 func play_jingle (path_to_jingle = "", music_unmute = true):
 	var play_me = null			# This will hold the stream for the jingle.
+	var file = File.new ()		# Used to detect if a file exists or not.
 	unmute_music = music_unmute	# Make sure music will be muted/unmuted after this jingle is done.
 	if (path_to_jingle != ""):	# A path was specified, so load that up.
 		play_me = load (path_to_jingle)
 	else:	# No path was specified, so error out.
-		printerr ("No jingle file specified to play!")
+		printerr ("ERROR: No jingle file specified to play!")
 		return (false)
-	stream = play_me														# Everything's OK, so set the stream as needed...
+	if (!file.file_exists (path_to_jingle)):
+		print ("ERROR: ", path_to_jingle, " does not exist!")
+		return (false)
+	stream = play_me														# Set the stream.
+	if (stream == null):	# If the stream is null, this means the sound file is either invalid or it doesn't exist, so report it.
+		printerr ("ERROR: jingle_player has an empty stream! ", path_to_jingle, " is not a valid sound file.")
+		return (false)
 	AudioServer.set_bus_mute (music_player.bus_index, true)	# ...mute the Music bus...
-	play ()																	# ...play the jingle...
+	play ()																	# Play the jingle...
 	return (true)															# ...and return true.
 
 """
    stop_jingle
    jingles_player.stop_jingle ()
-   Stops the currently playing jingle, unmutes Music.
-   Remember to unmute Music manually yourself in code if you leave it muted!
+   Stops the currently playing jingle and unmutes Music if told to.
+   You may need to unmute Music manually yourself in code if you leave it muted.
 """
 func stop_jingle ():
-	stop ()	# Shouldn't be necessary as this should only be called via signal, but just in case.
+	stop ()	# Usually not necessary as this should only be called via signal, but here to handle exceptions to this rule.
 	if (unmute_music):	# The default - unmute the music bus if this is true.
-		AudioServer.set_bus_mute (music_player.bus_index, false)
+		AudioServer.set_bus_mute (music_player.bus_index, false)	# Note music_player unmutes Music if told to play something.
 	unmute_music = true	# As this is a singleton, reset unmute_music after the check!
 	return

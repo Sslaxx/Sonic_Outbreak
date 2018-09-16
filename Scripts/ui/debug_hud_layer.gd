@@ -30,8 +30,5 @@ func _process (delta):
 			$"Is_On_Floor".text = "ON FLOOR"
 		else:
 			$"Is_On_Floor".text = "NOT ON FLOOR"
-		if ($"../Player".was_on_floor):	# Was the player on the floor?
-			$"Was_On_Floor".text = "WAS ON FLOOR"	# FIXME: Is this working correctly? If it is there's a bug somewhere.
-		else:
-			$"Was_On_Floor".text = "WASN'T ON FLOOR"	# FIXME: Also, is this one useful?
+		$Was_On_Floor.text = "FLOOR: " + str ($"../Player/FloorDetectLeft".is_colliding()) + " " + str ($"../Player/FloorDetectCenter".is_colliding()) + " " + str ($"../Player/FloorDetectRight".is_colliding ())
 	return

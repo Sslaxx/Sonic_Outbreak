@@ -99,17 +99,14 @@ custom_solver_bias = 0.0
 radius = 10.0
 height = 0.196381
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
-editor/display_folded = true
-position = Vector2( 41, -1979 )
 z_as_relative = false
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.002
 script = ExtResource( 1 )
-_sections_unfolded = [ "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -149,7 +146,6 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-_sections_unfolded = [ "Smoothing" ]
 
 [node name="FloorDetectCenter" type="RayCast2D" parent="." index="3"]
 

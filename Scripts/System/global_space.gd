@@ -48,7 +48,7 @@ func add_path_to_node (Scene_Path = "", Node_to_Add_to = "/root"):
 """
    go_to_scene
    global_space.go_to_scene (path)
-   Goes to the relevant scene; the scene is a path, so "res://<filename>". You should specify the path as absolute if possible.
+   Goes to the relevant scene; the scene is a path, so "res://<filename>".
    Note that it deletes the previous scene!
    Returns the resultant scene node.
 """
