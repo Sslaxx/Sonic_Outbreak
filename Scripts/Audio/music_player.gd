@@ -33,8 +33,8 @@ func play_music (path_to_music = "", play_from = 0.0):
 		return (false)
 	if (AudioServer.is_bus_mute (bus_index)):	# Unmute Music if it's muted...
 		AudioServer.set_bus_mute (bus_index, false)
-	play (play_from)	# ...play the music...
-	return (true)		# ...and return true.
+	play (play_from)							# ...play the music...
+	return (true)								# ...and return true.
 
 """
    stop_music

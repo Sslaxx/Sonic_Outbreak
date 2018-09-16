@@ -36,16 +36,16 @@ func play_jingle (path_to_jingle = "", music_unmute = true):
 	else:	# No path was specified, so error out.
 		printerr ("ERROR: No jingle file specified to play!")
 		return (false)
-	if (!file.file_exists (path_to_jingle)):
+	if (!file.file_exists (path_to_jingle)):	# The file doesn't exist, so say so.
 		print ("ERROR: ", path_to_jingle, " does not exist!")
 		return (false)
-	stream = play_me														# Set the stream.
-	if (stream == null):	# If the stream is null, this means the sound file is either invalid or it doesn't exist, so report it.
+	stream = play_me	# Set the stream.
+	if (stream == null):	# If the stream is null, this means the sound file is invalid, so report an error.
 		printerr ("ERROR: jingle_player has an empty stream! ", path_to_jingle, " is not a valid sound file.")
 		return (false)
-	AudioServer.set_bus_mute (music_player.bus_index, true)	# ...mute the Music bus...
-	play ()																	# Play the jingle...
-	return (true)															# ...and return true.
+	AudioServer.set_bus_mute (music_player.bus_index, true)		# Mute the Music bus...
+	play ()														# ...play the jingle...
+	return (true)												# ...and return true.
 
 """
    stop_jingle
