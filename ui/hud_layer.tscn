@@ -14,6 +14,18 @@ resource_name = "safe"
 length = 1.0
 loop = true
 step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
 
 [sub_resource type="Animation" id=2]
 
@@ -83,11 +95,12 @@ script = ExtResource( 1 )
 
 [node name="rings_symbol" type="Sprite" parent="." index="0"]
 
-editor/display_folded = true
 position = Vector2( 8, 5 )
 texture = ExtResource( 2 )
 centered = false
 hframes = 2
+frame = 1
+_sections_unfolded = [ "Animation" ]
 
 [node name="rings_player" type="AnimationPlayer" parent="rings_symbol" index="0"]
 

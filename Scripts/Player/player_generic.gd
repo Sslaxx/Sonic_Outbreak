@@ -7,9 +7,6 @@
 
 extends KinematicBody2D
 
-# TODO: Make this into a generic script for player character scripts to extend from.
-# TODO: I.e. this script -> player character specific script.
-
 # FIXME: This script needs re-writing to be better able to handle, among other things, collision issues.
 # FIXME: As defined in Player_Movement_Plans.md - so state machine(s)(?).
 # FIXME: And cycle of processing should be input -> modify movement vectors/check collision/etc -> move.

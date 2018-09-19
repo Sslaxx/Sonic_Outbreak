@@ -1,6 +1,6 @@
 [gd_scene load_steps=46 format=2]
 
-[ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Player/player_sonic.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Animations/sonic_idle.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Animations/run/sonic_run_0.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Animations/run/sonic_run_1.png" type="Texture" id=4]

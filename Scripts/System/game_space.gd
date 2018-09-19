@@ -119,10 +119,10 @@ func set_rings (value):
 		# Have lost rings through being hurt, as opposed to insta-kill etc.
 		sound_player.play_sound ("LoseRings")				# Play the sound.
 	rings = value
-	if (has_node ("/root/Level")):
-		if (lives >= 0 && rings >= $"/root/Level".rings_to_collect):	# Got enough rings to get an extra life!
-			$"/root/Level".rings_to_collect += game_space.RINGS_FOR_EXTRA_LIFE
-			self.lives += 1
+#	if (has_node ("/root/Level")):
+#		if (lives >= 0 && rings >= $"/root/Level".rings_to_collect):	# Got enough rings to get an extra life!
+#			$"/root/Level".rings_to_collect += game_space.RINGS_FOR_EXTRA_LIFE
+#			self.lives += 1
 	update_hud ()
 	return
 
