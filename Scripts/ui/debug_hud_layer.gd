@@ -24,11 +24,12 @@ func _process (delta):
 	# Print the position, etc. - these ones depend on the player node existing.
 	if (has_node ("../Player")):
 		# FIXME: Really hackish, not-entirely-accurate way to do this! Look at String.format and format to 2 decimal places?
-		$"Position".text = "POS: " + str (int ($"../Player".position.x)) + ", " + str (int ($"../Player".position.y))
-		$"Velocity".text = "VEL: " + str (int ($"../Player".velocity.x)) + ", " + str (int ($"../Player".velocity.y))
-		if ($"../Player".is_on_floor):	# Is the player on the floor?
-			$"Is_On_Floor".text = "ON FLOOR"
-		else:
-			$"Is_On_Floor".text = "NOT ON FLOOR"
-		$Was_On_Floor.text = "FLOOR: " + str ($"../Player/FloorDetectLeft".is_colliding()) + " " + str ($"../Player/FloorDetectCenter".is_colliding()) + " " + str ($"../Player/FloorDetectRight".is_colliding ())
+		pretty_me_up = str (int ($"../Player".position.x)) + ", " + str (int ($"../Player".position.y))
+		$"Position".text = "POS: " + pretty_me_up
+		pretty_me_up = str (int ($"../Player".velocity.x)) + ", " + str (int ($"../Player".velocity.y))
+		$"Velocity".text = "VEL: " + pretty_me_up
+		pretty_me_up = str ($"../Player".is_player_on_floor)
+		$"Is_On_Floor".text = "ON FLOOR: " + pretty_me_up
+		pretty_me_up = str ($"../Player/FloorDetectLeft".is_colliding ()) + " " + str ($"../Player/FloorDetectCenter".is_colliding ()) + " " + str ($"../Player/FloorDetectRight".is_colliding ())
+		$Was_On_Floor.text = "FLOOR RAYS: " + pretty_me_up
 	return

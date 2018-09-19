@@ -72,7 +72,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[node name="hud_layer" type="CanvasLayer"]
+[node name="hud_layer" type="CanvasLayer" index="0"]
 
 layer = 32
 offset = Vector2( 0, 0 )

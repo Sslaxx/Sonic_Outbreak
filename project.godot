@@ -20,6 +20,7 @@ jingle_player="*res://Audio/jingle_player.tscn"
 music_player="*res://Audio/music_player.tscn"
 sound_player="*res://Audio/sound_player.tscn"
 global_space="*res://Scripts/System/global_space.gd"
+game_space="*res://Scripts/System/game_space.gd"
 
 [display]
 

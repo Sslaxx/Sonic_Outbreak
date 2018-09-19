@@ -17,13 +17,13 @@ extends KinematicBody2D
 # FIXME: The SPG's numbers may be broadly fine for a Megadrive, but work poorly with Godot.
 # FIXME: An easy solution may be to multiply all the numbers by 60 (explicitly, as opposed to using a var).
 # FIXME: i.e. accel = 28.125 as opposed to accel = 0.46875 * special_number (as done currently).
-# FIXME: Assuming of course values are all pixels/second or frames/second. Doubt it's going to be that straightforward.
+# FIXME: Assuming of course values are all pixels/second or frames/second. Not that it's going to be that straightforward.
 
-const UP = Vector2 (0, -1)		# Vectors use x and y values; negatives on the y-axis are "up" in Godot.
+const UP = Vector2 (0, -1)		# Vector2s use x and y values; negatives on the y-axis are "up" in Godot.
+# Special Number; Delta x 60. FIXME: This mean that fixing framerate to 60 may be optimal?
 const special_number = 60
 
-# Special Number; Delta x 60. FIXME: This mean that fixing framerate to 60 may be optimal?
-var GRAVITY = 0.21875 * special_number	# Gravity Speed
+const GRAVITY = 0.21875 * special_number	# Gravity Speed
 
 var velocity = Vector2 (0, 0)
 
@@ -43,11 +43,11 @@ var fall = 2.5 * special_number
 var ground_speed =  0.0						# Ground Speed
 var horizontal_lock_timer = 0
 
-var is_on_floor = false
+var is_player_on_floor = false
 
 var jumping = false
-var realMovement = Vector2 (0, 0)
-var was_on_floor = false
+var real_movement = Vector2 (0, 0)
+var was_player_on_floor = false
 
 # Left and Right input variables.
 var left = false
@@ -56,38 +56,40 @@ var right = false
 func _ready ():
 	return
 
+func _input (event):
+	left = (Input.is_action_pressed ("move_left") && !right)
+	right = (Input.is_action_pressed ("move_right") && !left)
+	return
+
 func _physics_process (delta):
 	if (horizontal_lock_timer >= 0):
 		horizontal_lock_timer -= delta
 #	print ($FloorDetect.is_colliding ())
 #	print ($FloorDetect.get_collision_point ())
 	# Determine which way the player is going. Make sure that pressing both left and right at the same time does nothing.
-	left = (Input.is_action_pressed ("move_left") && !right)
-	right = (Input.is_action_pressed ("move_right") && !left)
 	if (horizontal_lock_timer > 0):	# If movement is not possible...
 		left = false	# Make sure the movement variables are set to false.
 		right = false	# FIXME: Does jumping need to be in this block?
 
-	# FIXME: This bit is broken! Or at least contributing to something else broken.
-	# FIXME: See https://github.com/BlitzerSIO/grass-cheetah/issues/2 for more info about this one.
 	var floor_rays = [$FloorDetectCenter, $FloorDetectLeft, $FloorDetectRight]
 	for ray in floor_rays:
-		# FIXME: This is pretty hacky, so need to find a better way of handling all this.
-		if ($FloorDetectRight.is_colliding () && $FloorDetectLeft.is_colliding () && !$FloorDetectCenter.is_colliding ()):
-			is_on_floor = $FloorDetectCenter.is_colliding ()
-			ground_normal = $FloorDetectCenter.get_collision_normal ()
-			break
-		is_on_floor = ray.is_colliding ()
-		if (is_on_floor):
+#		# FIXME: This is pretty hacky, so need to find a better way of handling all this.
+#		if ($FloorDetectRight.is_colliding () && $FloorDetectLeft.is_colliding () && !$FloorDetectCenter.is_colliding ()):
+#			is_player_on_floor = $FloorDetectCenter.is_colliding ()
+#			ground_normal = $FloorDetectCenter.get_collision_normal ()
+#			break
+		is_player_on_floor = ray.is_colliding ()
+		if (is_player_on_floor):
 #			print (ray.name)
 			ground_normal = ray.get_collision_normal ()
 #			print (ray.name, " ", ground_normal)	# FOR DEBUGGING ONLY. Print which ray is colliding.
 			break
 
-	var hitting_floor = (is_on_floor == true and was_on_floor == false)
-	was_on_floor = is_on_floor
+#	var hitting_floor = (is_player_on_floor == true and was_player_on_floor == false)
+	var hitting_floor = (is_player_on_floor && !was_player_on_floor)
+	was_player_on_floor = is_player_on_floor
 
-	var run_speed = (ground_speed if is_on_floor else velocity.x)
+	var run_speed = (ground_speed if is_player_on_floor else velocity.x)
 
 	# Very hazy animation states; will need to put these in a MATCH state machine.
 	if (jumping):
@@ -108,12 +110,12 @@ func _physics_process (delta):
 	# FIXME: This piece of code seems to not be called at all!
 	if ((ground_angle >= (PI/2.01) || ground_angle <= (-PI/2.01)) && ground_speed < fall):
 		# Depending on angle/position the player may not be on the floor.
-#		print (is_on_floor)
-		is_on_floor = false
+#		print (is_player_on_floor)
+		is_player_on_floor = false
 		ground_speed = 0
 		horizontal_lock_timer = 0.5
 
-	if (is_on_floor):	# Major condition, determines whether we're going by groundspeed or traditional
+	if (is_player_on_floor):	# Major condition, determines whether we're going by groundspeed or traditional
 		jumping = false
 		# Vector that points "forward" along the ground that Sonic stands on.
 		var ground_speed_vector = ground_normal.rotated (PI/2)
@@ -150,15 +152,15 @@ func _physics_process (delta):
 		else:
 			var beforeground_speed = ground_speed
 			var ground_friction = min (abs (ground_speed), friction)
-			ground_speed -= ground_friction * sign (ground_speed)
+			ground_speed -= (ground_friction * sign (ground_speed))
 #			print (str (beforeground_speed) + " " + str (ground_speed))
 
 		#ground_normal
 		velocity = ground_speed_vector * ground_speed
 		if (Input.is_action_just_pressed ("move_jump")):
-			velocity += (6.5 * special_number) * ground_normal
 			jumping = true
 			sound_player.play_sound ("Jump")
+			velocity += (6.5 * special_number) * ground_normal
 #			print (str (ground_normal.rotated (PI/2)))
 		rotation = ground_angle
 
@@ -175,7 +177,7 @@ func _physics_process (delta):
 				velocity.x -= air
 
 		# Air Drag
-		if (velocity.y < 0 and velocity.y > -4 * special_number):
+		if (velocity.y < 0 && velocity.y > -4 * special_number):
 			if (abs (velocity.x) >= 0.125):
 				velocity.x = velocity.x * 0.9875
 
@@ -184,14 +186,14 @@ func _physics_process (delta):
 		if (velocity.y > 16 * special_number):
 			velocity.y = 16 * special_number
 
-		if Input.is_action_just_released ("move_jump") and (velocity.y < -4 * special_number ) and jumping:
+		if (Input.is_action_just_released ("move_jump") && (velocity.y < -4 * special_number ) && jumping):
 			velocity.y = -4 * special_number
 
 	var beforeMove = position
 	velocity = move_and_slide (velocity, UP)	# Sets motion equal to 0
 	
 	var afterMove = position
-	realMovement = afterMove - beforeMove		# FIXME: This isn't used anywhere. Does it need to be?
+	real_movement = afterMove - beforeMove		# FIXME: This isn't used anywhere. Does it need to be?
 
 	# Collision Count (WIP)
 	var collision_count = get_slide_count ()

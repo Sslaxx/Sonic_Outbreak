@@ -9,11 +9,11 @@ var rings_zero = false	# To make sure the flashing animation for no rings is onl
 var t_minus_ten = false	# Ten seconds or less until the 10 minutes mark.
 
 func _ready ():
-	$"rings_symbol/rings_player".play ("unsafe")
-	$"time_symbol/time_player".play ("unsafe")
+	$"rings_symbol/rings_player".play ("safe")
+	$"time_symbol/time_player".play ("safe")
 	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
 		printerr ("HUD set up.")
-	update_hud ()	# Make sure the HUD is initialised from the get-go!
+	game_space.update_hud ()	# Make sure the HUD is initialised from the get-go!
 	return
 
 """
@@ -30,15 +30,15 @@ func update_hud ():
 	## Update the HUD values as needed.
 	# TODO: How are rings, score etc. going to be stored in the project? This needs deciding!
 	## Make sure that the counters are flashing if need be.
-#	if (game_space.rings == 0):
-#		if (!rings_zero):
-#			# Rings are currently set to zero, so start the flashing animation.
-#			$"rings_symbol/rings_player".play ("unsafe")
-#			rings_zero = true
-#	else:
-#		rings_zero = false
-#		# Got some rings, so the rings counter doesn't need to flash.
-#		$"rings_symbol/rings_player".play ("safe")
+	if (game_space.rings == 0):
+		if (!rings_zero):
+			# Rings are currently set to zero, so start the flashing animation.
+			$"rings_symbol/rings_player".play ("unsafe")
+			rings_zero = true
+	else:
+		# Got some rings, so the rings counter doesn't need to flash.
+		rings_zero = false
+		$"rings_symbol/rings_player".play ("safe")
 #	# Make the time counter flash when it's less than ten seconds until ten minutes.
 #	# TODO: See above about TODO how things are going to be stored and accessed.
 	return

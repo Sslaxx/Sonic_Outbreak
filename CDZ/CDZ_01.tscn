@@ -30,23 +30,21 @@ frame = 0
 
 [node name="Blue_Sign" parent="Signs" index="1" instance=ExtResource( 2 )]
 
+frame = 0
+
 [node name="Blue_Sign2" parent="Signs" index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 2773, -1417 )
+frame = 0
 _sections_unfolded = [ "Transform" ]
 
 [node name="Reverie_Island_Sign" parent="Signs" index="3" instance=ExtResource( 3 )]
 
-frame = 0
-
 [node name="Purple_Sign" parent="Signs" index="4" instance=ExtResource( 4 )]
-
-frame = 1
 
 [node name="Purple_Sign2" parent="Signs" index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 3816, -1817 )
-frame = 1
 
 [node name="Player" parent="." index="1" instance=ExtResource( 5 )]
 
@@ -70,16 +68,19 @@ editor/display_folded = true
 
 position = Vector2( 590, -2006 )
 z_as_relative = false
+score_value = 100
 
 [node name="Buzzing_Pest2" parent="Badniks" index="1" instance=ExtResource( 9 )]
 
 position = Vector2( 3006, -1931 )
 z_as_relative = false
+score_value = 100
 
 [node name="Buzzing_Pest3" parent="Badniks" index="2" instance=ExtResource( 9 )]
 
 position = Vector2( 2881, -1377 )
 z_as_relative = false
+score_value = 100
 
 [node name="Barrier" parent="." index="7" instance=ExtResource( 10 )]
 
