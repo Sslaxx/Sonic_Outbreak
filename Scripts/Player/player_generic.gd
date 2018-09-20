@@ -5,6 +5,7 @@
    with additional assistance from the Sonic Physics Guide
 """
 
+# All player character scripts must inherit from this script!
 extends KinematicBody2D
 
 # FIXME: This script needs re-writing to be better able to handle, among other things, collision issues.
@@ -201,3 +202,4 @@ func _physics_process (delta):
 #		print ((last_collision.normal*-1).angle ())
 #		print ("last_collision: ", last_collision.collider)
 	return
+

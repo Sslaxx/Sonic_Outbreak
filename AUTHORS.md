@@ -21,7 +21,6 @@ Powered by the **[Godot Engine](https://godotengine.org/)**.
 
 **2D ARTISTS:**
 - /b/ - Spriter - Characters, Enemies
-- EggmanInc - Spriter - Enemies
 - LuchoJN - Spriter - Miscellaneous, Assistance
 
 **3D ARTISTS:**
@@ -39,3 +38,4 @@ Powered by the **[Godot Engine](https://godotengine.org/)**.
 **PREVIOUS TEAM MEMBERS:**
 - RSM
 - Jesse (Blitzer)
+- EggmanInc
