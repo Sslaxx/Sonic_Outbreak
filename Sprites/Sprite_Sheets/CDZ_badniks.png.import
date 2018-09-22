@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CDZ_badniks.png-89fe48bd3be8ad430d9310c8f9a2cdd8.stex"
+path="res://.import/CDZ_badniks.png-0e93dc9c206fe9b3ae460cad149a775a.stex"
 
 [deps]
 
-source_file="res://Sprites/Sprite Sheets/CDZ_badniks.png"
-dest_files=[ "res://.import/CDZ_badniks.png-89fe48bd3be8ad430d9310c8f9a2cdd8.stex" ]
+source_file="res://Sprites/Sprite_Sheets/CDZ_badniks.png"
+dest_files=[ "res://.import/CDZ_badniks.png-0e93dc9c206fe9b3ae460cad149a775a.stex" ]
 
 [params]
 

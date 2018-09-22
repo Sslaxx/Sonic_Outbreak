@@ -12,6 +12,7 @@ Powered by the **[Godot Engine](https://godotengine.org/)**.
 
 **CODERS:**
 - Sslaxx - Coding: UI
+- Sofox - Coding
 
 **CONCEPT ARTISTS:**
 - AaronKasarion - Concept Artist, character designs

@@ -22,7 +22,9 @@ In addition, any movement code needs to take into account the following:
 
 ### Problems
 
-The current code *mostly* does the job, but it's not handling collisions with some slope angles, or properly in enclosed spaces. [That has caused this issue.](https://github.com/BlitzerSIO/grass-cheetah/issues/2) Trying to fix that issue may require a different approach than to write (what could be potentially endless) exceptions in the code handling it and/or change collision shapes and detection raycasts, never mind dealing with some of the staples of Sonic levels such as loops.
+The current code *mostly* does the job, but it's not handling collisions with some slope angles, or properly in enclosed spaces. [That has caused this issue.](https://github.com/BlitzerSIO/grass-cheetah/issues/2)
+
+Some of that issue (dealing with collision/jumping at the bottom of ramps) appears to have been mostly fixed by moving the floor collision rays. That still leaves the issues at the top of the ramps.
 
 **Keeping it simple** is key. It's not going to be particularly simple anyway, especially if dealing with potential multiple player characters, but simplicity (of design, of code) wherever possible is desirable. Also, remember that *simple is not the same as easy*.
 
@@ -70,7 +72,7 @@ Some actions could be combinations of states and/or player input (e.g., dropdash
 - 8 *monitor boxes*
 - 16 *other environmentals, e.g. zone gimmicks or moving floors/ceilings/walls*
 
-Having movement be separate states means that if the player suddenly starts to move in the other direction state and movement can be used together to control deceleration/turning, with the movement state being changed to whichever direction the player is moving in when deceleration has finished. While there's movement (speed is > 0) the movement direction **must not be changed**; movement state should be considered to determine which direction the player *will* move in, but not necessarily which direction the player *is currently moving* in.
+Having movement be separate states means that if the player suddenly starts to move in the other direction state, movement can be used together to control deceleration/turning, with the movement state being changed to whichever direction the player is moving in when deceleration has finished. While there's movement (speed is > 0) the movement direction **must not be changed**; movement state should be considered to determine which direction the player *will* move in, but not necessarily which direction the player *is currently moving* in.
 
 So: maybe three Vector2s - Movement (x, y values from -1 to 1), Speed (whatever the current speeds of the player are - independent x, y?) and Velocity (the actual current movement of the player). Variable(s) holding the state(s) - determined by the bitmasks.
 

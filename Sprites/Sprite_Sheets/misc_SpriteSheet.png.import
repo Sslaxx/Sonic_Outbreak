@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/misc_SpriteSheet.png-922bdd060d9d62a7189278a81d32250a.stex"
+path="res://.import/misc_SpriteSheet.png-8ec990799d88f33bdf78a798d9f5d712.stex"
 
 [deps]
 
-source_file="res://Sprites/Sprite Sheets/misc_SpriteSheet.png"
-dest_files=[ "res://.import/misc_SpriteSheet.png-922bdd060d9d62a7189278a81d32250a.stex" ]
+source_file="res://Sprites/Sprite_Sheets/misc_SpriteSheet.png"
+dest_files=[ "res://.import/misc_SpriteSheet.png-8ec990799d88f33bdf78a798d9f5d712.stex" ]
 
 [params]
 

@@ -1,23 +1,22 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign2_0.png" type="Texture" id=1]
 [ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign2_1.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Items/item_blinker.gd" type="Script" id=3]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
 "loop": true,
-"name": "Blink2",
+"name": "blink",
 "speed": 3.0
 } ]
 
 [node name="Blue_Sign_00" type="AnimatedSprite"]
 
-position = Vector2( 509.036, -2001.86 )
-frames = SubResource( 2 )
-animation = "Blink2"
-frame = 1
-playing = true
+frames = SubResource( 1 )
+animation = "blink"
+script = ExtResource( 3 )
 
 

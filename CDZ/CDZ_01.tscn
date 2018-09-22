@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Levels/level_CDZ_1.gd" type="Script" id=1]
-[ext_resource path="res://CDZ/CDZ_Pink_Sign.tscn" type="PackedScene" id=2]
-[ext_resource path="res://CDZ/CDZ_Blue_Sign.tscn" type="PackedScene" id=3]
-[ext_resource path="res://CDZ/CDZ_Reverie_Island_Sign.tscn" type="PackedScene" id=4]
+[ext_resource path="res://CDZ/CDZ_Reverie_Island_Sign.tscn" type="PackedScene" id=2]
+[ext_resource path="res://CDZ/CDZ_Pink_Sign.tscn" type="PackedScene" id=3]
+[ext_resource path="res://CDZ/CDZ_Blue_Sign.tscn" type="PackedScene" id=4]
 [ext_resource path="res://CDZ/CDZ_Purple_Sign.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Player/player_sonic.tscn" type="PackedScene" id=6]
 [ext_resource path="res://CDZ/CDZ_Parallax_Background.tscn" type="PackedScene" id=7]
@@ -26,25 +26,25 @@ __meta__ = {
 editor/display_folded = true
 z_as_relative = false
 
-[node name="Pink_Sign" parent="Signs" index="0" instance=ExtResource( 2 )]
+[node name="Reverie_Island_Sign" parent="Signs" index="0" instance=ExtResource( 2 )]
 
-frame = 0
+position = Vector2( 240, -2060 )
 
-[node name="Blue_Sign" parent="Signs" index="1" instance=ExtResource( 3 )]
+[node name="Pink_Sign" parent="Signs" index="1" instance=ExtResource( 3 )]
 
-frame = 0
+position = Vector2( 2828, -1938 )
 
-[node name="Blue_Sign2" parent="Signs" index="2" instance=ExtResource( 3 )]
+[node name="Blue_Sign" parent="Signs" index="2" instance=ExtResource( 4 )]
+
+position = Vector2( 509, -2001 )
+
+[node name="Blue_Sign2" parent="Signs" index="3" instance=ExtResource( 4 )]
 
 position = Vector2( 2773, -1417 )
-frame = 0
-_sections_unfolded = [ "Transform" ]
-
-[node name="Reverie_Island_Sign" parent="Signs" index="3" instance=ExtResource( 4 )]
-
-frame = 0
 
 [node name="Purple_Sign" parent="Signs" index="4" instance=ExtResource( 5 )]
+
+position = Vector2( 440, -1977 )
 
 [node name="Purple_Sign2" parent="Signs" index="5" instance=ExtResource( 5 )]
 
@@ -68,11 +68,7 @@ position = Vector2( 41, -1979 )
 
 position = Vector2( -2, -1976 )
 
-[node name="Tilemaps" type="Node2D" parent="." index="7"]
-
-editor/display_folded = true
-
-[node name="tls_CDZ_0" type="TileMap" parent="Tilemaps" index="0"]
+[node name="Tilemap" type="TileMap" parent="." index="7"]
 
 z_index = -1
 z_as_relative = false

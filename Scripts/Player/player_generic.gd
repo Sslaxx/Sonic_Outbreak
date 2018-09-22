@@ -197,7 +197,7 @@ func _physics_process (delta):
 	var collision_count = get_slide_count ()
 	if (collision_count > 0):
 		var last_collision = get_slide_collision (collision_count - 1)
-		if (last_collision.collider is preload ("res://Scripts/Badniks/Buzzing_Pest_Test.gd")):
+		if (last_collision.collider is preload ("res://Scripts/Badniks/generic_badnik.gd")):
 			last_collision.collider.hit_the_pest ()
 #		print ((last_collision.normal*-1).angle ())
 #		print ("last_collision: ", last_collision.collider)
