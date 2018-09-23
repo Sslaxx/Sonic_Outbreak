@@ -9,7 +9,7 @@
 extends "res://Scripts/Levels/level_generic.gd"
 
 func _ready ():
-	print ("Level is ready!")
+	printerr ("Level is ready!")
 	return
 
 func _process (delta):

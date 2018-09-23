@@ -11,7 +11,7 @@ export var movement_factor = Vector2 (0, 0)	# Have movement be able to be change
 
 func _ready ():
 	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY. Give a bit of info about what is moving how.
-		print (name, " is moving at ", movement_factor, ".")
+		printerr (name, " is moving at ", movement_factor, ".")
 	return
 
 """

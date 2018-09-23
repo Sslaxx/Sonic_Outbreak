@@ -17,10 +17,10 @@ extends Node2D
 
 func _ready ():
 	if (OS.is_debug_build ()):
-		print ("Level functionality is ready.")
-	if (has_node ("Player") && has_node ("Start_Position")):	# Make sure the player starts at the start position!
-		if ($"Player".position != $"Start_Position".position):
-			$"Player".position = $"Start_Position".position
+		printerr ("Level functionality is ready.")
+	if (has_node (game_space.player_character) && has_node ("Start_Position")):	# Make sure the player starts at the start position!
+		if ((game_space.player_character_node).position != $"Start_Position".position):
+			(game_space.player_character_node).position = $"Start_Position".position
 	return
 
 func _process (delta):

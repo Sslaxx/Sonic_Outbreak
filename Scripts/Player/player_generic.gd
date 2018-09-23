@@ -52,6 +52,9 @@ var left = false
 var right = false
 
 func _ready ():
+	# Sets the player_character variables for other nodes/scenes to use.
+	game_space.player_character = get_path ()	# Use get_node with this; $ will not work!
+	game_space.player_character_node = get_node (game_space.player_character)	# This is a pointer to the *node*, not the path!
 	return
 
 func _input (event):
@@ -62,8 +65,8 @@ func _input (event):
 func _physics_process (delta):
 	if (horizontal_lock_timer >= 0):
 		horizontal_lock_timer -= delta
-#	print ($FloorDetect.is_colliding ())
-#	print ($FloorDetect.get_collision_point ())
+#	printerr ($FloorDetect.is_colliding ())
+#	printerr ($FloorDetect.get_collision_point ())
 	# Determine which way the player is going. Make sure that pressing both left and right at the same time does nothing.
 	if (horizontal_lock_timer > 0):	# If movement is not possible...
 		left = false	# Make sure the movement variables are set to false.
@@ -78,12 +81,11 @@ func _physics_process (delta):
 #			break
 		is_player_on_floor = ray.is_colliding ()
 		if (is_player_on_floor):
-#			print (ray.name)
+#			printerr (ray.name)
 			ground_normal = ray.get_collision_normal ()
-#			print (ray.name, " ", ground_normal)	# FOR DEBUGGING ONLY. Print which ray is colliding.
+#			printerr (ray.name, " ", ground_normal)	# FOR DEBUGGING ONLY. Print which ray is colliding.
 			break
 
-#	var hitting_floor = (is_player_on_floor == true and was_player_on_floor == false)
 	var hitting_floor = (is_player_on_floor && !was_player_on_floor)
 	was_player_on_floor = is_player_on_floor
 
@@ -108,7 +110,7 @@ func _physics_process (delta):
 	# FIXME: This piece of code seems to not be called at all!
 	if ((ground_angle >= (PI/2.01) || ground_angle <= (-PI/2.01)) && ground_speed < fall):
 		# Depending on angle/position the player may not be on the floor.
-#		print (is_player_on_floor)
+#		printerr (is_player_on_floor)
 		is_player_on_floor = false
 		ground_speed = 0
 		horizontal_lock_timer = 0.5
@@ -122,7 +124,7 @@ func _physics_process (delta):
 			# If we've landed on floor, recalculate ground_speed.
 			ground_speed = velocity.dot (ground_speed_vector)
 			rotation = ground_angle
-#			print (ground_angle)
+#			printerr (ground_angle)
 #			move_and_collide ((-400) * ground_normal)
 			move_and_slide ((-400) * ground_normal, UP)
 
@@ -131,7 +133,7 @@ func _physics_process (delta):
 		# Right movement
 		if (right):
 			$Sprite.flip_h = false
-#			print ("Right.")
+#			printerr ("Right.")
 			if (ground_speed < 0):
 				ground_speed += decel
 			elif (ground_speed < top_speed):
@@ -140,7 +142,7 @@ func _physics_process (delta):
 		# Left Movement
 		elif (left):
 			$Sprite.flip_h = true
-#			print ("Left.")
+#			printerr ("Left.")
 			if (ground_speed > 0):
 				ground_speed -= decel
 			elif (ground_speed > -top_speed):
@@ -151,7 +153,7 @@ func _physics_process (delta):
 			var beforeground_speed = ground_speed
 			var ground_friction = min (abs (ground_speed), friction)
 			ground_speed -= (ground_friction * sign (ground_speed))
-#			print (str (beforeground_speed) + " " + str (ground_speed))
+#			printerr (str (beforeground_speed) + " " + str (ground_speed))
 
 		#ground_normal
 		velocity = ground_speed_vector * ground_speed
@@ -159,7 +161,7 @@ func _physics_process (delta):
 			jumping = true
 			sound_player.play_sound ("Jump")
 			velocity += (6.5 * special_number) * ground_normal
-#			print (str (ground_normal.rotated (PI/2)))
+#			printerr (str (ground_normal.rotated (PI/2)))
 		rotation = ground_angle
 
 	else:	#If in the air
@@ -199,7 +201,6 @@ func _physics_process (delta):
 		var last_collision = get_slide_collision (collision_count - 1)
 		if (last_collision.collider is preload ("res://Scripts/Badniks/generic_badnik.gd")):
 			last_collision.collider.hit_the_pest ()
-#		print ((last_collision.normal*-1).angle ())
-#		print ("last_collision: ", last_collision.collider)
+#		printerr ((last_collision.normal*-1).angle ())
+#		printerr ("last_collision: ", last_collision.collider)
 	return
-

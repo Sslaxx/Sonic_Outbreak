@@ -39,7 +39,8 @@ const DEFAULT_LIVES = 3				# Ditto lives.
 const DEFAULT_SCORE = 0				# Ditto score.
 
 ## These control the player character, and if anything needs to be done to/with it.
-var player_character = null		# Who is the player character? Set up by the player_<character name>.gd script in its _ready.
+var player_character = null	# Who is the player character? Set up by player_generic.gd in its _ready.
+var player_character_node = null	# This is for the actual node, not the path, to the character.
 var player_controlling_character = true	# Is the player controlling the character? Normally true. False for death/cutscenes/etc.
 var reset_player_to_checkpoint = false	# Reset the player to the last checkpoint/start position if true.
 
@@ -87,9 +88,9 @@ func update_hud ():
 
 """
    SETTERS and GETTERS.
-   get_ and set_ functions to allow the HUD counters to be updated. Nothing else needs to be done; these variables are automatically
-   called via the setget definition for the variable (outside of the class; inside it, remember to use self if needed!).
-   These also allow for events such as extra lives and death of the player.
+   get_ and set_ functions to allow the HUD counters to be updated. Nothing else needs to be done; these functions are
+   automatically called via the setget definition for the variable (outside of the class; inside it, remember to use self if
+   needed!). These also allow for events such as extra lives and death of the player.
 """
 
 func get_lives ():

@@ -12,7 +12,7 @@ extends "res://Scripts/Player/player_generic.gd"
 
 func _ready ():
 	if (OS.is_debug_build ()):
-		print ("Sonic is ready.")
+		printerr ("Sonic - ", game_space.player_character_node, " - is ready.")
 	return
 
 func _process (delta):

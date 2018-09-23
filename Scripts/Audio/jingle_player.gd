@@ -37,7 +37,7 @@ func play_jingle (path_to_jingle = "", music_unmute = true):
 		printerr ("ERROR: No jingle file specified to play!")
 		return (false)
 	if (!file.file_exists (path_to_jingle)):	# The file doesn't exist, so say so.
-		print ("ERROR: ", path_to_jingle, " does not exist!")
+		printerr ("ERROR: ", path_to_jingle, " does not exist!")
 		return (false)
 	stream = play_me	# Set the stream.
 	if (stream == null):	# If the stream is null, this means the sound file is invalid, so report an error.
