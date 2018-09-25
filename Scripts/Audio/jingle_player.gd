@@ -1,5 +1,33 @@
 """
-   jingles_player - a singleton to play music as a jingle.
+   This file is part of:
+   GODOT SONIC ENGINE
+
+   Copyright (c) 2018- Stuart Moore.
+
+   Licenced under the terms of the MIT "expat" license.
+
+   Permission is hereby granted, free of charge, to any person obtaining
+   a copy of this software and associated documentation files (the
+   "Software"), to deal in the Software without restriction, including
+   without limitation the rights to use, copy, modify, merge, publish,
+   distribute, sublicense, and/or sell copies of the Software, and to
+   permit persons to whom the Software is furnished to do so, subject to
+   the following conditions:
+
+   The above copyright notice and this permission notice shall be
+   included in all copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+"""
+
+"""
+   jingle_player - a singleton to play music as a jingle.
    What this does is as follows:
    1 - Mutes the Music bus. This way any music will carry on playing, just silently.
    2 - plays the specified jingle.
@@ -26,7 +54,7 @@ func _ready ():
 
 """
    play_jingle
-   jingles_player.play_jingle (path_to_jingle, music_unmute)
+   jingle_player.play_jingle (path_to_jingle, music_unmute)
    Plays a specified music file as a jingle (path_to_jingle), muting the Music bus beforehand.
    After the jingle is finished, music_unmute can be set false to leave the music bus muted.
    Returns true if it plays something, otherwise false.
@@ -50,7 +78,7 @@ func play_jingle (path_to_jingle = "", music_unmute = true):
 
 """
    stop_jingle
-   jingles_player.stop_jingle (abort_jingle)
+   jingle_player.stop_jingle (abort_jingle)
    Stops the currently playing jingle and unmutes Music if told to.
    If abort_jingle is true, then it'll emit "jingle_aborted", otherwise "jingle_finished".
    You may need to unmute Music manually yourself in code if you leave it muted.

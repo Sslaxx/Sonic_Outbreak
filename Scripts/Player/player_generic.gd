@@ -80,7 +80,7 @@ func _physics_process (delta):
 #			is_player_on_floor = $FloorDetectCenter.is_colliding ()
 #			ground_normal = $FloorDetectCenter.get_collision_normal ()
 #			break
-		is_player_on_floor = ray.is_colliding ()
+		is_player_on_floor = ray.is_colliding () && (abs (velocity.x) >= 0.000001)
 		if (is_player_on_floor):
 #			printerr (ray.name)
 			ground_normal = ray.get_collision_normal ()
