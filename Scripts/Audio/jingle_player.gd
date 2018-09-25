@@ -4,14 +4,19 @@
    1 - Mutes the Music bus. This way any music will carry on playing, just silently.
    2 - plays the specified jingle.
    3 - at the end of the jingle, unmutes Music (if wanted; the default) so anything playing becomes audible again.
-   For more advanced stuff (jingles that rely on signals and so on), do it in the scene directly.
+
+   It can either emit a "jingle_finished" signal (for having played the jingle in its entirety), or "jingle_aborted" (for a
+   jingle having been stopped by something else).
 """
 
 extends AudioStreamPlayer
 
 onready var bus_index = AudioServer.get_bus_index ("Jingles")
 
-var unmute_music = true	# True (the default) will unmute the Music bus, false will not.
+signal jingle_finished	# Jingle played from start to finish.
+signal jingle_aborted	# Jingle has been told to stop playing before it finished.
+
+var unmute_music = true	# True (the default) will unmute the Music bus after playing the jingle; false will not.
 
 func _ready ():
 	if (OS.is_debug_build ()):
@@ -31,14 +36,10 @@ func play_jingle (path_to_jingle = "", music_unmute = true):
 	var play_me = null			# This will hold the stream for the jingle.
 	var file = File.new ()		# Used to detect if a file exists or not.
 	unmute_music = music_unmute	# Make sure music will be muted/unmuted after this jingle is done.
-	if (path_to_jingle != ""):	# A path was specified, so load that up.
-		play_me = load (path_to_jingle)
-	else:	# No path was specified, so error out.
-		printerr ("ERROR: No jingle file specified to play!")
-		return (false)
 	if (!file.file_exists (path_to_jingle)):	# The file doesn't exist, so say so.
 		printerr ("ERROR: ", path_to_jingle, " does not exist!")
 		return (false)
+	play_me = load (path_to_jingle)
 	stream = play_me	# Set the stream.
 	if (stream == null):	# If the stream is null, this means the sound file is invalid, so report an error.
 		printerr ("ERROR: jingle_player has an empty stream! ", path_to_jingle, " is not a valid sound file.")
@@ -49,15 +50,20 @@ func play_jingle (path_to_jingle = "", music_unmute = true):
 
 """
    stop_jingle
-   jingles_player.stop_jingle ()
+   jingles_player.stop_jingle (abort_jingle)
    Stops the currently playing jingle and unmutes Music if told to.
+   If abort_jingle is true, then it'll emit "jingle_aborted", otherwise "jingle_finished".
    You may need to unmute Music manually yourself in code if you leave it muted.
 
    Note that this is really meant more for unmuting Music, as jingles should be not looped.
 """
-func stop_jingle ():
-	stop ()	# Usually not necessary as this should only be called via signal, but here to handle exceptions to this rule.
+func stop_jingle (abort_jingle = false):
+	stop ()	# Usually not necessary as this should normally be called via signal, but here to handle exceptions to this rule.
 	if (unmute_music):	# The default - unmute the music bus if this is true.
 		AudioServer.set_bus_mute (music_player.bus_index, false)	# Note music_player unmutes Music if told to play something.
 	unmute_music = true	# As this is a singleton, reset unmute_music after the check!
+	if (abort_jingle):	# The jingle has been terminated early, so emit the "jingle_aborted" signal.
+		emit ("jingle_aborted")
+	else:	# Jingle has played through.
+		emit ("jingle_finished")
 	return

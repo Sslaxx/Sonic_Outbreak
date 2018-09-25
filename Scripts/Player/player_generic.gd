@@ -16,6 +16,7 @@ extends KinematicBody2D
 # FIXME: An easy solution may be to multiply all the numbers by 60 (explicitly, as opposed to using a var).
 # FIXME: i.e. accel = 28.125 as opposed to accel = 0.46875 * special_number (as done currently).
 # FIXME: Assuming of course values are all pixels/second or frames/second. Not that it's going to be that straightforward.
+# FIXME: Also framerates are insane! Due, in part, to this issue (and as far as I can see delta not being used).
 
 const UP = Vector2 (0, -1)		# Vector2s use x and y values; negatives on the y-axis are "up" in Godot.
 # Special Number; Delta x 60. FIXME: This mean that fixing framerate to 60 may be optimal?

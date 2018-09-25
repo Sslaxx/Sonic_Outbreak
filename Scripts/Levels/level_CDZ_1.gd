@@ -10,6 +10,7 @@ extends "res://Scripts/Levels/level_generic.gd"
 
 func _ready ():
 	printerr ("Level is ready!")
+#	music_player.play_music ("res://Audio/Music/Crimson_District_Act_2.ogg")
 	return
 
 func _process (delta):
