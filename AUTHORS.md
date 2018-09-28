@@ -28,7 +28,6 @@ Powered by the **[Godot Engine](https://godotengine.org/)**.
 - XavierGibbons  - Modeler, 3D Artist
 
 **AUDIO:**
-- Foxito - Musician - Main OST
 - skybreak | jack | solaroid - Musician - Main OST
 
 **ASSISTANCE:**
@@ -40,3 +39,5 @@ Powered by the **[Godot Engine](https://godotengine.org/)**.
 - RSM
 - Jesse (Blitzer)
 - EggmanInc
+- Moki
+- Foxito

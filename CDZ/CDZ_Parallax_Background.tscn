@@ -28,7 +28,6 @@
 [ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 5.png" type="Texture" id=26]
 [ext_resource path="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 6.png" type="Texture" id=27]
 
-
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
@@ -40,7 +39,7 @@ animations = [ {
 
 [node name="Parallax_Background" type="ParallaxBackground" index="0"]
 
-layer = -2
+layer = -5
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
@@ -369,7 +368,6 @@ motion_mirroring = Vector2( 1024, 0 )
 position = Vector2( 421.957, 156.51 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 10
 playing = true
 
 [node name="Fog2" type="ParallaxLayer" parent="." index="24"]

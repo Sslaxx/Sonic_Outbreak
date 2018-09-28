@@ -56,6 +56,8 @@ func _ready ():
 	# Sets the player_character variables for other nodes/scenes to use.
 	game_space.player_character = get_path ()	# Use get_node with this; $ will not work!
 	game_space.player_character_node = get_node (game_space.player_character)	# This is a pointer to the *node*, not the path!
+	if (OS.is_debug_build ()):
+		printerr ("Generic player character ready.")
 	return
 
 func _input (event):
@@ -80,8 +82,8 @@ func _physics_process (delta):
 #			is_player_on_floor = $FloorDetectCenter.is_colliding ()
 #			ground_normal = $FloorDetectCenter.get_collision_normal ()
 #			break
-		is_player_on_floor = ray.is_colliding () && (abs (velocity.x) >= 0.000001)
-		if (is_player_on_floor):
+		is_player_on_floor = ray.is_colliding ()
+		if (is_player_on_floor && abs (velocity.x) >= 0.05):
 #			printerr (ray.name)
 			ground_normal = ray.get_collision_normal ()
 #			printerr (ray.name, " ", ground_normal)	# FOR DEBUGGING ONLY. Print which ray is colliding.
@@ -126,7 +128,7 @@ func _physics_process (delta):
 			ground_speed = velocity.dot (ground_speed_vector)
 			rotation = ground_angle
 #			printerr (ground_angle)
-#			move_and_collide ((-400) * ground_normal)
+#			move_and_collide ((-400) * ground_normal * delta)
 			move_and_slide ((-400) * ground_normal, UP)
 
 		ground_speed += slope * sin (ground_speed_vector.angle ())

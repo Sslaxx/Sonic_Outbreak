@@ -82,8 +82,6 @@ func play_jingle (path_to_jingle = "", music_unmute = true):
    Stops the currently playing jingle and unmutes Music if told to.
    If abort_jingle is true, then it'll emit "jingle_aborted", otherwise "jingle_finished".
    You may need to unmute Music manually yourself in code if you leave it muted.
-
-   Note that this is really meant more for unmuting Music, as jingles should be not looped.
 """
 func stop_jingle (abort_jingle = false):
 	stop ()	# Usually not necessary as this should normally be called via signal, but here to handle exceptions to this rule.
