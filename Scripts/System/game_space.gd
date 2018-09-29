@@ -59,6 +59,7 @@ var timer_paused = false
 
 func _ready ():
 	printerr ("Game-space functionality ready.")
+	Engine.target_fps = 60	# Make the game aim for 60fps (maximum).
 	return
 
 # Reset values to default. Note the lack of "self." here - otherwise it'd invoke the setters/getters!
