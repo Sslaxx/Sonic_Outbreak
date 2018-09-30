@@ -35,6 +35,8 @@ var ring_taken = false
 func _ready ():
 	self.connect ("body_entered", self, "got_ring")	# Handles when the ring is collected.
 	$"Sprite".play ()
+	if (OS.is_debug_build()):	# FOR DEBUGGING ONLY.
+		printerr ("Ring ready at ", position, ".")
 	return
 
 func got_ring (body):
@@ -43,7 +45,5 @@ func got_ring (body):
 #		visible = false					# And then as invisible, because of playing the sound.
 		game_space.rings += 1			# Increase the player's rings count.
 		sound_player.play_sound ("Get_Ring")
-	if (OS.is_debug_build()):	# FOR DEBUGGING ONLY.
-		printerr ("Ring got at ", position)
 	queue_free ()
 	return

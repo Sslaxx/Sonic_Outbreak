@@ -49,8 +49,8 @@ onready var Sound_Library = {
 }
 
 func _ready ():
-	if (OS.is_debug_build ()):
-		printerr ("Sound player ready.")
+	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
+		printerr (get_script ().resource_path, " ready.")
 	return
 
 """

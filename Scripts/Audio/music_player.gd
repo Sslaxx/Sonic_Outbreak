@@ -36,8 +36,8 @@ extends AudioStreamPlayer
 onready var bus_index = AudioServer.get_bus_index ("Music")
 
 func _ready ():
-	if (OS.is_debug_build ()):
-		printerr ("Music player ready.")
+	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
+		printerr (get_script ().resource_path, " ready.")
 	return
 
 """
@@ -61,6 +61,8 @@ func play_music (path_to_music = "", play_from = 0.0):
 		return (false)
 	if (AudioServer.is_bus_mute (bus_index)):	# Unmute Music if it's muted...
 		AudioServer.set_bus_mute (bus_index, false)
+	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
+		printerr ("Playing ", stream, " from ", path_to_music, ".")
 	play (play_from)							# ...play the music...
 	return (true)								# ...and return true.
 

@@ -14,7 +14,7 @@ export var hits_to_kill = 1	# How many hits does it take to make it explode? Nor
 export var score_value = 100	# How many points is this badnik worth?
 
 func _ready ():
-	if (OS.is_debug_build ()):
+	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
 		printerr (name, " is ready at ", position, ".")
 	return
 

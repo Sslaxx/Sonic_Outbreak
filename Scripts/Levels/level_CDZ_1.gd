@@ -9,7 +9,8 @@
 extends "res://Scripts/Levels/level_generic.gd"
 
 func _ready ():
-	printerr ("Level is ready!")
+	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
+		printerr (get_script ().resource_path, " ready.")
 #	music_player.play_music ("res://Audio/Music/Crimson_District_Act_2.ogg")
 	return
 

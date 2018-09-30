@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sonic_fullSpeed_0.png-0727fa07245cce8f9e31c939e72e864e.stex"
+path="res://.import/00.png-2f1f23c76ce67db4945eebea1514ede4.stex"
 
 [deps]
 
-source_file="res://Player/Sonic/Sprites/fullSpeed/sonic_fullSpeed_0.png"
-dest_files=[ "res://.import/sonic_fullSpeed_0.png-0727fa07245cce8f9e31c939e72e864e.stex" ]
+source_file="res://Player/Sonic/Sprites/idle/00.png"
+dest_files=[ "res://.import/00.png-2f1f23c76ce67db4945eebea1514ede4.stex" ]
 
 [params]
 

@@ -11,7 +11,7 @@
 extends "res://Scripts/Player/player_generic.gd"
 
 func _ready ():
-	if (OS.is_debug_build ()):
+	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
 		printerr ("Sonic - ", game_space.player_character_node, " - is ready.")
 	return
 

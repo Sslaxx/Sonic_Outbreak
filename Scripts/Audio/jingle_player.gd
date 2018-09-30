@@ -47,8 +47,8 @@ signal jingle_aborted	# Jingle has been told to stop playing before it finished.
 var unmute_music = true	# True (the default) will unmute the Music bus after playing the jingle; false will not.
 
 func _ready ():
-	if (OS.is_debug_build ()):
-		printerr ("Jingle player ready.")
+	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
+		printerr (get_script ().resource_path, " ready.")
 	self.connect ("finished", self, "stop_jingle")
 	return
 
@@ -73,6 +73,8 @@ func play_jingle (path_to_jingle = "", music_unmute = true):
 		printerr ("ERROR: jingle_player has an empty stream! ", path_to_jingle, " is not a valid sound file.")
 		return (false)
 	AudioServer.set_bus_mute (music_player.bus_index, true)		# Mute the Music bus...
+	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
+		printerr ("Playing ", stream, " from ", path_to_jingle, ".")
 	play ()														# ...play the jingle...
 	return (true)												# ...and return true.
 
@@ -84,7 +86,7 @@ func play_jingle (path_to_jingle = "", music_unmute = true):
    You may need to unmute Music manually yourself in code if you leave it muted.
 """
 func stop_jingle (abort_jingle = false):
-	stop ()	# Usually not necessary as this should normally be called via signal, but here to handle exceptions to this rule.
+	stop ()
 	if (unmute_music):	# The default - unmute the music bus if this is true.
 		AudioServer.set_bus_mute (music_player.bus_index, false)	# Note music_player unmutes Music if told to play something.
 	unmute_music = true	# As this is a singleton, reset unmute_music after the check!

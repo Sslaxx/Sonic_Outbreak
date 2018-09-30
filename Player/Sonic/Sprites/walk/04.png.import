@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sonic_run_1.png-e1f4c6735a0a11e2e307f0f95a6a5efe.stex"
+path="res://.import/04.png-b60753d7572e6984af4d96a20b814a29.stex"
 
 [deps]
 
-source_file="res://Player/Sonic/Sprites/run/sonic_run_1.png"
-dest_files=[ "res://.import/sonic_run_1.png-e1f4c6735a0a11e2e307f0f95a6a5efe.stex" ]
+source_file="res://Player/Sonic/Sprites/walk/04.png"
+dest_files=[ "res://.import/04.png-b60753d7572e6984af4d96a20b814a29.stex" ]
 
 [params]
 

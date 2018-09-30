@@ -58,7 +58,8 @@ var minutes = 0
 var timer_paused = false
 
 func _ready ():
-	printerr ("Game-space functionality ready.")
+	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
+		printerr (get_script ().resource_path, " ready.")
 	Engine.target_fps = 60	# Make the game aim for 60fps (maximum).
 	return
 
@@ -70,20 +71,15 @@ func reset_values ():
 	score = DEFAULT_SCORE
 	return
 
-# Updates the HUD as required (for rings and lives and score, etc.). Called by the setters/getters for rings/score/time/lives.
+"""
+   update_hud
+   Updates the HUD as required (for rings and lives and score, etc.). Called by the setters/getters for rings/score/time/lives.
+   You should be calling this function *only* as it calls the "update_hud" function in the hud_layer.gd script. It is that
+   function that does everything.
+"""
 func update_hud ():
-	var prettied_time = ""	# Use this for the timer.
 	if (!has_node ("/root/Level/hud_layer")):	# Can't update a HUD that is not there!
 		return
-	$"/root/Level/hud_layer/lives_count".set_text (var2str (lives))
-	$"/root/Level/hud_layer/rings_count".set_text (var2str (rings))
-	# Put the timer together.
-	prettied_time += var2str (minutes) + ":"
-	if (seconds < 10):	# Add a relevant 0 (to keep the timer looking consistent).
-		prettied_time += "0"
-	prettied_time += var2str (seconds)
-	$"/root/Level/hud_layer/time_count".text = prettied_time
-	$"/root/Level/hud_layer/score_count".text = str (score)
 	$"/root/Level/hud_layer".update_hud ()
 	return
 

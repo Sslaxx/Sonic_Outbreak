@@ -56,8 +56,8 @@ func _ready ():
 	# Sets the player_character variables for other nodes/scenes to use.
 	game_space.player_character = get_path ()	# Use get_node with this; $ will not work!
 	game_space.player_character_node = get_node (game_space.player_character)	# This is a pointer to the *node*, not the path!
-	if (OS.is_debug_build ()):
-		printerr ("Generic player character ready.")
+	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
+		printerr ("Generic player functionality ready.")
 	return
 
 func _input (event):
