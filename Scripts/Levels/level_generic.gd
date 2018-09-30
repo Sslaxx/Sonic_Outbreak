@@ -18,7 +18,7 @@ extends Node2D
 func _ready ():
 	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
 		printerr ("Generic level functionality ready.")
-	if (has_node (game_space.player_character) && has_node ("Start_Position")):	# Make sure the player starts at the start position!
+	if (has_node (game_space.player_character) && has_node ("Start_Position")):	# Make sure the player starts at the start!
 		if ((game_space.player_character_node).position != $"Start_Position".position):
 			(game_space.player_character_node).position = $"Start_Position".position
 	return

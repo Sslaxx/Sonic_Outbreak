@@ -60,6 +60,7 @@ var timer_paused = false
 func _ready ():
 	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
 		printerr (get_script ().resource_path, " ready.")
+	$"level_timer".connect ("timeout", self, "add_to_timer")	# Make sure that the timer for the level knows what to do.
 	Engine.target_fps = 60	# Make the game aim for 60fps (maximum).
 	return
 
@@ -71,11 +72,21 @@ func reset_values ():
 	score = DEFAULT_SCORE
 	return
 
+# Doesn't do anything but add a second to the timer.
+func add_to_timer ():
+	self.seconds += 1
+	return
+
 """
    update_hud
    Updates the HUD as required (for rings and lives and score, etc.). Called by the setters/getters for rings/score/time/lives.
    You should be calling this function *only* as it calls the "update_hud" function in the hud_layer.gd script. It is that
-   function that does everything.
+   function that does everything but it is this one that makes sure the HUD exists to call it.
+   When should this be called?
+    - Automatically whenever the hud_layer scene is instantiated via _ready.
+    - Whenever time, score, rings or lives are changed (via a setter).
+    - Whenever the game starts, an act starts or the game is paused and then unpaused.
+    - Any other cases that may not be described above.
 """
 func update_hud ():
 	if (!has_node ("/root/Level/hud_layer")):	# Can't update a HUD that is not there!

@@ -42,8 +42,9 @@ func _ready ():
 func got_ring (body):
 	if (!ring_taken && body is preload ("res://Scripts/Player/player_generic.gd")):
 		ring_taken = true				# Player has picked up the ring! So make sure this ring is set as taken.
-#		visible = false					# And then as invisible, because of playing the sound.
 		game_space.rings += 1			# Increase the player's rings count.
 		sound_player.play_sound ("Get_Ring")
+		if (game_space.get_node ("super_timer").time_left > 0):	# Player is super, so add one second (ring) to the timer!
+			game_space.get_node ("super_timer").time_left += 1
 	queue_free ()
 	return
