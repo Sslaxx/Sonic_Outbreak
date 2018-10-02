@@ -1,5 +1,5 @@
-# Sonic Imperial Outbreak.
+# Sonic Outbreak.
 
-A **Sonic the Hedgehog** fangame.
+A 2D **Sonic the Hedgehog** fangame.
 
 Powered by the **[Godot Engine](https://godotengine.org/)**.

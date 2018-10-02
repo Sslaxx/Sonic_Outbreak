@@ -19,7 +19,7 @@ config/icon="res://icon.png"
 jingle_player="*res://Audio/jingle_player.tscn"
 music_player="*res://Audio/music_player.tscn"
 sound_player="*res://Audio/sound_player.tscn"
-global_space="*res://Scripts/System/global_space.gd"
+global_space="*res://System/global_space.tscn"
 game_space="*res://System/game_space.tscn"
 
 [display]
@@ -95,6 +95,13 @@ move_down=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name"
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777352,"unicode":0,"echo":false,"script":null)
  ]
+DEBUG_kill_player=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":true,"meta":false,"command":true,"pressed":false,"scancode":49,"unicode":0,"echo":false,"script":null)
+ ]
+
+[layer_names]
+
+2d_render/layer_1="default_2d_render"
+2d_physics/layer_1="default_2d_physics"
 
 [physics]
 

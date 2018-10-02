@@ -91,7 +91,7 @@ func stop_jingle (abort_jingle = false):
 		AudioServer.set_bus_mute (music_player.bus_index, false)	# Note music_player unmutes Music if told to play something.
 	unmute_music = true	# As this is a singleton, reset unmute_music after the check!
 	if (abort_jingle):	# The jingle has been terminated early, so emit the "jingle_aborted" signal.
-		emit ("jingle_aborted")
+		emit_signal ("jingle_aborted")
 	else:	# Jingle has played through.
-		emit ("jingle_finished")
+		emit_signal ("jingle_finished")
 	return

@@ -107,12 +107,13 @@ func get_lives ():
 # The lives variable setter handles death.
 func set_lives (value):
 	if (value < lives):	# The player has died! Reset things to default values, set the player's position to the checkpoint etc.
-#		timer_paused = true
-#		player_character.set_linear_velocity (Vector2 (0,0))	# Stop the player moving.
-#		player_character.change_anim ("Die")
+		game_space.get_node ("level_timer").paused = true
+		player_character_node.left = false
+		player_character_node.right = false
+		player_character_node.get_node ("Sprite").play ("die")
 #		player_character.set ("visible", false)
-#		global_space.add_path_to_node ("res://Scenes/UI/dead_player.tscn", "/root/Level")
-#		player_character.reset_player (false)
+		global_space.add_path_to_node ("res://ui/dead_player.tscn", "/root/Level")
+		game_space.player_character_node.reset_player (false)
 		timer_paused = false
 	elif (value > lives):	# The player has got an extra life! Play the relevant music (if possible)!
 		jingle_player.play_jingle ("res://Assets/Audio/Jingles/One_Up.ogg")

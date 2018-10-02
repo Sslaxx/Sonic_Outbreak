@@ -20,7 +20,7 @@ func _ready ():
 func _process (delta):
 	var pretty_me_up = ""	# Used for prettying up/formatting text.
 	# Display the FPS in the label.
-	$"FPS".text = "FPS: " + str (Engine.get_frames_per_second ())
+	$"FPS".text = "FPS: " + str (Performance.get_monitor (Performance.TIME_FPS))
 	# Print the position, etc. - these ones depend on the player node existing.
 	if (has_node (game_space.player_character)):
 		# FIXME: Really hackish, not-entirely-accurate way to do this! Look at String.format and format to 2 decimal places?

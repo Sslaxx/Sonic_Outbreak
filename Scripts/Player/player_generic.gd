@@ -63,6 +63,10 @@ func _ready ():
 func _input (event):
 	left = (Input.is_action_pressed ("move_left") && !right)
 	right = (Input.is_action_pressed ("move_right") && !left)
+	if (OS.is_debug_build ()):
+		if (Input.is_action_just_pressed ("DEBUG_kill_player")):
+			print ("AAAA")
+			game_space.lives -= 1
 	return
 
 func _physics_process (delta):
@@ -206,4 +210,7 @@ func _physics_process (delta):
 			last_collision.collider.hit_the_pest ()
 #		printerr ((last_collision.normal*-1).angle ())
 #		printerr ("last_collision: ", last_collision.collider)
+	return
+
+func reset_player (is_new_game = false):
 	return

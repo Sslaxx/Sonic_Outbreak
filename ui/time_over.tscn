@@ -6,39 +6,13 @@
 [node name="time_over" type="Sprite" index="0"]
 
 pause_mode = 2
+position = Vector2( 80, 110 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 32
 z_as_relative = false
 texture = ExtResource( 1 )
+centered = false
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
-
-[node name="Camera2D" type="Camera2D" parent="." index="0"]
-
-anchor_mode = 1
-rotating = false
-current = false
-zoom = Vector2( 1, 1 )
-limit_left = -10000000
-limit_top = -10000000
-limit_right = 10000000
-limit_bottom = 10000000
-limit_smoothed = false
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = true
-smoothing_speed = 60.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
+_sections_unfolded = [ "Transform" ]
 
 
