@@ -1,2 +1,5 @@
-# grass-cheetah
-Devs of Project S put your commits here.
+# Sonic Outbreak.
+
+A 2D **Sonic the Hedgehog** fangame.
+
+Powered by the **[Godot Engine](https://godotengine.org/)**.

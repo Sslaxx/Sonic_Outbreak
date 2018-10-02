@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign3_0.png" type="Texture" id=1]
+[ext_resource path="res://TileSet Scenes/tls_SIGNS/tls_CDZ_Sign3_1.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Items/item_blinker.gd" type="Script" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "blink",
+"speed": 4.0
+} ]
+
+[node name="Reverie_Island_Sign" type="AnimatedSprite"]
+
+frames = SubResource( 1 )
+animation = "blink"
+script = ExtResource( 3 )
+
+
