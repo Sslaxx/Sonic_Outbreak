@@ -62,7 +62,7 @@ func play_music (path_to_music = "", play_from = 0.0):
 	if (AudioServer.is_bus_mute (bus_index)):	# Unmute Music if it's muted...
 		AudioServer.set_bus_mute (bus_index, false)
 	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
-		printerr ("Playing ", stream, " from ", path_to_music, ".")
+		printerr ("Playing ", stream, " from ", path_to_music, ", offset ", play_from, ".")
 	play (play_from)							# ...play the music...
 	return (true)								# ...and return true.
 
