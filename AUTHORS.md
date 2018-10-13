@@ -11,8 +11,9 @@ Powered by the **[Godot Engine](https://godotengine.org/)**.
 - Ozaleto - Level designer, FM OST
 
 **CODERS:**
-- Sslaxx - Coding: UI
+- Sslaxx - Coding
 - Sofox - Coding
+- Most - Coding
 
 **CONCEPT ARTISTS:**
 - AaronKasarion - Concept Artist, character designs

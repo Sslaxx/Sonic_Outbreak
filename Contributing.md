@@ -1,4 +1,4 @@
-# So how do I add my stuff to Sonic Outbreak?
+## So how do I add my stuff to Sonic Outbreak?
 
 **PM or message me (Sslaxx) on Discord if at any point you're stuck! I'll do my best to help. Or use the issue tracker on GitHub.**
 
@@ -14,9 +14,11 @@ First of all, clone the repository (i.e., create a local copy of it that you can
 
 If you want to add a new feature (new gimmick, new badnik or zone, etc.) or fix one of the (plenty of) bugs in the code, first of all create a new branch, giving it a name that (hopefully!) describes what you want it to do. How you create branches in a GUI depends on what Git client you're using, but from the command line this *should* work: `git checkout -b fix_backwards_flying_hedgehogs`
 
-And then you'll have a new branch called `fix_backwards_flying_hedgehogs`. Everything you add or commit to the repo will then be to that branch. Do `git checkout master` to switch to master at any point if you need (or, indeed, any other branch). https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging has more info on this.
+You should have a new branch called `fix_backwards_flying_hedgehogs`. Everything you add or commit to the repo will then be to that branch. Do `git checkout master` to switch to master at any point if you need (or, indeed, any other branch). https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging has more info on this.
 
-You'll need to commit and then push your changes to the branch. https://git-scm.com/docs/git-push tells you how to do this from the command line.
+*Note*: Don't use any other symbols in a branch name other than dashes (-) or underscores (_), please.
+
+You'll need to commit and then push your changes to the branch. https://git-scm.com/docs/git-push tells you how to do this from the command line. **Make sure you're committing to the branch you made!**
 
 When you think it's ready, go to https://github.com/Sslaxx/Sonic_Outbreak/pulls and create a new pull request. Describe what your changes are. https://help.github.com/articles/about-pull-requests/ has more info too.
 
