@@ -240,7 +240,7 @@ func _physics_process (delta):
 	if (collision_count > 0):
 		var last_collision = get_slide_collision (collision_count - 1)
 		if (last_collision.collider is preload ("res://Scripts/Badniks/generic_badnik.gd")):
-			last_collision.collider.hit_the_pest ()
+			last_collision.collider.badnik_hit ()
 #		printerr ((last_collision.normal*-1).angle ())
 #		printerr ("last_collision: ", last_collision.collider)
 	return
