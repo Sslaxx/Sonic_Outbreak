@@ -1,5 +1,7 @@
 # PLAYER MOVEMENT - how to handle it.
 
+## Introduction
+
 ### Overview
 
 Movement needs to handle several different states:
