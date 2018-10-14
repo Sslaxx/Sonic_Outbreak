@@ -52,7 +52,7 @@ position = Vector2( 3816, -1817 )
 
 [node name="player_sonic" parent="." index="1" instance=ExtResource( 6 )]
 
-position = Vector2( 42, -1979 )
+position = Vector2( 42, -1973 )
 
 [node name="Parallax_Background" parent="." index="2" instance=ExtResource( 7 )]
 
@@ -62,7 +62,7 @@ position = Vector2( 42, -1979 )
 
 [node name="Start_Position" type="Position2D" parent="." index="5"]
 
-position = Vector2( 41, -1979 )
+position = Vector2( 42, -1973 )
 
 [node name="Barrier" parent="." index="6" instance=ExtResource( 10 )]
 

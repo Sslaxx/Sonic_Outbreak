@@ -19,7 +19,7 @@ const special_number = 60
 const GRAVITY = (13.125 / 60) * special_number	# Gravity Speed = 13.125
 
 enum PlayerState {
-	IDLE_STATE = 0,
+	IDLE_STATE = 0,				# Player is not moving, jumping etc.
 	MOVELEFT_STATE = 1,
 	MOVERIGHT_STATE = 2,
 	JUMP_STATE = 4,
@@ -32,8 +32,8 @@ enum PlayerState {
 	SPECIAL4_STATE = 512,
 	CHARSPECIFIC1_STATE = 1024,
 	CHARSPECIFIC2_STATE = 2048,
-	CUTSCENE_STATE = 4096,
-	}
+	CUTSCENE_STATE = 4096,		# Cutscene (be that the start or end of an act, or anything else).
+}
 
 """
 enum SpeedType {
@@ -41,7 +41,7 @@ enum SpeedType {
 	INITIAL_SPEED = 1,
 	LOW_SPEED = 2,
 	HIGH_SPEED = 4,
-	}
+}
 """
 
 var velocity = Vector2 (0, 0)	# Velocity; the amount the player character moves by.
@@ -54,13 +54,14 @@ var friction = 0.046875 * special_number 	# Friction = 2.8125
 var top_speed = 6 * special_number 			# Top Speed = 360
 var air = 0.09375 * special_number 			# Air = 5.625
 var slope = 0.125 * special_number			# Slope = 7.5
-var fall = 2.5 * special_number			# fall = 90
+var fall = 2.5 * special_number				# fall = 90
 var ground_speed =  0.0
 var horizontal_lock_timer = 0
 var is_player_on_floor = false
 var real_movement = Vector2 (0, 0)
 var was_player_on_floor = false
 var States = IDLE_STATE
+var run_speed = 0.0
 
 func _ready ():
 	# Sets the player_character variables for other nodes/scenes to use.
@@ -71,71 +72,79 @@ func _ready ():
 	return
 
 """
-   Checks the speed of the player character, sets animation speeds as required.
+   Checks the speed of the player character, sets animation as required.
 """
-func ground_speedometer (speed):
-#	if ((speed >= -0.01 and speed <= 2.8126) or speed == 0):
-	if (abs (speed) == 0):
-		# Bug; sometimes lands with 0, other times lands with 2.8125, exact same number as the friction.
-		# FIXME: This seems an odd bug/error. Try to reproduce/recreate it? Try to identify what causes it?
-		States |= IDLE_STATE
-	elif ((speed >= 360) or (speed <= -360) and (speed < 799.9 or speed > -799.9)):
-		$Sprite.play ("Run_1")
-	elif ((speed >= 800) or (speed <= -800)):
-		$Sprite.play ("fullSpeed")
-	else:
+func ground_speedometer ():
+	# Bug; sometimes lands with 0, other times lands with 2.8125, exact same number as the friction.
+	# FIXME: This seems an odd bug/error. Try to reproduce/recreate it? Try to identify what causes it?
+	if (abs (run_speed) > 0 && abs (run_speed) < 360):
 		$Sprite.play ("Walk")
+	elif (abs (run_speed) >= 360 && abs (run_speed) < 800):
+		$Sprite.play ("Run_1")
+	elif (abs (run_speed) >= 800):
+		$Sprite.play ("fullSpeed")
+	else:	# This means the player should not be moving, so if the movement states are not set, then set state to idle.
+		if (!((States & MOVELEFT_STATE) || (States & MOVERIGHT_STATE) || (States & JUMP_STATE) || (States & SPIN_STATE) || (States & CROUCH_STATE))):
+			States = (IDLE_STATE if (abs (run_speed) < 0.01) else States)
+	return
 
-func speed_state_checker (state, PlayerSpeed):
-	match state:
+func speed_state_checker ():
+	match States:
 		IDLE_STATE:
-			pass
+			return
 		JUMP_STATE:
-			check_state_to_play_sprite (state)
+			check_state_to_play_sprite ()
 		CUTSCENE_STATE:
 			printerr ("CUTSCENE_STATE")
 		_:
-			ground_speedometer (PlayerSpeed)
+			ground_speedometer ()
 			continue
+	return
 
-func check_state_to_play_sprite (State):
-	match State:
-		IDLE_STATE:
-			$Sprite.play ("Idle")
-			continue
+func check_state_to_play_sprite ():
+	match States:
 		JUMP_STATE:
 			$Sprite.play ("Jump_2")
+#			continue
 		MOVERIGHT_STATE:
 			$Sprite.flip_h = false
+#			continue
 		MOVELEFT_STATE:
 			$Sprite.flip_h = true
-			continue
+#			continue
 		COLLIDE_STATE:
 			print ("COLLIDE_STATE")
 		CUTSCENE_STATE:
 			printerr ("CUTSCENE_STATE")
+		IDLE_STATE:
+			$Sprite.play ("Idle")
+#			continue
+	return
 
 func _input (event):
-	if (!(States & CUTSCENE_STATE)):
-		if (Input.is_action_pressed ("move_left")):
-			States |= MOVELEFT_STATE
-		if (Input.is_action_pressed ("move_right")):
-			States |= MOVERIGHT_STATE
-		if (Input.is_action_just_released ("move_left")):
-			States &= ~MOVELEFT_STATE
-		if (Input.is_action_just_released ("move_right")):
-			States &= ~MOVERIGHT_STATE
-		if (OS.is_debug_build ()):
-			if (Input.is_action_just_pressed ("DEBUG_kill_player")):
-				print ("AAAA")
-				game_space.lives -= 1
+	if (States & CUTSCENE_STATE):	# Ensure player control is only possible when not in a cutscene.
+		return
+	if (Input.is_action_pressed ("move_left")):
+		States |= MOVELEFT_STATE
+	if (Input.is_action_pressed ("move_right")):
+		States |= MOVERIGHT_STATE
+	if (Input.is_action_just_released ("move_left")):
+		States &= ~MOVELEFT_STATE
+	if (Input.is_action_just_released ("move_right")):
+		States &= ~MOVERIGHT_STATE
+	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY. Commands for testing things out.
+		if (Input.is_action_just_pressed ("DEBUG_kill_player")):
+			print ("AAAA")
+			game_space.lives -= 1
 	return
 
 func _physics_process (delta):
-	check_state_to_play_sprite (States)
-	var floor_rays = [$FloorDetectCenter, $FloorDetectLeft, $FloorDetectRight]
+	check_state_to_play_sprite ()
+	if (States & CUTSCENE_STATE):
+		return	# Cutscene stuff should be handled by the level's own code wherever possible.
+	var floor_rays = [$FloorDetectLeft, $FloorDetectCenter, $FloorDetectRight]
 	for ray in floor_rays:
-#		# FIXME: This is pretty hacky, so need to find a better way of handling all this.
+		# FIXME: This is pretty hacky, so need to find a better way of handling all this.
 		# FIXME: These rays should be used for "edge of platform" animations and rotations.
 		# FIXME: is_on_floor should be handling actual floor collisions.
 		is_player_on_floor = ray.is_colliding ()
@@ -147,7 +156,7 @@ func _physics_process (delta):
 	var hitting_floor = (is_player_on_floor && !was_player_on_floor)
 	was_player_on_floor = is_player_on_floor
 
-	var run_speed = (ground_speed if is_player_on_floor else velocity.x)
+	run_speed = (ground_speed if is_player_on_floor else velocity.x)
 
 	var ground_angle = (UP.angle_to (ground_normal))
 
@@ -158,7 +167,7 @@ func _physics_process (delta):
 
 	if (is_player_on_floor):	# Major condition, determines whether we're going by groundspeed or traditional
 		# Vector that points "forward" along the ground that Sonic stands on.
-		speed_state_checker (States, run_speed)
+		speed_state_checker ()
 		var ground_speed_vector = ground_normal.rotated (PI/2)
 		if (hitting_floor):
 			States &= ~JUMP_STATE
