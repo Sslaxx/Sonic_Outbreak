@@ -27,7 +27,7 @@
 """
 
 """
-   For use for game variables, constants etc. that will be accessed by other scenes/nodes/scripts throughout the game.
+   Used for game variables, constants etc. that will be accessed by other scenes/nodes/scripts throughout the game.
    Also does some (basic) game management.
 """
 
@@ -43,8 +43,6 @@ var player_character = null	# Who is the player character? Set up by player_gene
 var player_character_node = null	# This is for the actual node, not the path, to the character.
 var player_controlling_character = true	# Is the player controlling the character? Normally true. False for death/cutscenes/etc.
 var reset_player_to_checkpoint = false	# Reset the player to the last checkpoint/start position if true.
-
-onready var Game_Timer = Timer.new ()	# A universal timer.
 
 ## Set up variables for rings/collectibles, lives and score.
 # These have setters and getters in order to allow gameplay-related events (extra lives, death etc.) to occur.
