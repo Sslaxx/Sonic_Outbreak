@@ -19,7 +19,7 @@ const special_number = 60
 const GRAVITY = (13.125 / 60) * special_number	# Gravity Speed = 13.125
 
 enum PlayerState {
-	IDLE_STATE = 0,				# Player is not moving, jumping etc.
+	IDLE_STATE = 0,
 	MOVELEFT_STATE = 1,
 	MOVERIGHT_STATE = 2,
 	JUMP_STATE = 4,
@@ -32,8 +32,8 @@ enum PlayerState {
 	SPECIAL4_STATE = 512,
 	CHARSPECIFIC1_STATE = 1024,
 	CHARSPECIFIC2_STATE = 2048,
-	CUTSCENE_STATE = 4096,		# Cutscene (be that the start or end of an act, or anything else).
-}
+	CUTSCENE_STATE = 4096,
+	}
 
 """
 enum SpeedType {
@@ -41,11 +41,12 @@ enum SpeedType {
 	INITIAL_SPEED = 1,
 	LOW_SPEED = 2,
 	HIGH_SPEED = 4,
-}
+	}
 """
 
-var velocity = Vector2 (0, 0)	# Velocity; the amount the player character moves by.
+var linear_velocity = Vector2 (0, GRAVITY)	# Velocity; the amount the player character moves by.
 var ground_normal = UP
+var movement_velocity
 
 # Sonic Physics Guide Variables
 var accel = 0.046875 * special_number		# Acceleration = 28.125
@@ -54,14 +55,19 @@ var friction = 0.046875 * special_number 	# Friction = 2.8125
 var top_speed = 6 * special_number 			# Top Speed = 360
 var air = 0.09375 * special_number 			# Air = 5.625
 var slope = 0.125 * special_number			# Slope = 7.5
-var fall = 2.5 * special_number				# fall = 90
+var fall = 2.5 * special_number			# fall = 90
 var ground_speed =  0.0
 var horizontal_lock_timer = 0
+var before_move
 var is_player_on_floor = false
 var real_movement = Vector2 (0, 0)
 var was_player_on_floor = false
+var is_player_on_edge = false
 var States = IDLE_STATE
-var run_speed = 0.0
+onready var center_ray = $FloorDetectCenter
+onready var left_ray = $FloorDetectLeft
+onready var right_ray = $FloorDetectRight
+onready var floor_rays = [left_ray, right_ray, center_ray]
 
 func _ready ():
 	# Sets the player_character variables for other nodes/scenes to use.
@@ -72,107 +78,114 @@ func _ready ():
 	return
 
 """
-   Checks the speed of the player character, sets animation as required.
+   Checks the speed of the player character, sets animation speeds as required.
 """
-func ground_speedometer ():
-	# Bug; sometimes lands with 0, other times lands with 2.8125, exact same number as the friction.
-	# FIXME: This seems an odd bug/error. Try to reproduce/recreate it? Try to identify what causes it?
-	if (abs (run_speed) > 0 && abs (run_speed) < 360):
-		$Sprite.play ("Walk")
-	elif (abs (run_speed) >= 360 && abs (run_speed) < 800):
+func ground_speedometer (speed):
+#	if ((speed >= -0.01 and speed <= 2.8126) or speed == 0):
+	if (abs (speed) == 0):
+		# Bug; sometimes lands with 0, other times lands with 2.8125, exact same number as the friction.
+		# FIXME: This seems an odd bug/error. Try to reproduce/recreate it? Try to identify what causes it?
+		States |= IDLE_STATE
+	elif ((abs(speed) >= 360) and (abs(speed) < 799.9)):
 		$Sprite.play ("Run_1")
-	elif (abs (run_speed) >= 800):
+	elif ((abs(speed) >= 800)):
 		$Sprite.play ("fullSpeed")
-	else:	# This means the player should not be moving, so if the movement states are not set, then set state to idle.
-		if (!((States & MOVELEFT_STATE) || (States & MOVERIGHT_STATE) || (States & JUMP_STATE) || (States & SPIN_STATE) || (States & CROUCH_STATE))):
-			States = (IDLE_STATE if (abs (run_speed) < 0.01) else States)
-	return
+	else:
+		$Sprite.play ("Walk")
 
-func speed_state_checker ():
-	match States:
+"""func speed_state_checker (state, PlayerSpeed):
+	match state:
 		IDLE_STATE:
-			return
+			pass
 		JUMP_STATE:
-			check_state_to_play_sprite ()
+			check_state_to_play_sprite (state)
 		CUTSCENE_STATE:
 			printerr ("CUTSCENE_STATE")
 		_:
-			ground_speedometer ()
-			continue
-	return
+			ground_speedometer (PlayerSpeed)
+			continue"""
 
-func check_state_to_play_sprite ():
-	match States:
+func edge_checker(outer_ray):
+	if(center_ray.is_colliding() && !(outer_ray.is_colliding())):
+		is_player_on_edge = true
+	else:
+		is_player_on_edge = false
+func wall_checker(outer_ray,speed):
+	if(speed < 800):
+		if(is_on_floor() && is_on_wall()):
+			if(States & MOVERIGHT_STATE) or (States & MOVELEFT_STATE):
+				(States |= COLLIDE_STATE)
+		else:
+			(States &= ~COLLIDE_STATE)
+			
+func angle_checker(ray):
+	if (is_player_on_floor && abs (linear_velocity.x) >= 0.05):
+#			printerr (ray.name)
+			ground_normal = ray.get_collision_normal ()
+#			printerr (ray.name, " ", ground_normal)	# FOR DEBUGGING ONLY. Print which ray is colliding.,,,,,,,,,,,,,,,,,,
+func check_state_to_play_sprite (State):
+	match State:
+		IDLE_STATE:
+			$Sprite.play ("Idle")
+			continue
 		JUMP_STATE:
 			$Sprite.play ("Jump_2")
-#			continue
 		MOVERIGHT_STATE:
 			$Sprite.flip_h = false
-#			continue
+			
 		MOVELEFT_STATE:
 			$Sprite.flip_h = true
-#			continue
+			continue
 		COLLIDE_STATE:
 			print ("COLLIDE_STATE")
 		CUTSCENE_STATE:
 			printerr ("CUTSCENE_STATE")
-		IDLE_STATE:
-			$Sprite.play ("Idle")
-#			continue
-	return
 
 func _input (event):
-	if (States & CUTSCENE_STATE):	# Ensure player control is only possible when not in a cutscene.
-		return
-	if (Input.is_action_pressed ("move_left")):
-		States |= MOVELEFT_STATE
-	if (Input.is_action_pressed ("move_right")):
-		States |= MOVERIGHT_STATE
-	if (Input.is_action_just_released ("move_left")):
-		States &= ~MOVELEFT_STATE
-	if (Input.is_action_just_released ("move_right")):
-		States &= ~MOVERIGHT_STATE
-	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY. Commands for testing things out.
-		if (Input.is_action_just_pressed ("DEBUG_kill_player")):
-			print ("AAAA")
-			game_space.lives -= 1
+	if (!(States & CUTSCENE_STATE)):
+		if (Input.is_action_pressed ("move_left")):
+			States |= MOVELEFT_STATE
+		if (Input.is_action_pressed ("move_right")):
+			States |= MOVERIGHT_STATE
+		if (Input.is_action_just_released ("move_left")):
+			States &= ~MOVELEFT_STATE
+		if (Input.is_action_just_released ("move_right")):
+			States &= ~MOVERIGHT_STATE
+		if (OS.is_debug_build ()):
+			if (Input.is_action_just_pressed ("DEBUG_kill_player")):
+				print ("AAAA")
+				game_space.lives -= 1
 	return
 
 func _physics_process (delta):
-	check_state_to_play_sprite ()
-	if (States & CUTSCENE_STATE):
-		return	# Cutscene stuff should be handled by the level's own code wherever possible.
-	var floor_rays = [$FloorDetectLeft, $FloorDetectCenter, $FloorDetectRight]
+	check_state_to_play_sprite(States)
+	before_move = position
+	move_and_slide(linear_velocity, UP)
+	is_player_on_floor = is_on_floor()
 	for ray in floor_rays:
-		# FIXME: This is pretty hacky, so need to find a better way of handling all this.
-		# FIXME: These rays should be used for "edge of platform" animations and rotations.
-		# FIXME: is_on_floor should be handling actual floor collisions.
-		is_player_on_floor = ray.is_colliding ()
-		if (is_player_on_floor && abs (velocity.x) >= 0.05):
-#			printerr (ray.name)
-			ground_normal = ray.get_collision_normal ()
-#			printerr (ray.name, " ", ground_normal)	# FOR DEBUGGING ONLY. Print which ray is colliding.
-
+		match ray:
+			center_ray:
+				angle_checker(ray)
+			_:
+				edge_checker(ray)
+				wall_checker(ray, linear_velocity.x)
+				angle_checker(center_ray)
+	
 	var hitting_floor = (is_player_on_floor && !was_player_on_floor)
 	was_player_on_floor = is_player_on_floor
 
-	run_speed = (ground_speed if is_player_on_floor else velocity.x)
+	#var run_speed = (ground_speed if is_player_on_floor else velocity.x)
 
 	var ground_angle = (UP.angle_to (ground_normal))
-
-#	# FIXME: This piece of code seems to not be called at all!
-#	if (abs (ground_angle) >= (PI/2.01) && ground_speed < fall):
-#		ground_speed = 0
-#		horizontal_lock_timer = 0.5
-
+	
 	if (is_player_on_floor):	# Major condition, determines whether we're going by groundspeed or traditional
 		# Vector that points "forward" along the ground that Sonic stands on.
-		speed_state_checker ()
+		ground_speedometer(ground_speed)
 		var ground_speed_vector = ground_normal.rotated (PI/2)
 		if (hitting_floor):
 			States &= ~JUMP_STATE
 			# If we've landed on floor, recalculate ground_speed.
-			ground_speed = velocity.dot (ground_speed_vector)
+			ground_speed = linear_velocity.dot (ground_speed_vector)
 			rotation = ground_angle
 #			printerr (ground_angle)
 		ground_speed += slope * sin (ground_speed_vector.angle ())
@@ -197,11 +210,11 @@ func _physics_process (delta):
 			ground_speed -= (ground_friction * sign (ground_speed))
 #			printerr (str (beforeground_speed) + " " + str (ground_speed))
 		#ground_normal
-		velocity = ground_speed_vector * ground_speed
+		linear_velocity = ground_speed_vector * ground_speed
 		if (Input.is_action_just_pressed ("move_jump")):
 			States |= JUMP_STATE
 			sound_player.play_sound ("Jump")
-			velocity += (6.5 * special_number) * ground_normal
+			linear_velocity += (6.5 * special_number) * ground_normal
 #			printerr (str (ground_normal.rotated (PI/2)))
 			$Sprite.play ("Jump_2")
 		rotation = ground_angle
@@ -209,38 +222,31 @@ func _physics_process (delta):
 		#If in the air
 		rotation = 0
 		if (States & MOVERIGHT_STATE):	# Air control
-			if (velocity.x < top_speed):
-				velocity.x += air
+			if (linear_velocity.x < top_speed):
+				linear_velocity.x += air
 		elif (States & MOVELEFT_STATE):
-			if (velocity.x > -top_speed):
-				velocity.x -= air
+			if (linear_velocity.x > -top_speed):
+				linear_velocity.x -= air
 
 		# Air Drag
-		if (velocity.y < 0 && velocity.y > -4 * special_number):
-			if (abs (velocity.x) >= 0.125):
-				velocity.x = velocity.x * 0.9875
+		if (linear_velocity.y < 0 && linear_velocity.y > -4 * special_number):
+			if (abs (linear_velocity.x) >= 0.125):
+				linear_velocity.x = linear_velocity.x * 0.9875
 
-		velocity.y += GRAVITY
+		linear_velocity.y += GRAVITY
 		# Top Y Speed
-		if (velocity.y > 16 * special_number):
-			velocity.y = 16 * special_number
+		if (linear_velocity.y > 16 * special_number):
+			linear_velocity.y = 16 * special_number
 
-		if (Input.is_action_just_released ("move_jump") && (velocity.y < -4 * special_number ) && (States & JUMP_STATE)):
-			velocity.y = -4 * special_number
-
-	var beforeMove = position
-	velocity = move_and_slide (velocity, UP)	# Sets motion equal to 0
-
-	var afterMove = position
-	real_movement = afterMove - beforeMove		# FIXME: This isn't used anywhere. Does it need to be?
-#	print (real_movement)
-
-	# Collision Count (WIP)
+		if (Input.is_action_just_released ("move_jump") && (linear_velocity.y < -4 * special_number ) && (States & JUMP_STATE)):
+			linear_velocity.y = -4 * special_number
+			
+			
 	var collision_count = get_slide_count ()
 	if (collision_count > 0):
 		var last_collision = get_slide_collision (collision_count - 1)
 		if (last_collision.collider is preload ("res://Scripts/Badniks/generic_badnik.gd")):
-			last_collision.collider.badnik_hit ()
+			last_collision.collider.hit_the_pest ()
 #		printerr ((last_collision.normal*-1).angle ())
 #		printerr ("last_collision: ", last_collision.collider)
 	return
