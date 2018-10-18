@@ -2,5 +2,5 @@
 # Each line is a file pattern followed by one or more owners, delineated by spaces.
 # Owners can be @users, @org/teams or emails
 
-Scripts/*	@Sslaxx
+Scripts/*	@ofeeg @Sslaxx
 

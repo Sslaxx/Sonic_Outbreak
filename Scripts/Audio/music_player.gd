@@ -35,6 +35,8 @@ extends AudioStreamPlayer
 
 onready var bus_index = AudioServer.get_bus_index ("Music")
 
+signal music_stopped	# Signal that music has been stopped.
+
 func _ready ():
 	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
 		printerr (get_script ().resource_path, " ready.")
@@ -70,7 +72,9 @@ func play_music (path_to_music = "", play_from = 0.0):
    stop_music
    music_player.stop_music ()
    Just a bit of syntactic sugar. Stops the currently playing music.
+   Emits a "music_stopped" signal (may be of use for rythym-based games and suchlike).
 """
 func stop_music ():
 	stop ()
+	emit_signal ("music_stopped")
 	return

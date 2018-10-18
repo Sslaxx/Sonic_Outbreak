@@ -6,13 +6,14 @@ Powered by the **[Godot Engine](https://godotengine.org/)**.
 
 **LEVEL DESIGN:**
 - Cris Nail Bidoof - Level designer, conceptualizer
-- Kalin - Level designer
 - jubbalub - Level designer
+- Kalin - Level designer
 - Ozaleto - Level designer, FM OST
 
 **CODERS:**
-- Sslaxx - Coding: UI
+- Most - Coding
 - Sofox - Coding
+- Sslaxx - Coding
 
 **CONCEPT ARTISTS:**
 - AaronKasarion - Concept Artist, character designs
@@ -36,8 +37,8 @@ Powered by the **[Godot Engine](https://godotengine.org/)**.
 - NintendOni - Art Designer, Assistance
 
 **PREVIOUS TEAM MEMBERS:**
-- RSM
-- Jesse (Blitzer)
 - EggmanInc
-- Moki
 - Foxito
+- Jesse (Blitzer)
+- Moki
+- RSM
