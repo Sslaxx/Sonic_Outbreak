@@ -48,7 +48,7 @@ Generic movement state machine values:
 32 - STATE_CUTSCENE
 ```
 
-Anything above this is character-specific (with names like, e.g. `STATE_KNUCKLES_GLIDING`. Exact implementation details may vary.
+Anything above this is character-specific, with names like, e.g. `STATE_KNUCKLES_GLIDING`. Exact implementation details may vary.
 
 Movement direction is handled by:
 

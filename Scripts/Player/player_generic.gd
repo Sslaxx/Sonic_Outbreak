@@ -249,7 +249,10 @@ func check_state_to_play_sprite ():
 		PlayerState.STATE_CUTSCENE:
 			printerr ("PlayerState.STATE_CUTSCENE")
 		PlayerState.STATE_IDLE:
-			if (abs (run_speed) < 0.01):
+			# Player is (nominally) idle, but check for movement (and being on the floor) to avoid gliding.
+			if (abs (run_speed) < 0.01 && is_player_on_floor):	# On the floor, and not moving, so set animation to idle.
 				$Sprite.play ("Idle")
+			elif (is_player_on_floor):	# Still moving, so make sure a relevant animation is playing instead.
+				ground_speedometer ()
 #			continue
 	return
