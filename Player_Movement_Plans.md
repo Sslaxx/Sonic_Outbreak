@@ -28,55 +28,45 @@ The current code *mostly* does the job, but it's not handling collisions with so
 
 Some of that issue (dealing with collision/jumping at the bottom of ramps) appears to have been mostly fixed by moving the floor collision rays. That still leaves the issues at the top of the ramps.
 
-**Keeping it simple** is key. It's not going to be particularly simple anyway, especially if dealing with potential multiple player characters, but simplicity (of design, of code) wherever possible is desirable. Also, remember that *simple is not the same as easy*.
+**Keeping it simple** is key. It's not going to be particularly simple anyway, especially if dealing with potential multiple player characters, but simplicity (of design, of code) wherever possible is desirable. *Simple is not the same as easy*.
 
 ## POSSIBLE 1: state machine control?
 
 ### Overview
 
-If movement is to be a "state machine", using a bitmask to determine state(s), could do it along these lines:
-- 0 == No movement
-- 1 == Move left
-- 2 == Move right
-- 4 == Jump (up)
-- 8 == Jump (down)
-- 16 == Spindash/squat
-- 32 == Dropdash
-- 64 == Collision *walls, ceilings and floors, ramps and slopes*
-- 128 == Collision *badniks, spikes, monitor boxes*
-- 256 == Collision *other enviromentals, e.g. zone gimmicks or moving floors/ceilings/walls*
-- 512 == Cutscene/no player control
+Velocity and speed should be separate. Velocity (the amount of directional speed the player travels at) is determined by Speed. The direction of the speed is controlled by movement. -1 is left/up (x, y), 0 is none, 1 is down/right.
 
-Velocity and speed should be separate. Velocity (the directional speed the player travels at) is determined by Speed. The direction of the speed is controlled by movement. -1 is left/up (x, y), 0 is none, 1 is down/right. Holding down left or right, or jump, should increase speed in the appropriate direction (up to the maximum); releasing/not holding them will decrease speed (to 0). Friction etc. is applied to this speed to determine velocity, and it is this velocity which controls movement.
+Generic movement state machine values:
 
-Left and right should should *always* be mutually exclusive movement states. Movement and collision states could be separate if this would make it easier to handle.
+```0 - STATE_IDLE
+1 - STATE_MOVE_LEFT
+2 - STATE_MOVE_RIGHT
+4 - STATE_JUMPING
+8 - STATE_CROUCHING
+16 - STATE_SPINNING
+32 - STATE_CUTSCENE```
 
-If so, perhaps like these?
+Anything above this is character-specific (with names like, e.g. `STATE_KNUCKLES_GLIDING`. Exact implementation details may vary.
 
-**Movement/actions**
+Movement direction is handled by:
 
-- 0 No movement.
-- 1 Move left
-- 2 Move right
-- 4 Jump (upwards)
-- 8 Jump (downwards)
-- 16 Spindash/squat
-- 32 Cutscene/no player control
+1: `move_left` or `move_right` - boolean variables set to be true if the relevant movement key is pressed.
 
-Some actions could be combinations of states and/or player input (e.g., dropdash could be Spindash/squat and jump (downwards)).
+2: relevant state is set for which direction. Movement direction vector's x is set to appropriate value.
 
-**Collision**
+3: so long as `move_left/right` are true, increase acceleration (dirction handled by movement vector).
 
-- 0 No collision
-- 1 Colliding with *walls, ceilings, floors*
-- 2 *badniks*
-- 4 *spikes*
-- 8 *monitor boxes*
-- 16 *other environmentals, e.g. zone gimmicks or moving floors/ceilings/walls*
+4: if both `move_left/right` are false for any reason, decelerate.
+4a: if one move is true and the other false, and the move is different from the representative movement state, decelerate.
 
-Having movement be separate states means that if the player suddenly starts to move in the other direction state, movement can be used together to control deceleration/turning, with the movement state being changed to whichever direction the player is moving in when deceleration has finished. While there's movement (speed is > 0) the movement direction **must not be changed**; movement state should be considered to determine which direction the player *will* move in, but not necessarily which direction the player *is currently moving* in.
+5: if stopped, and the movement state is different from the movement direction vector, change the vector to reflect the movement state and accelerate.
+5a: unless `move_left/right` are *both* false *and* the player is on a floor surface, in which case set movement state to `STATE_IDLE` instead.
 
-So: maybe three Vector2s - Movement (x, y values from -1 to 1), Speed (whatever the current speeds of the player are - independent x, y?) and Velocity (the actual current movement of the player). Variable(s) holding the state(s) - determined by the bitmasks.
+**OR**, instead of having two boolean variables, one variable called something like `moving_in` functioning in a similar way, controlled by something like:
+
+`moving_in = ("left" if Input.is_action_pressed ("move_left") else ("right" if Input.is_action_pressed ("move_right") else "nil"))`
+
+Speed is positive only - direction is handled by the movement direction vector (i.e., it has values from -1 to 1). This *should* eliminate the need for abs checks; the only time the direction vector needs to be used should be `move_and_slide`.
 
 ### What complicates this?
 
