@@ -59,10 +59,10 @@ Movement direction is handled by:
 3: so long as `move_left/right` are true, increase acceleration (dirction handled by movement vector).
 
 4: if both `move_left/right` are false for any reason, decelerate.
-4a: if one move is true and the other false, and the move is different from the representative movement state, decelerate.
+⋅⋅4a: if one move is true and the other false, and the move is different from the representative movement state, decelerate.
 
 5: if stopped, and the movement state is different from the movement direction vector, change the vector to reflect the movement state and accelerate.
-5a: unless `move_left/right` are *both* false *and* the player is on a floor surface, in which case set movement state to `STATE_IDLE` instead.
+⋅⋅5a: unless `move_left/right` are *both* false *and* the player is on a floor surface, in which case set movement state to `STATE_IDLE` instead.
 
 **OR**, instead of having two boolean variables, one variable called something like `moving_in` functioning in a similar way, controlled by something like:
 
