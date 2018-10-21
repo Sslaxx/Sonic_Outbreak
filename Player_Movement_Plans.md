@@ -38,13 +38,15 @@ Velocity and speed should be separate. Velocity (the amount of directional speed
 
 Generic movement state machine values:
 
-```0 - STATE_IDLE
+```
+0 - STATE_IDLE
 1 - STATE_MOVE_LEFT
 2 - STATE_MOVE_RIGHT
 4 - STATE_JUMPING
 8 - STATE_CROUCHING
 16 - STATE_SPINNING
-32 - STATE_CUTSCENE```
+32 - STATE_CUTSCENE
+```
 
 Anything above this is character-specific (with names like, e.g. `STATE_KNUCKLES_GLIDING`. Exact implementation details may vary.
 
