@@ -249,6 +249,7 @@ func check_state_to_play_sprite ():
 		PlayerState.STATE_CUTSCENE:
 			printerr ("PlayerState.STATE_CUTSCENE")
 		PlayerState.STATE_IDLE:
-			$Sprite.play ("Idle")
+			if (abs (run_speed) < 0.01):
+				$Sprite.play ("Idle")
 #			continue
 	return
