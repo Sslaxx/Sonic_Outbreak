@@ -54,7 +54,7 @@ Movement direction is handled by:
 
 1: `move_left` or `move_right` - boolean variables set to be true if the relevant movement key is pressed.
 
-2: relevant state is set for which direction. Movement direction vector's x is set to appropriate value.
+2: relevant state is set for which direction (if it isn't already set to the opposite value that is). Movement direction vector's x is set to appropriate value.
 
 3: so long as `move_left/right` are true, increase acceleration (dirction handled by movement vector).
 

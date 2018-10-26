@@ -18,9 +18,9 @@ const special_number = 60
 
 const GRAVITY = (13.125 / 60) * special_number	# Gravity Speed = 13.125
 
-enum PlayerState {
+enum MovementState {
 	# These are universal, generic states for all player characters.
-	STATE_IDLE = 0,				# Player is not moving, jumping etc.
+	STATE_IDLE = 0,				# Player is not moving, jumping etc. This is the absence of state, really, not a state per se.
 	STATE_MOVE_LEFT = 1,
 	STATE_MOVE_RIGHT = 2,
 	STATE_JUMPING = 4,
@@ -58,7 +58,7 @@ var horizontal_lock_timer = 0
 var is_player_on_floor = false
 var real_movement = Vector2 (0, 0)
 var was_player_on_floor = false
-var States = PlayerState.STATE_IDLE
+var player_state = MovementState.STATE_IDLE
 onready var floor_rays = [$FloorDetectLeft, $FloorDetectCenter, $FloorDetectRight]
 
 func _ready ():
@@ -70,28 +70,28 @@ func _ready ():
 	return
 
 func _input (event):
-	if (States & PlayerState.STATE_CUTSCENE):	# Ensure player control is only possible when not in a cutscene.
+	if (player_state & MovementState.STATE_CUTSCENE):	# Ensure player control is only possible when not in a cutscene.
 		return
 	if (Input.is_action_pressed ("move_left")):
-		States |= PlayerState.STATE_MOVE_LEFT
+		player_state |= MovementState.STATE_MOVE_LEFT
 	if (Input.is_action_pressed ("move_right")):
-		States |= PlayerState.STATE_MOVE_RIGHT
+		player_state |= MovementState.STATE_MOVE_RIGHT
 	if (Input.is_action_just_released ("move_left")):
-		States &= ~PlayerState.STATE_MOVE_LEFT
+		player_state &= ~MovementState.STATE_MOVE_LEFT
 	if (Input.is_action_just_released ("move_right")):
-		States &= ~PlayerState.STATE_MOVE_RIGHT
+		player_state &= ~MovementState.STATE_MOVE_RIGHT
 #	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY. Commands for testing things out.
 #		if (Input.is_action_just_pressed ("DEBUG_kill_player")):
 #			print ("AAAA")
 #			game_space.lives -= 1
 #	moving_in = ("left" if Input.is_action_pressed ("move_left") else ("right" if Input.is_action_pressed ("move_right") else "nil"))
-#	States |= (PlayerState.STATE_MOVE_LEFT if moving_in == "left" else (PlayerState.STATE_MOVE_RIGHT if moving_in == "right" else States))
+#	player_state |= (MovementState.STATE_MOVE_LEFT if moving_in == "left" else (MovementState.STATE_MOVE_RIGHT if moving_in == "right" else player_state))
 #	print (moving_in)
 	return
 
 func _physics_process (delta):
 	check_state_to_play_sprite ()
-	if (States & PlayerState.STATE_CUTSCENE):
+	if (player_state & MovementState.STATE_CUTSCENE):
 		return	# Cutscene stuff should be handled by the level's own code wherever possible.
 	for ray in floor_rays:
 		# FIXME: This is pretty hacky, so need to find a better way of handling all this.
@@ -120,21 +120,21 @@ func _physics_process (delta):
 		speed_state_checker ()
 		var ground_speed_vector = ground_normal.rotated (PI/2)
 		if (hitting_floor):
-			States &= ~PlayerState.STATE_JUMPING
+			player_state &= ~MovementState.STATE_JUMPING
 			# If we've landed on floor, recalculate ground_speed.
 			ground_speed = linear_velocity.dot (ground_speed_vector)
 			rotation = ground_angle
 #			printerr (ground_angle)
 		ground_speed += slope * sin (ground_speed_vector.angle ())
 		# Right movement
-		if (States & PlayerState.STATE_MOVE_RIGHT):
+		if (player_state & MovementState.STATE_MOVE_RIGHT):
 #			printerr ("Right.")
 			if (ground_speed < 0):
 				ground_speed += decel
 			elif (ground_speed < top_speed):
 				ground_speed += accel
 		# Left Movement
-		elif (States & PlayerState.STATE_MOVE_LEFT):
+		elif (player_state & MovementState.STATE_MOVE_LEFT):
 #			printerr ("Left.")
 			if (ground_speed > 0):
 				ground_speed -= decel
@@ -149,7 +149,7 @@ func _physics_process (delta):
 		#ground_normal
 		linear_velocity = ground_speed_vector * ground_speed
 		if (Input.is_action_just_pressed ("move_jump")):
-			States |= PlayerState.STATE_JUMPING
+			player_state |= MovementState.STATE_JUMPING
 			sound_player.play_sound ("Jump")
 			linear_velocity += (6.5 * special_number) * ground_normal
 #			printerr (str (ground_normal.rotated (PI/2)))
@@ -158,10 +158,10 @@ func _physics_process (delta):
 	else:
 		# When in the air...
 		rotation = 0
-		if (States & PlayerState.STATE_MOVE_RIGHT):	# Air control
+		if (player_state & MovementState.STATE_MOVE_RIGHT):	# Air control
 			if (linear_velocity.x < top_speed):
 				linear_velocity.x += air
-		elif (States & PlayerState.STATE_MOVE_LEFT):
+		elif (player_state & MovementState.STATE_MOVE_LEFT):
 			if (linear_velocity.x > -top_speed):
 				linear_velocity.x -= air
 
@@ -175,7 +175,7 @@ func _physics_process (delta):
 		if (linear_velocity.y > 16 * special_number):
 			linear_velocity.y = 16 * special_number
 
-		if (Input.is_action_just_released ("move_jump") && (linear_velocity.y < -4 * special_number ) && (States & PlayerState.STATE_JUMPING)):
+		if (Input.is_action_just_released ("move_jump") && (linear_velocity.y < -4 * special_number ) && (player_state & MovementState.STATE_JUMPING)):
 			linear_velocity.y = -4 * special_number
 
 #	var beforeMove = position
@@ -216,43 +216,49 @@ func ground_speedometer ():
 	elif (abs (run_speed) >= 800):
 		$Sprite.play ("fullSpeed")
 	else:	# This means the player should not be moving, so if the movement states are not set, then set state to idle.
-		if (!((States & PlayerState.STATE_MOVE_LEFT) || (States & PlayerState.STATE_MOVE_RIGHT) || (States & PlayerState.STATE_JUMPING) || (States & PlayerState.STATE_SPINNING) || (States & PlayerState.STATE_CROUCHING))):
-			States = (PlayerState.STATE_IDLE if (abs (run_speed) < 0.01) else States)
+		if (!((player_state & MovementState.STATE_MOVE_LEFT) || (player_state & MovementState.STATE_MOVE_RIGHT) || (player_state & MovementState.STATE_JUMPING) || (player_state & MovementState.STATE_SPINNING) || (player_state & MovementState.STATE_CROUCHING))):
+			player_state = (MovementState.STATE_IDLE if (abs (run_speed) < 0.01) else player_state)
 	return
 
 func speed_state_checker ():
-	match States:
-		PlayerState.STATE_IDLE:
+	match player_state:
+		MovementState.STATE_IDLE:
+			if (abs (run_speed) < 0.01 && is_player_on_floor):
+				$Sprite.play ("Idle")
 			return
-		PlayerState.STATE_JUMPING:
+		MovementState.STATE_JUMPING:
 			check_state_to_play_sprite ()
-		PlayerState.STATE_CUTSCENE:
-			printerr ("PlayerState.STATE_CUTSCENE")
+		MovementState.STATE_CUTSCENE:
+			printerr ("MovementState.STATE_CUTSCENE")
 		_:
 			ground_speedometer ()
 			continue
 	return
 
 func check_state_to_play_sprite ():
-	match States:
-		PlayerState.STATE_JUMPING:
+	match player_state:
+		MovementState.STATE_JUMPING:
 			$Sprite.play ("Jump_2")
-#			continue
-		PlayerState.STATE_MOVE_RIGHT:
+			continue
+		MovementState.STATE_MOVE_RIGHT:
 			$Sprite.flip_h = false
 #			continue
-		PlayerState.STATE_MOVE_LEFT:
+		MovementState.STATE_MOVE_LEFT:
 			$Sprite.flip_h = true
 #			continue
 #		COLLIDE_STATE:
 #			print ("COLLIDE_STATE")
-		PlayerState.STATE_CUTSCENE:
-			printerr ("PlayerState.STATE_CUTSCENE")
-		PlayerState.STATE_IDLE:
+		MovementState.STATE_CUTSCENE:
+			printerr ("MovementState.STATE_CUTSCENE")
+		MovementState.STATE_IDLE:
 			# Player is (nominally) idle, but check for movement (and being on the floor) to avoid gliding.
 			if (abs (run_speed) < 0.01 && is_player_on_floor):	# On the floor, and not moving, so set animation to idle.
 				$Sprite.play ("Idle")
 			elif (is_player_on_floor):	# Still moving, so make sure a relevant animation is playing instead.
+				ground_speedometer ()
+				$Sprite.flip_h = (false if sign (run_speed) == 1 else true)	# Make sure it's in the right direction if possible.
+			else:
+				printerr ("Shouldn't see this; check_state_to_play_sprite has gone wrong!")
 				ground_speedometer ()
 #			continue
 	return
