@@ -1,8 +1,8 @@
 """
    For the Sonic the Hedgehog fan-game:
-   Sonic: Imperial Outbreak
-   Code written by Jesse, Ryan, Sofox, Sslaxx
-   with additional assistance from the Sonic Physics Guide
+   Sonic Outbreak
+   Code written by Jesse, Most, Ryan, Sofox, Sslaxx
+   Using the Sonic Physics Guide.
 """
 
 # All player character scripts must inherit from this script!
@@ -16,7 +16,7 @@ const UP = Vector2 (0, -1)		# Vector2s use x and y values; negatives on the y-ax
 # Special Number. FIXME: This mean that fixing framerate to 60 may be optimal?
 const special_number = 60
 
-const GRAVITY = (13.125 / 60) * special_number	# Gravity Speed = 13.125
+const GRAVITY = (13.125 / special_number) * special_number	# Done to make it easier to adjust gravity values.
 
 enum MovementState {
 	# These are universal, generic states for all player characters.
@@ -40,9 +40,9 @@ enum SpeedType {
 """
 
 var linear_velocity = Vector2 (0, GRAVITY)	# linear_velocity; the amount the player character moves by.
-var movement_direction = Vector2 (0, 0)
 var ground_normal = UP
 #var moving_in = "nil"
+#var movement_direction = Vector2 (0, 0)
 
 # Values taken from the Sonic Physics Guide.
 var accel = 0.046875 * special_number		# Acceleration = 28.125
@@ -56,10 +56,11 @@ var ground_speed =  0.0
 var run_speed = 0.0
 var horizontal_lock_timer = 0
 var is_player_on_floor = false
-var real_movement = Vector2 (0, 0)
+#var real_movement = Vector2 (0, 0)
 var was_player_on_floor = false
 var player_state = MovementState.STATE_IDLE
 onready var floor_rays = [$FloorDetectLeft, $FloorDetectCenter, $FloorDetectRight]
+onready var collision_count = 0
 
 func _ready ():
 	# Sets the player_character variables for other nodes/scenes to use.
@@ -91,7 +92,9 @@ func _input (event):
 
 func _physics_process (delta):
 	check_state_to_play_sprite ()
-	if (player_state & MovementState.STATE_CUTSCENE):
+	if (player_state & MovementState.STATE_CUTSCENE):	# If doing a cutscene, stop any and all movement.
+		run_speed = 0.0
+		linear_velocity = Vector2 (0, 0)
 		return	# Cutscene stuff should be handled by the level's own code wherever possible.
 	for ray in floor_rays:
 		# FIXME: This is pretty hacky, so need to find a better way of handling all this.
@@ -179,14 +182,14 @@ func _physics_process (delta):
 			linear_velocity.y = -4 * special_number
 
 #	var beforeMove = position
-	linear_velocity = move_and_slide (linear_velocity, UP)	# Sets motion equal to 0
+	linear_velocity = move_and_slide (linear_velocity, UP)	# Move the player.
 
 #	var afterMove = position
 #	real_movement = afterMove - beforeMove		# FIXME: This isn't used anywhere. Does it need to be?
 #	print (real_movement)
 
 	# Collision Count (WIP)
-	var collision_count = get_slide_count ()
+	collision_count = get_slide_count ()
 	if (collision_count > 0):
 		var last_collision = get_slide_collision (collision_count - 1)
 		if (last_collision.collider is preload ("res://Scripts/Badniks/generic_badnik.gd")):
@@ -196,6 +199,7 @@ func _physics_process (delta):
 	return
 
 """
+   Resets the player values, some of them dependent on if you're starting a new game or not.
 """
 func reset_player (is_new_game = false):
 	return
@@ -228,11 +232,12 @@ func speed_state_checker ():
 			return
 		MovementState.STATE_JUMPING:
 			check_state_to_play_sprite ()
+			continue
 		MovementState.STATE_CUTSCENE:
 			printerr ("MovementState.STATE_CUTSCENE")
+			return
 		_:
 			ground_speedometer ()
-			continue
 	return
 
 func check_state_to_play_sprite ():
@@ -242,12 +247,10 @@ func check_state_to_play_sprite ():
 			continue
 		MovementState.STATE_MOVE_RIGHT:
 			$Sprite.flip_h = false
-#			continue
+			continue
 		MovementState.STATE_MOVE_LEFT:
 			$Sprite.flip_h = true
-#			continue
-#		COLLIDE_STATE:
-#			print ("COLLIDE_STATE")
+			continue
 		MovementState.STATE_CUTSCENE:
 			printerr ("MovementState.STATE_CUTSCENE")
 		MovementState.STATE_IDLE:
@@ -258,7 +261,6 @@ func check_state_to_play_sprite ():
 				ground_speedometer ()
 				$Sprite.flip_h = (false if sign (run_speed) == 1 else true)	# Make sure it's in the right direction if possible.
 			else:
-				printerr ("Shouldn't see this; check_state_to_play_sprite has gone wrong!")
 				ground_speedometer ()
-#			continue
+			return
 	return

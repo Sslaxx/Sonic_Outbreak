@@ -1,8 +1,8 @@
 """
    For the Sonic the Hedgehog fan-game:
-   Sonic: Imperial Outbreak
-   Code written by Jesse, Ryan, Sofox, Sslaxx
-   with additional assistance from the Sonic Physics Guide
+   Sonic Outbreak
+   Code written by Jesse, Most, Ryan, Sofox, Sslaxx
+   Using the Sonic Physics Guide.
 """
 
 # REMEMBER: level_<name>_<act>.gd -> level_generic.gd -> Node2D.

@@ -119,6 +119,7 @@ __meta__ = {
 
 [node name="Sprite" type="AnimatedSprite" parent="." index="0"]
 
+z_as_relative = false
 frames = SubResource( 1 )
 animation = "Idle"
 

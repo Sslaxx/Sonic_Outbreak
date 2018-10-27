@@ -101,8 +101,12 @@ DEBUG_kill_player=[ Object(InputEventKey,"resource_local_to_scene":false,"resour
 
 [layer_names]
 
-2d_render/layer_1="default_2d_render"
-2d_physics/layer_1="default_2d_physics"
+2d_render/layer_1="layer_2d_default"
+2d_physics/layer_1="physics_2d_default"
+2d_render/layer_2="layer_2d_rays"
+2d_physics/layer_2="physics_2d_rays"
+2d_render/layer_3="layer_2d_badniks"
+2d_physics/layer_3="physics_2d_badniks"
 
 [physics]
 
