@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="356"
+   height="146"
+   viewBox="0 0 94.191664 38.629168"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="Sonic_Outbreak_Mock.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.0572265"
+     inkscape:cx="178.1394"
+     inkscape:cy="73.323447"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     borderlayer="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-258.37082)">
+    <g
+       transform="translate(263.60512,111.3806)"
+       id="g843"
+       inkscape:export-xdpi="95.93"
+       inkscape:export-ydpi="95.93">
+      <text
+         id="text12"
+         y="168.48752"
+         x="-216.13618"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.43605995px;line-height:125%;font-family:NiseSegaSonic;-inkscape-font-specification:'NiseSegaSonic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#0000b9;fill-opacity:1;stroke:#ffff00;stroke-width:1.32291663;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.43605995px;font-family:NiseSegaSonic;-inkscape-font-specification:'NiseSegaSonic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#0000b9;fill-opacity:1;stroke:#ffff00;stroke-width:1.32291663;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           y="168.48752"
+           x="-216.13618"
+           id="tspan10"
+           sodipodi:role="line">SONIC</tspan></text>
+      <text
+         transform="rotate(6.9817096)"
+         id="text12-2"
+         y="204.91292"
+         x="-193.88211"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.70952797px;line-height:125%;font-family:'Central Television';-inkscape-font-specification:'Central Television, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#874064;fill-opacity:1;fill-rule:nonzero;stroke:#6bca62;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="fill:#874064;fill-opacity:1;fill-rule:nonzero;stroke:#6bca62;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           y="204.91292"
+           x="-193.88211"
+           id="tspan32"
+           sodipodi:role="line">OUTBREAK</tspan></text>
+    </g>
+  </g>
+</svg>
