@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sonic_fullSpeed_spec.png-56579202df47e0400b5999b9c8e09543.stex"
+path="res://.import/CDZLayer1Scroll1_4.png-4a68030500c6159ba72ebea0332d7c8d.stex"
 
 [deps]
 
-source_file="res://Player/Sonic/Sprites/run/sonic_fullSpeed_spec.png"
-dest_files=[ "res://.import/sonic_fullSpeed_spec.png-56579202df47e0400b5999b9c8e09543.stex" ]
+source_file="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1_4.png"
+dest_files=[ "res://.import/CDZLayer1Scroll1_4.png-4a68030500c6159ba72ebea0332d7c8d.stex" ]
 
 [params]
 

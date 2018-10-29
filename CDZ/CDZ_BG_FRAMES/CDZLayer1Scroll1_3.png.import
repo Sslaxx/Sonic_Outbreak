@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CDZLayer1Scroll1 6.png-c7fd106bf43a9e5703a253dcfa0bd13a.stex"
+path="res://.import/CDZLayer1Scroll1_3.png-fcbc213f2c601d780f8e5326b37fb8ad.stex"
 
 [deps]
 
-source_file="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1 6.png"
-dest_files=[ "res://.import/CDZLayer1Scroll1 6.png-c7fd106bf43a9e5703a253dcfa0bd13a.stex" ]
+source_file="res://CDZ/CDZ_BG_FRAMES/CDZLayer1Scroll1_3.png"
+dest_files=[ "res://.import/CDZLayer1Scroll1_3.png-fcbc213f2c601d780f8e5326b37fb8ad.stex" ]
 
 [params]
 
