@@ -12,11 +12,11 @@ extends KinematicBody2D
 # FIXME: Some of that is due to the way the existing code works (or doesn't work, or works-but-doesn't).
 # FIXME: Also, make sure to (try to) keep things as simple as possible.
 
-const UP = Vector2 (0, -1)		# Vector2s use x and y values; negatives on the y-axis are "up" in Godot.
+const UP = Vector2 (0, -1)		# Vector2s use .x and .y values; remember that negatives on the y-axis are "up" in Godot.
 # Special Number. FIXME: This mean that fixing framerate to 60 may be optimal?
 const special_number = 60
 
-const GRAVITY = (13.125 / special_number) * special_number	# Done to make it easier to adjust gravity values.
+const GRAVITY = (13.125 / special_number) * special_number	# Done this way to make it easier to adjust gravity values.
 
 enum MovementState {
 	# These are universal, generic states for all player characters.

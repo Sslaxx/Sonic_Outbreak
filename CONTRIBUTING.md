@@ -1,10 +1,18 @@
+# Git and Sonic Outbreak
+
+## Stating the obvious...
+
+Sonic Outbreak is hosted on GitHub, and uses Git https://git-scm.com/ as a version control system (which allows things like branches, reverting to earlier versions etc). This is *not* a tutorial on Git by any means - https://git-scm.com/docs/gittutorial may be more useful there - this is just (minimally) how to use Git on this project.
+
+https://guides.github.com/activities/hello-world/ can help with using GitHub in general.
+
 ## So how do I add my stuff to Sonic Outbreak?
 
 **PM or message me (Sslaxx) on Discord if at any point you're stuck! I'll do my best to help. Or use the issue tracker on GitHub.**
 
 It's not going to be massively straight-forward, sorry, but I hope I can get across what you need to do.
 
-First of all, **never commit directly to master**. The master branch is what's going to be used for stable builds of the game. Though it can never be guaranteed, obviously, avoiding merging everything into master straight off reduces the likelihood of it being unstable/making unplayable builds.
+First of all, **never commit directly to master**. The master branch is what's going to be used for stable builds of the game. Though it can never be guaranteed, obviously, avoiding merging everything into master straight off reduces the likelihood of it being unstable/making unplayable builds. Things are only merged into master when they're (reliably) working as expected.
 
 There are tools out there like TortoiseGit https://tortoisegit.org/ out there if you don't want to have to deal with the command line stuff. Git itself comes with a GUI you can use to do things like cloning, committing, pushing etc. https://git-scm.com/download/
 
@@ -14,12 +22,12 @@ First of all, clone the repository (i.e., create a local copy of it that you can
 
 If you want to add a new feature (new gimmick, new badnik or zone, etc.) or fix one of the (plenty of) bugs in the code, first of all create a new branch, giving it a name that (hopefully!) describes what you want it to do. How you create branches in a GUI depends on what Git client you're using, but from the command line this *should* work: `git checkout -b fix_backwards_flying_hedgehogs`
 
-You should have a new branch called `fix_backwards_flying_hedgehogs`. Everything you add or commit to the repo will then be to that branch. Do `git checkout master` to switch to master at any point if you need (or, indeed, any other branch). https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging has more info on this.
+You should have a new branch called `fix_backwards_flying_hedgehogs`. Everything you add or commit to the repo from this point will then be to that branch. Do `git checkout master` to switch back to master at any point if you need (or, indeed, any other branch). https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging has more info on this.
 
 *Note*: Don't use any other symbols in a branch name other than dashes (-) or underscores (_), please.
 
 You'll need to commit and then push your changes to the branch. https://git-scm.com/docs/git-push tells you how to do this from the command line. **Make sure you're committing to the branch you made!**
 
-When you think it's ready, go to https://github.com/Sslaxx/Sonic_Outbreak/pulls and create a new pull request. Describe what your changes are. https://help.github.com/articles/about-pull-requests/ has more info too.
+When you think it's ready to be merged into master (or some other branch), go to https://github.com/Sslaxx/Sonic_Outbreak/pulls and create a new pull request. Describe what your changes are. https://help.github.com/articles/about-pull-requests/ has more info too.
 
-When it's all good, the changes will be merged into master, and the branch you created after will be deleted (so remember to switch back to master on your local copy!).
+When it's all good, the changes will be merged in, and the branch you created after will be deleted (so remember to switch back to master or another branch on your local copy!).
