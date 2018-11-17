@@ -23,8 +23,8 @@ func _ready ():
 			(game_space.player_character_node).position = $"Start_Position".position
 	return
 
-func _process (delta):
-	return
+#func _process (delta):
+#	return
 
-func _physics_process (delta):
-	return
+#func _physics_process (delta):
+#	return

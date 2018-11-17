@@ -24,9 +24,11 @@ func _process (delta):
 	# Print the position, etc. - these ones depend on the player node existing.
 	if (has_node (game_space.player_character)):
 		# FIXME: Really hackish, not-entirely-accurate way to do this! Look at String.format and format to 2 decimal places?
-		pretty_me_up = str (int ((game_space.player_character_node).position.x)) + ", " + str (int ((game_space.player_character_node).position.y))
+		pretty_me_up = str (int ((game_space.player_character_node).position.x)) + ", "
+		pretty_me_up += str (int ((game_space.player_character_node).position.y))
 		$"Position".text = "POS: " + pretty_me_up
-		pretty_me_up = str (int ((game_space.player_character_node).linear_velocity.x)) + ", " + str (int ((game_space.player_character_node).linear_velocity.y))
+		pretty_me_up = str (int ((game_space.player_character_node).linear_velocity.x)) + ", "
+		pretty_me_up += str (int ((game_space.player_character_node).linear_velocity.y))
 		$"Velocity".text = "VEL: " + pretty_me_up
 		pretty_me_up = str ((game_space.player_character_node).is_player_on_floor)
 		$"Is_On_Floor".text = "ON FLOOR: " + pretty_me_up

@@ -15,8 +15,8 @@ func _ready ():
 		printerr ("Sonic - ", game_space.player_character_node, " - is ready.")
 	return
 
-func _process (delta):
-	return
+#func _process (delta):
+#	return
 
-func _physics_process (delta):
-	return
+#func _physics_process (delta):
+#	return
