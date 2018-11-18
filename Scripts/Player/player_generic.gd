@@ -12,11 +12,12 @@ extends KinematicBody2D
 # FIXME: Some of that is due to the way the existing code works (or doesn't work, or works-but-doesn't).
 # FIXME: Also, make sure to (try to) keep things as simple as possible.
 
-const UP = Vector2 (0, -1)		# Vector2s use .x and .y values; remember that negatives on the y-axis are "up" in Godot.
+const UP = Vector2 (0, -1)		# Vector2s use x and y values; negatives on the y-axis are "up" in Godot.
+const DOWN = Vector2(0,1)
 # Special Number. FIXME: This mean that fixing framerate to 60 may be optimal?
 const special_number = 60
 
-const GRAVITY = (13.125 / special_number) * special_number	# Done this way to make it easier to adjust gravity values.
+const GRAVITY = (13.125 / special_number) * special_number	# Done to make it easier to adjust gravity values.
 
 enum MovementState {
 	# These are universal, generic states for all player characters.
@@ -53,14 +54,24 @@ var air = 0.09375 * special_number 			# Air = 5.625
 var slope = 0.125 * special_number			# Slope = 7.5
 var fall = 2.5 * special_number				# fall = 90
 var ground_speed =  0.0
+var ground_angle = 0.0
 var run_speed = 0.0
 var horizontal_lock_timer = 0
 var is_player_on_floor = false
 #var real_movement = Vector2 (0, 0)
 var was_player_on_floor = false
 var player_state = MovementState.STATE_IDLE
+var Left
+var Center
+var Right
+var ray_collision_checking = [Left, Center, Right]
+onready var body_transform = Transform2D(rotation, position)
 onready var floor_rays = [$FloorDetectLeft, $FloorDetectCenter, $FloorDetectRight]
 onready var collision_count = 0
+onready var collision_box_that_matters = $CollisionShape2D.shape
+onready var tilemap_node = get_node("../Tilemap")
+onready var actual_floor_pos = tilemap_node.map_to_world(Vector2(position.x, position.y + 1))
+onready var floor_transform = Transform2D(ground_angle, actual_floor_pos) 
 
 func _ready ():
 	# Sets the player_character variables for other nodes/scenes to use.
@@ -92,35 +103,47 @@ func _input (event):
 
 func _physics_process (delta):
 	check_state_to_play_sprite ()
+	var count = 0
+	#is_player_on_floor = is_on_floor()
 	if (player_state & MovementState.STATE_CUTSCENE):	# If doing a cutscene, stop any and all movement.
 		run_speed = 0.0
 		linear_velocity = Vector2 (0, 0)
 		return	# Cutscene stuff should be handled by the level's own code wherever possible.
 	for ray in floor_rays:
+		
 		# FIXME: This is pretty hacky, so need to find a better way of handling all this.
 		# FIXME: These rays should be used for "edge of platform" animations and rotations.
 		# FIXME: is_on_floor should be handling actual floor collisions.
-		is_player_on_floor = ray.is_colliding ()
-		if (is_player_on_floor && abs (linear_velocity.x) >= 0.05):
-#			printerr (ray.name)
-			ground_normal = ray.get_collision_normal ()
-#			printerr (ray.name, " ", ground_normal)	# FOR DEBUGGING ONLY. Print which ray is colliding.
+		ray_collision_checking[count] = ray.is_colliding ()
+		count += 1
+		
+	ray_to_floor()
+	if (is_player_on_floor && abs (linear_velocity.x) >= 0.05):
+#		printerr (ray.name)
+		ground_normal = $FloorDetectCenter.get_collision_normal ()
+		#if !($SpriteToFloor.is_colliding()):
+			
+		
+#		printerr (ray.name, " ", ground_normal)	# FOR DEBUGGING ONLY. Print which ray is colliding.
 
 	var hitting_floor = (is_player_on_floor && !was_player_on_floor)
 	was_player_on_floor = is_player_on_floor
 
 	run_speed = (ground_speed if is_player_on_floor else linear_velocity.x)
 
-	var ground_angle = (UP.angle_to (ground_normal))
+	ground_angle = (UP.angle_to (ground_normal))
 
-#	# FIXME: This piece of code seems to not be called at all!
-#	if (abs (ground_angle) >= (PI/2.01) && ground_speed < fall):
-#		ground_speed = 0
+#	# Called when Sonic is rotated at ~90 degrees while moving slowly
+	if (abs (ground_angle) >= (PI/2.01) && ground_speed < fall):
+		
+		ground_angle = 0
+		print("im working")
 #		horizontal_lock_timer = 0.5
 
 	if (is_player_on_floor):	# Major condition, determines whether we're going by groundspeed or traditional
 		# Vector that points "forward" along the ground that Sonic stands on.
 		speed_state_checker ()
+		
 		var ground_speed_vector = ground_normal.rotated (PI/2)
 		if (hitting_floor):
 			player_state &= ~MovementState.STATE_JUMPING
@@ -203,6 +226,28 @@ func _physics_process (delta):
 """
 func reset_player (is_new_game = false):
 	return
+
+func ray_to_floor():
+	match ray_collision_checking:
+		[false, false, false]:
+			is_player_on_floor = false
+		[true, false, false]:
+			is_player_on_floor = false
+		[false, false, true]:
+			is_player_on_floor = false
+		[true, false, true]:
+			is_player_on_floor = false
+		_:
+			is_player_on_floor = true
+			snap_to_floor()
+		
+		
+
+func snap_to_floor():
+	if !(collision_box_that_matters.collide(body_transform, collision_box_that_matters, floor_transform )):
+			position.y += 1
+			print("Sonic is not actually on the floor.")
+
 
 """
    STATE MACHINE FUNCTIONS.
