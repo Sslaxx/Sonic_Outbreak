@@ -1,3 +1,5 @@
+# Generic (character-independent) states
+
 ## STATE_IDLE (0)
 
 Not really a state, per se. This is an absence of state or player input. Player character is not necessarily on the ground so any checks using this state need to take this into account.
