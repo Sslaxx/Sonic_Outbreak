@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player/Sonic/player_sonic.tscn" type="PackedScene" id=1]
+[ext_resource path="res://TileSets/CDZ_Tileset.tres" type="TileSet" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="player_sonic" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 16, -16 )
+collision/safe_margin = 0.08
+
+[node name="TileMap" type="TileMap" parent="." index="1"]
+
+z_index = -1
+z_as_relative = false
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 8
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -131072, 3, 0, -131070, 3, 0, -131068, 3, 0, -65529, 39, 0, -65524, 40, 0, -65519, 41, 0, -65515, 42, 0, 0, 1, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 2, 0, 7, 31, 0, 8, 31, 0, 9, 31, 0, 10, 31, 0, 11, 31, 0, 12, 31, 0, 13, 31, 0, 14, 31, 0, 15, 31, 0, 16, 31, 0, 26, 41, 0, 65536, 4, 0, 65537, 33, 0, 65538, 32, 0, 65539, 33, 0, 65540, 32, 0, 65541, 33, 0, 65542, 32, 0, 65543, 31, 0, 65544, 31, 0, 65545, 31, 0, 65546, 31, 0, 65547, 31, 0, 65548, 31, 0, 65549, 31, 0, 65550, 31, 0, 65551, 31, 0, 65552, 31, 0, 131072, 6, 0, 196608, 6, 0, 262144, 7, 0 )
+
+
