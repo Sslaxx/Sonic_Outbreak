@@ -40,4 +40,4 @@ Don't worry so much about pushing broken code to any branch (that isn't master).
 
 When you think it's ready to be merged into master (or some other branch), go to https://github.com/Sslaxx/Sonic_Outbreak/pulls and create a new pull request. Describe what the changes to the branch are in general. https://help.github.com/articles/about-pull-requests/ has more info too.
 
-When it's all good, the changes will be merged in, and the branch you created will be deleted after - so remember to switch back to master or another branch on your local copy!
+When it's all good, the changes will be merged in, and the branch will be deleted after - so remember to switch back to master or another branch on your local copy!

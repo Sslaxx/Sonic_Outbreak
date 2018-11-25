@@ -61,6 +61,7 @@ var was_player_on_floor = false
 var player_state = MovementState.STATE_IDLE
 onready var floor_rays = [$FloorDetectLeft, $FloorDetectCenter, $FloorDetectRight]
 onready var collision_count = 0
+onready var hitting_floor = false
 
 func _ready ():
 	# Sets the player_character variables for other nodes/scenes to use.
@@ -106,7 +107,7 @@ func _physics_process (delta):
 			ground_normal = ray.get_collision_normal ()
 #			printerr (ray.name, " ", ground_normal)	# FOR DEBUGGING ONLY. Print which ray is colliding.
 
-	var hitting_floor = (is_player_on_floor && !was_player_on_floor)
+	hitting_floor = (is_player_on_floor && !was_player_on_floor)
 	was_player_on_floor = is_player_on_floor
 
 	run_speed = (ground_speed if is_player_on_floor else linear_velocity.x)
@@ -114,9 +115,9 @@ func _physics_process (delta):
 	var ground_angle = (UP.angle_to (ground_normal))
 
 #	# FIXME: This piece of code seems to not be called at all!
-#	if (abs (ground_angle) >= (PI/2.01) && ground_speed < fall):
-#		ground_speed = 0
-#		horizontal_lock_timer = 0.5
+	if (abs (ground_angle) >= (PI/2.01) && abs (ground_speed) < fall):
+		ground_speed = 0
+		horizontal_lock_timer = 0.5
 
 	if (is_player_on_floor):	# Major condition, determines whether we're going by groundspeed or traditional
 		# Vector that points "forward" along the ground that Sonic stands on.
