@@ -117,7 +117,6 @@ func _input (event):
 		if (Input.is_action_just_pressed ("DEBUG_kill_player")):
 			print ("AAAA")
 			game_space.lives -= 1
-	printerr (States)
 	return
 
 func _physics_process (delta):
