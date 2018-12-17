@@ -206,8 +206,8 @@ func _physics_process (delta):
 
 	else:	#If in the air
 		if (States & JUMP_STATE):
-			print((States & JUMP_STATE))
-			CheckStateToPlaySprite(States)
+			print ((States & JUMP_STATE))
+			CheckStateToPlaySprite (States)
 		rotation = 0
 		if (States & MOVERIGHT_STATE):	# Air control
 			$Sprite.flip_h = false
