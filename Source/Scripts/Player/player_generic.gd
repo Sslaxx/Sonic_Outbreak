@@ -97,11 +97,13 @@ func _ready ():
 func _input (event):
 	# Find out which direction the player is moving in.
 	moving_in = ("left" if Input.is_action_pressed ("move_left") else ("right" if Input.is_action_pressed ("move_right") else "nil"))
-	if (is_on_floor () && Input.is_action_pressed ("move_jump")):	# The player is jumping (pressed the jump button).
+	if (!(player_movement_state & MovementState.STATE_JUMPING) && is_on_floor () && Input.is_action_pressed ("move_jump")):
+		# The player is jumping (pressed the jump button).
 		player_movement_state |= MovementState.STATE_JUMPING
 		floor_snap = Vector2 (0, 0)
 		velocity.y -= 210
 		change_anim ("jump")
+		sound_player.play_sound ("Jump")
 #		if (!player_movement_state & MovementState.STATE_JUMPING):
 #			jump_held = true
 #			player_movement_state |= MovementState.STATE_JUMPING
@@ -137,7 +139,7 @@ func _physics_process (delta):
 		movement_state_machine_air (delta)		# And being in the air.
 	velocity.x = (player_speed * movement_direction)	# Work out velocity from speed * direction.
 	if (is_on_floor ()):								# Make sure gravity applies.
-		velocity.y = player_gravity
+		velocity.y = 0
 		floor_snap = Vector2 (0, 32)
 	else:
 		velocity.y += (player_gravity * delta)

@@ -72,4 +72,7 @@ func _process (delta):
 	$On_Floor.text = prettied_text
 	prettied_text = "ANIMATION: " + game_space.player_character.get_node ("AnimatedSprite").animation
 	$Animation.text = prettied_text
+	prettied_text = "FLOOR SNAP: " + var2str (int (game_space.player_character.floor_snap.x))
+	prettied_text += ", " + var2str (int (game_space.player_character.floor_snap.y))
+	$"Floor_Snap".text = prettied_text
 	return
