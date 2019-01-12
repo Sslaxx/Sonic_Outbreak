@@ -239,13 +239,13 @@ func movement_state_machine_ground (delta):
 	if ((player_movement_state & MovementState.STATE_MOVE_LEFT) && movement_direction == 1):
 		# Wanting to move left but currently moving right, so decelerate.
 		player_speed -= (decel_rate_moving * get_deceleration_mult ())
-	if ((player_movement_state & MovementState.STATE_MOVE_RIGHT) && movement_direction == -1):
+	elif ((player_movement_state & MovementState.STATE_MOVE_RIGHT) && movement_direction == -1):
 		# Wanting to move right but currently moving left, so decelerate.
 		player_speed -= (decel_rate_moving * get_deceleration_mult ())
-	if (moving_in == "nil" && movement_direction != 0):	# Still moving, but no movement input has been given.
-		# So slow down.
-		player_speed -= (decel_rate * get_deceleration_mult ())
-	player_speed += (acceleration_rate * get_acceleration_mult ())	# If the player is moving, accelerate.
+	elif (moving_in == "nil" && movement_direction != 0):	# Still moving, but no movement input has been given.
+		player_speed -= (decel_rate * get_deceleration_mult ())	# So slow down.
+	else:
+		player_speed += (acceleration_rate * get_acceleration_mult ())	# If the player is moving, accelerate.
 	speed_limiter ()	# Ensure the player's speed is limited appropriately.
 	# Set direction for animations to play as appropriate.
 	$AnimatedSprite.flip_h = (true if movement_direction == -1 else (false if movement_direction == 1 else $AnimatedSprite.flip_h))
@@ -274,12 +274,13 @@ func movement_state_machine_air (delta):
 	if ((player_movement_state & MovementState.STATE_MOVE_LEFT) && movement_direction == 1):
 		# Wanting to move left but currently moving right, so decelerate.
 		player_speed -= (decel_rate_moving * get_deceleration_mult ())
-	if ((player_movement_state & MovementState.STATE_MOVE_RIGHT) && movement_direction == -1):
+	elif ((player_movement_state & MovementState.STATE_MOVE_RIGHT) && movement_direction == -1):
 		# Wanting to move right but currently moving left, so decelerate.
 		player_speed -= (decel_rate_moving * get_deceleration_mult ())
-	if (moving_in == "nil" && movement_direction != 0):	# Still moving, but no movement input has been given.
+	elif (moving_in == "nil" && movement_direction != 0):	# Still moving, but no movement input has been given.
 		player_speed -= (decel_rate * get_deceleration_mult ())	# So slow down.
-	player_speed += (acceleration_rate * get_acceleration_mult ())	# If the player is moving, accelerate.
+	else:
+		player_speed += (acceleration_rate * get_acceleration_mult ())	# If the player is moving, accelerate.
 	# Set direction for animations to play as appropriate.
 	$AnimatedSprite.flip_h = (true if movement_direction == -1 else (false if movement_direction == 1 else $AnimatedSprite.flip_h))
 	speed_limiter ()	# Ensure the player's speed is limited appropriately.
