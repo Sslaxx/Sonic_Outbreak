@@ -76,6 +76,8 @@ var floor_normal = Vector2 (0, -1)	# Vector to use for floor detection.
 
 onready var player_gravity_vector = ProjectSettings.get_setting ("physics/2d/default_gravity_vector")	# Gravity's direction.
 
+var floor_snap = Vector2 (0, 0)		# Adjusting the "snap" to the floor. (0, 0) for the air, (0, 32) otherwise.
+
 """
    Variables that control animation - like when to play walk/jog/run animations.
 """
@@ -97,6 +99,7 @@ func _input (event):
 	moving_in = ("left" if Input.is_action_pressed ("move_left") else ("right" if Input.is_action_pressed ("move_right") else "nil"))
 	if (is_on_floor () && Input.is_action_pressed ("move_jump")):	# The player is jumping (pressed the jump button).
 		player_movement_state |= MovementState.STATE_JUMPING
+		floor_snap = Vector2 (0, 0)
 		velocity.y -= 210
 		change_anim ("jump")
 #		if (!player_movement_state & MovementState.STATE_JUMPING):
@@ -125,7 +128,7 @@ func _input (event):
 	return
 
 func _physics_process (delta):
-	velocity = move_and_slide (velocity, floor_normal)	# Move the player character.
+	velocity = move_and_slide_with_snap (velocity, floor_snap, floor_normal)	# Move the player character.
 	# Do state machine checks here.
 	movement_state_machine (delta)	# For movement.
 	if (is_on_floor ()):
@@ -135,8 +138,10 @@ func _physics_process (delta):
 	velocity.x = (player_speed * movement_direction)	# Work out velocity from speed * direction.
 	if (is_on_floor ()):								# Make sure gravity applies.
 		velocity.y = player_gravity
+		floor_snap = Vector2 (0, 32)
 	else:
 		velocity.y += (player_gravity * delta)
+		floor_snap = Vector2 (0, 0)
 	return
 
 """
@@ -144,14 +149,16 @@ func _physics_process (delta):
    change_anim (anim_to_change_to):
 
    Changes the animation playing to anim_to_change_to, if it isn't already playing.
+   Returns true if the animation has been played (changed to), otherwise false.
 """
 func change_anim (anim_to_change_to):
-	if (!has_node ("AnimatedSprite")):			# Can't play animations without something to play with!
+	if (!has_node ("AnimatedSprite")):						# Can't play animations without something to play with!
 		printerr ("ERROR: Trying to play an animation when ", self, " has no AnimatedSprite node!")
-		return
+		return (false)
 	if ($AnimatedSprite.animation != anim_to_change_to):	# Animation's not already playing?
-		$AnimatedSprite.play (anim_to_change_to)			# So change the animation to the one requested.
-	return
+		$AnimatedSprite.play (anim_to_change_to)			# Then change the animation to the one requested.
+		return (true)
+	return (false)
 
 ### ACCELERATION/DECELERATION/SPEED HELPER FUNCTIONS.
 
