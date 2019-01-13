@@ -161,7 +161,7 @@ func change_anim (anim_to_change_to):
 	if ($AnimatedSprite.animation != anim_to_change_to):	# Animation's not already playing?
 		$AnimatedSprite.play (anim_to_change_to)			# Then change the animation to the one requested.
 		return (true)
-	return (false)
+	return (false)											# The animation's already playing.
 
 ### ACCELERATION/DECELERATION/SPEED HELPER FUNCTIONS.
 
@@ -269,11 +269,11 @@ func movement_state_machine_ground (delta):
 		player_movement_state &= ~MovementState.STATE_JUMPING
 	# Change the currently playing animation based on the player's current speed...
 	if (player_speed > 0):
-		if (player_speed < walk_limit):
+		if (player_speed < walk_limit):	# ...walking...
 			change_anim ("walk")
-		if (player_speed >= walk_limit && player_speed < jog_limit):
+		if (player_speed >= walk_limit && player_speed < jog_limit):	# ...jogging...
 			change_anim ("jog")
-		if (player_speed >= jog_limit):
+		if (player_speed >= jog_limit):	# ...running...
 			change_anim ("run")
 	else:	# ...or lack of it.
 		if (!player_movement_state == MovementState.STATE_CUTSCENE):
@@ -290,7 +290,8 @@ func movement_state_machine_ground (delta):
 """
 func movement_state_machine_air (delta):
 	# Change the currently playing animation based on the player's current speed...
-	if (player_speed > 0 && !(player_movement_state & MovementState.STATE_JUMPING)):	# Not jumping, so animations can change.
+	if (player_speed > 0 && !(player_movement_state & MovementState.STATE_JUMPING)):
+		# Not jumping, so animations can change.
 		if (player_speed < walk_limit):
 			change_anim ("walk")
 		if (player_speed >= walk_limit && player_speed < jog_limit):

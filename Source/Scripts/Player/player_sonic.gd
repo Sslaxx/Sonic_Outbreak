@@ -44,8 +44,5 @@ func _ready ():
 func _input (event):
 	return
 
-func _process (delta):
-	return
-
 func _physics_process (delta):
 	return

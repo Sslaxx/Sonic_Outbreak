@@ -4,7 +4,7 @@ Most of the template is covered in [the project structure document](Structure.tx
 
 ## dice_engine
 
-A `Node` script allowing random numbers to be generated as if they were "rolled" by dice.
+A `Node` script allowing random numbers to be generated as if they were "rolled" by dice, and allows the total to be added to or subtracted from.
 
 ## game_space
 

@@ -100,6 +100,7 @@ func reset_game_space ():
 	return
 
 ### SETTERS AND GETTERS.
+### Note: only setters update the HUD.
 
 ## For the lives.
 

@@ -2,6 +2,7 @@
 ## Sonic-feeling 2D platformer engine
 ### Stuart "Sslaxx" Moore
 #### 27th November 2018
+##### Updated 13th January 2019
 
 # OVERVIEW
 
