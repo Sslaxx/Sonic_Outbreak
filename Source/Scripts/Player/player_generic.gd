@@ -133,6 +133,7 @@ func _physics_process (delta):
 	velocity = move_and_slide_with_snap (velocity, floor_snap, floor_normal)	# Move the player character.
 	# Do state machine checks here.
 	movement_state_machine (delta)	# For movement.
+	movement_state_machine_speed (delta)
 	if (is_on_floor ()):
 		movement_state_machine_ground (delta)	# And being on the ground.
 	else:
@@ -234,17 +235,16 @@ func movement_state_machine (delta):
 	if (player_movement_state & MovementState.STATE_MOVE_RIGHT):	# All the right-moving logic goes in here.
 		if (moving_in == "right"):			# Player is moving right.
 			movement_direction = (1 if player_speed < 0.01 else movement_direction)
+	# Set direction for animations to play as appropriate.
+	$AnimatedSprite.flip_h = (true if movement_direction == -1 else (false if movement_direction == 1 else $AnimatedSprite.flip_h))
 	return
 
 """
-   movement_state_machine_ground
+   movement_state_machine_speed
 
-   Sets movement direction according to player input, and does that based upon the current movement state. Also changes
-   animations. Called when the player character is on the ground (is_on_floor is true).
+   Limits the speed of the player depending on what's going on.
 """
-func movement_state_machine_ground (delta):
-	if (player_movement_state & MovementState.STATE_JUMPING):	# Finished jumping? Turn off the jump state.
-		player_movement_state &= ~MovementState.STATE_JUMPING
+func movement_state_machine_speed (delta):
 	if ((player_movement_state & MovementState.STATE_MOVE_LEFT) && movement_direction == 1):
 		# Wanting to move left but currently moving right, so decelerate.
 		player_speed -= (decel_rate_moving * get_deceleration_mult ())
@@ -256,8 +256,17 @@ func movement_state_machine_ground (delta):
 	else:
 		player_speed += (acceleration_rate * get_acceleration_mult ())	# If the player is moving, accelerate.
 	speed_limiter ()	# Ensure the player's speed is limited appropriately.
-	# Set direction for animations to play as appropriate.
-	$AnimatedSprite.flip_h = (true if movement_direction == -1 else (false if movement_direction == 1 else $AnimatedSprite.flip_h))
+	return
+
+"""
+   movement_state_machine_ground
+
+   Sets movement direction according to player input, and does that based upon the current movement state. Also changes
+   animations. Called when the player character is on the ground (is_on_floor is true).
+"""
+func movement_state_machine_ground (delta):
+	if (player_movement_state & MovementState.STATE_JUMPING):	# Finished jumping? Turn off the jump state.
+		player_movement_state &= ~MovementState.STATE_JUMPING
 	# Change the currently playing animation based on the player's current speed...
 	if (player_speed > 0):
 		if (player_speed < walk_limit):
@@ -280,19 +289,6 @@ func movement_state_machine_ground (delta):
    Does state machine checks while the player is in the air, either jumping or falling.
 """
 func movement_state_machine_air (delta):
-	if ((player_movement_state & MovementState.STATE_MOVE_LEFT) && movement_direction == 1):
-		# Wanting to move left but currently moving right, so decelerate.
-		player_speed -= (decel_rate_moving * get_deceleration_mult ())
-	elif ((player_movement_state & MovementState.STATE_MOVE_RIGHT) && movement_direction == -1):
-		# Wanting to move right but currently moving left, so decelerate.
-		player_speed -= (decel_rate_moving * get_deceleration_mult ())
-	elif (moving_in == "nil" && movement_direction != 0):	# Still moving, but no movement input has been given.
-		player_speed -= (decel_rate * get_deceleration_mult ())	# So slow down.
-	else:
-		player_speed += (acceleration_rate * get_acceleration_mult ())	# If the player is moving, accelerate.
-	# Set direction for animations to play as appropriate.
-	$AnimatedSprite.flip_h = (true if movement_direction == -1 else (false if movement_direction == 1 else $AnimatedSprite.flip_h))
-	speed_limiter ()	# Ensure the player's speed is limited appropriately.
 	# Change the currently playing animation based on the player's current speed...
 	if (player_speed > 0 && !(player_movement_state & MovementState.STATE_JUMPING)):	# Not jumping, so animations can change.
 		if (player_speed < walk_limit):
