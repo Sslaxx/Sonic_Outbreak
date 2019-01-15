@@ -104,6 +104,8 @@ func _input (event):
 		velocity.y -= 210
 		change_anim ("jump")
 		sound_player.play_sound ("Jump")
+		if (is_on_wall ()):		# Stop strangeness if trying to jump while running into a wall.
+			player_speed = player_speed / 100
 #		if (!player_movement_state & MovementState.STATE_JUMPING):
 #			jump_held = true
 #			player_movement_state |= MovementState.STATE_JUMPING
