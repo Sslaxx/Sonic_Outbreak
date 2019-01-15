@@ -39,4 +39,5 @@ func _ready():
 	if (OS.is_debug_build ()):
 		global_space.add_path_to_node ("res://Scenes/Player/player_sonic.tscn", "/root/Level")
 		print (game_space.player_character)
+	music_player.play_music ("res://Assets/Audio/Music/Crimson_District_Act_2_loop0.28.24.ogg")
 	return

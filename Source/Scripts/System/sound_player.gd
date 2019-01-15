@@ -43,6 +43,7 @@ onready var Sound_Library = {
 	# Put all the sound effects to be used globally here.
 	No_Sound = preload ("res://Assets/Audio/Sound/No_Sound.ogg"),	# Keep this as the first item in the list.
 	Jump = preload ("res://Assets/Audio/Sound/Jump.ogg"),
+	Lose_Rings = preload ("res://Assets/Audio/Sound/Lose_Rings.ogg"),
 }
 
 func _ready ():

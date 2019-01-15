@@ -143,7 +143,7 @@ func _physics_process (delta):
 		velocity.y = 0
 		floor_snap = Vector2 (0, 32)
 	else:
-		velocity.y += (player_gravity * delta)
+		velocity.y += (player_gravity/15)
 		floor_snap = Vector2 (0, 0)
 	return
 

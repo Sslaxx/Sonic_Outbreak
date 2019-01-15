@@ -119,8 +119,11 @@ func get_lives ():
 func set_collectibles (value):
 	if (value > collectibles):		# Collected something, so add what the difference is to the items-for-lives-counter.
 		collectibles_lives += (value - collectibles)
-	else:							# Lost items, so set the items-for-lives-counter to the new value.
+	elif (value != collectibles):							# Lost items, so set the items-for-lives-counter to the new value.
 		collectibles_lives = value
+		sound_player.play_sound ("Lose_Rings")
+	else:
+		printerr ("NOTE: Attempting to change the value of collectibles to what it already is!")
 	collectibles = value
 	while (collectibles_lives >= DEFAULT_COLLECTIBLES_PER_LIFE):	# Collected enough for at least one extra life!
 		game_space.lives += 1
