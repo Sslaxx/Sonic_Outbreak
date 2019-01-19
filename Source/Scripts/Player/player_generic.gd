@@ -101,7 +101,7 @@ func _input (event):
 		# The player is jumping (pressed the jump button).
 		player_movement_state |= MovementState.STATE_JUMPING
 		floor_snap = Vector2 (0, 0)
-		velocity.y -= 210
+		velocity.y -= 240
 		change_anim ("jump")
 		sound_player.play_sound ("Jump")
 		if (is_on_wall ()):		# Stop strangeness if trying to jump while running into a wall.
@@ -210,8 +210,7 @@ func get_max_player_speed_mult ():
    Makes sure the player cannot go any faster than the maximum speed (or slower than 0).
 """
 func speed_limiter ():
-	if (player_speed < 0):	# Can't travel at negative speeds!
-		player_speed = 0.0
+	player_speed = (0.0 if player_speed < 0 else player_speed)	# Can't travel at negative speeds!
 	if (player_speed > (max_player_speed * get_max_player_speed_mult ())):	# Moving faster than maximum? Reduce speed.
 		player_speed -=  player_speed - (max_player_speed * get_max_player_speed_mult ())
 	return

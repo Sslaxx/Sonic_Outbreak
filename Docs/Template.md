@@ -18,7 +18,7 @@ A `Node` script, for non-game(play) related settings (resolution, detail, volume
 
 These are all using `AudioStreamPlayer`. Jingles are non-looped (usually short) pieces of music. Music is obvious, and sounds are looped sounds (ambient) or non-looped. They're set up to use the respective audio buses. Should cover most basic cases between them.
 
-## Assets/Graphics/Fonts/Roboto-Regular.ttf
+## Assets/Fonts/Roboto-Regular.ttf
 
 Just used as a default font for the UI theme.
 

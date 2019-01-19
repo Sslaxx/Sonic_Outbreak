@@ -35,7 +35,7 @@
 extends Node2D
 
 func _ready ():
-	if (OS.is_debug_build ()):
+	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
 		printerr (get_script ().resource_path, " ready.")
 	global_space.go_to_scene ("res://Scenes/Levels/CDZ/CDZ_01.tscn")
 	return

@@ -36,7 +36,7 @@
 extends "res://Scripts/Levels/level_generic.gd"
 
 func _ready():
-	if (OS.is_debug_build ()):
+	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
 		global_space.add_path_to_node ("res://Scenes/Player/player_sonic.tscn", "/root/Level")
 		print (game_space.player_character)
 	music_player.play_music ("res://Assets/Audio/Music/Crimson_District_Act_2_loop0.28.24.ogg")

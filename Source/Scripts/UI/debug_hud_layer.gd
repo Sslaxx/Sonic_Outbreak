@@ -36,7 +36,7 @@
 extends CanvasLayer
 
 func _ready ():
-	if (OS.is_debug_build ()):
+	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
 		printerr ("Debugging HUD ready on canvas layer ", layer, ".")
 	else:
 		queue_free ()	# This shouldn't be used if debugging isn't on, so delete it from the scene tree.
