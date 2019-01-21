@@ -132,7 +132,8 @@ func _input (event):
 	return
 
 func _physics_process (delta):
-	velocity = move_and_slide_with_snap (velocity, floor_snap, floor_normal)	# Move the player character.
+	# Move the player character.
+	velocity = move_and_slide_with_snap (velocity, floor_snap, floor_normal, false, 4, 0.785398, false)
 	# Do state machine checks here.
 	movement_state_machine (delta)	# For movement.
 	movement_state_machine_speed (delta)
@@ -290,6 +291,8 @@ func movement_state_machine_ground (delta):
    Does state machine checks while the player is in the air, either jumping or falling.
 """
 func movement_state_machine_air (delta):
+	if (is_on_wall ()):		# Against a wall? Then negate running speed.
+		player_speed = 0
 	# Change the currently playing animation based on the player's current speed...
 	if (player_speed > 0 && !(player_movement_state & MovementState.STATE_JUMPING)):
 		# Not jumping, so animations can change.
