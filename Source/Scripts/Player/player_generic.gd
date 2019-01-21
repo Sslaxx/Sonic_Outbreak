@@ -291,7 +291,7 @@ func movement_state_machine_ground (delta):
    Does state machine checks while the player is in the air, either jumping or falling.
 """
 func movement_state_machine_air (delta):
-	if (is_on_wall ()):		# Against a wall? Then negate running speed.
+	if (is_on_wall ()):		# Against a wall? Not on the ground? Then negate running speed.
 		player_speed = 0
 	# Change the currently playing animation based on the player's current speed...
 	if (player_speed > 0 && !(player_movement_state & MovementState.STATE_JUMPING)):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Levels/CDZ/CDZ_01.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Levels/CDZ/CDZ_Reverie_Island_Sign.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/Levels/CDZ/CDZ_Parallax_Background.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Levels/Barrier.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Graphics/2D/Levels/CDZ/tls_CDZ_0.tres" type="TileSet" id=8]
+[ext_resource path="res://Scenes/Items/item_ring.tscn" type="PackedScene" id=9]
 
 [node name="Level" type="Node2D"]
 z_as_relative = false
@@ -57,4 +58,7 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
+
+[node name="Ring" parent="." instance=ExtResource( 9 )]
+position = Vector2( 128, -1973 )
 
