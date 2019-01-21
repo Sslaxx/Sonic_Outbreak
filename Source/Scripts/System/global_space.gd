@@ -75,7 +75,7 @@ func add_child_to_node (Scene_Instance = null, Node_to_Add_to = "/root"):
 func add_path_to_node (Scene_Path = "", Node_to_Add_to = "/root"):
 	var s = ResourceLoader.load (Scene_Path)	# Load and...
 	s = s.instance ()							# ...create an instance of the scene specified by the path.
-	add_child_to_node (s, Node_to_Add_to)		# Then add it to the specified node.
+	global_space.add_child_to_node (s, Node_to_Add_to)		# Then add it to the specified node.
 	return (s)									# Return the instance created.
 
 """

@@ -60,5 +60,14 @@ __meta__ = {
 }
 
 [node name="Ring" parent="." instance=ExtResource( 9 )]
-position = Vector2( 128, -1973 )
+position = Vector2( 208, -1973 )
+
+[node name="Ring2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 248, -1973 )
+
+[node name="Ring4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 248, -2024 )
+
+[node name="Ring3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 285, -1973 )
 

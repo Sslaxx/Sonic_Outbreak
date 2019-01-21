@@ -114,6 +114,8 @@ func _input (event):
 	if (player_movement_state == MovementState.STATE_CUTSCENE):
 		moving_in = "nil"
 #		jump_held = false
+#	if (Input.is_action_just_pressed ("pause_game")):
+#		global_space.add_path_to_node ("res://Scenes/UI/paused.tscn", "/root/Level")
 	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY. Debug keys and what they do.
 		if (Input.is_action_pressed ("DEBUG_gainrings")):	# Gain items!
 			printerr ("DEBUG: gain items pressed.")
