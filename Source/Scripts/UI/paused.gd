@@ -48,5 +48,5 @@ func _input (event):
 		queue_free ()
 	return
 
-func _process(delta):
+func _process (delta):
 	return
