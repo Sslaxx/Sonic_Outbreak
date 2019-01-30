@@ -37,7 +37,7 @@ extends ParallaxLayer
 
 export var movement_factor = Vector2 (0, 0)	# Have movement be able to be changed in the object inspector.
 
-func _ready ():
+func _ready () -> void:
 	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY. Give a bit of info about what is moving how.
 		print (name, " is moving at ", movement_factor, ".")
 	return
@@ -45,6 +45,6 @@ func _ready ():
 """
    Make the layer move!
 """
-func _process (delta):
+func _process (delta) -> void:
 	motion_offset += (movement_factor * delta)	# Move the background, in the directions and speed required.
 	return

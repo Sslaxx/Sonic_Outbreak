@@ -1,14 +1,15 @@
 # Files to ignore.
+Ehthumbs.db
+ehthumbs.db
 Thumbs.db
 thumbs.db
-ehthumbs.db
-Ehthumbs.db
+.DS_Store
 .fscache
 *~
 *.bak
-.DS_Store
-*.pck
 *.exe
+*.pck
+*.tmp
 *.x86_64
 *.x86
 

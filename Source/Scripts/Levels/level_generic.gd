@@ -33,7 +33,7 @@
 
 extends Node2D
 
-func _ready ():
+func _ready () -> void:
 	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY. Ensure the debug HUD is added to the scene.
 		printerr ("Generic level functionality ready.")
 		global_space.add_path_to_node ("res://Scenes/UI/debug_hud_layer.tscn", "/root/Level")

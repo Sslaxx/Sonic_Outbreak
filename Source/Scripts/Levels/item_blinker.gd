@@ -32,6 +32,6 @@
 
 extends AnimatedSprite
 
-func _ready ():
+func _ready () -> void:
 	play ("blink")
 	return
