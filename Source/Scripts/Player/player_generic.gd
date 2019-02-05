@@ -273,6 +273,10 @@ func movement_state_machine_speed (delta):
 func movement_state_machine_ground (delta):
 	if (player_movement_state & MovementState.STATE_JUMPING):	# Finished jumping? Turn off the jump state.
 		player_movement_state &= ~MovementState.STATE_JUMPING
+	if (!$PlayerPivot.enabled):	# If on the ground and the pivot/floor edge detectors are not enabled, enable them.
+		$PlayerPivot.enabled = true
+		$FloorEdgeLeft.enabled = true
+		$FloorEdgeRight.enabled = true
 	# Change the currently playing animation based on the player's current speed...
 	if (player_speed > 0):
 		if (player_speed < walk_limit):	# ...walking...
@@ -295,6 +299,10 @@ func movement_state_machine_ground (delta):
    Does state machine checks while the player is in the air, either jumping or falling.
 """
 func movement_state_machine_air (delta):
+	if ($PlayerPivot.enabled):	# If in the air and the pivot/floor edge detectors are enabled, disable them.
+		$PlayerPivot.enabled = false
+		$FloorEdgeLeft.enabled = false
+		$FloorEdgeRight.enabled = false
 	if (is_on_wall ()):		# Against a wall? Not on the ground? Then negate running speed.
 		player_speed = 0
 	# Change the currently playing animation based on the player's current speed...

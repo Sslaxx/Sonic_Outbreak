@@ -26,10 +26,15 @@
    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
+"""
+   A selection of functions to let random numbers via a dice-like manner be made.
+"""
+
 extends Node
 
 func _ready () -> void:
-	printerr (init_dice_engine ())	# Make sure the dice engine is ready.
+	# Why printerr for the next line? 17664 workaround, ugh.
+	printerr (init_dice_engine ())	# Initialise the dice engine for the first time.
 	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY.
 		printerr (get_script ().resource_path, " ready.")
 	return
