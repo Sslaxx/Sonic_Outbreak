@@ -145,7 +145,7 @@ func _physics_process (delta):
 		movement_state_machine_air (delta)		# Being in the air.
 	velocity.x = (player_speed * movement_direction)	# Work out velocity from speed * direction.
 	if (is_on_floor ()):								# Make sure gravity applies.
-		velocity.y = (0 if velocity.y > 0.0 else velocity.y)
+		velocity.y = (0 if velocity.y > 0.0 else (0 if velocity.y > -32 else velocity.y))
 		floor_snap = Vector2 (0, 32)
 	else:
 		velocity.y += (player_gravity/15)
@@ -182,9 +182,11 @@ func change_anim (anim_to_change_to):
    IMPORTANT: Player movement in a cutscene has to be handled directly by any scene(s) running the cutscene.
 """
 func get_acceleration_mult ():
-	var acceleration_mult = 1.0	# Every factor gets added to/taken away from this value.
-	if (moving_in == "nil"):	# Not moving, so there's no acceleration. KEEP THIS LAST.
-		acceleration_mult = 0.0	# This MUST override any other calculations to acceleration rate.
+	var acceleration_mult = 1.0		# Every factor gets added to/taken away from this value.
+	if (!is_on_floor ()):			# If not on the floor, emulate "air friction".
+		acceleration_mult -= 0.85
+	if (moving_in == "nil" || acceleration_mult < 0):		# If not moving, or acceleration_mult is not sane, zero it.
+		acceleration_mult = 0.0		# This MUST override any other calculations to acceleration rate.
 	return (acceleration_mult)
 
 """
@@ -196,6 +198,7 @@ func get_acceleration_mult ():
 """
 func get_deceleration_mult ():
 	var deceleration_mult = 1.0	# Every factor gets added to/taken away from this value.
+	deceleration_mult = (0 if deceleration_mult < 0 else deceleration_mult)		# Keep deceleration rate sane.
 	if (player_movement_state == MovementState.STATE_CUTSCENE):	# In a cutscene, so the multiplier is 4. KEEP THIS LAST.
 		deceleration_mult = 4.0	# This MUST override any other calculations to deceleration rate.
 	return (deceleration_mult)
@@ -207,6 +210,7 @@ func get_deceleration_mult ():
 """
 func get_max_player_speed_mult ():
 	var max_speed_mult = 1.0	# Every factor gets added to/taken away from this value.
+	max_speed_mult = (0 if max_speed_mult < 0 else max_speed_mult)		# Sanity checking.
 	return (max_speed_mult)
 
 """
