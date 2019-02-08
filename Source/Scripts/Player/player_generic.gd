@@ -123,6 +123,12 @@ func _input (event):
 		if (Input.is_action_pressed ("DEBUG_loserings")):	# Lose items!
 			printerr ("DEBUG: lose items pressed.")
 			game_space.collectibles = 0
+		if (Input.is_action_pressed ("DEBUG_resetpos")):	# Reset player position to last good checkpoint.
+			if (game_space.last_checkpoint != null):
+				printerr ("DEBUG: Resetting player position to last known good checkpoint.")
+				moving_in = "nil"
+				player_speed = 0.0
+				game_space.last_checkpoint.return_to_checkpoint ()
 		if (Input.is_action_pressed ("DEBUG_cutscene")):	# Switch into or out of the cutscene state.
 			printerr ("DEBUG: cutscene key pressed.")
 			if (player_movement_state != MovementState.STATE_CUTSCENE):

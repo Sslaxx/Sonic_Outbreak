@@ -48,7 +48,7 @@ func enter_checkpoint_body (body):
 		taken = true	# A checkpoint can only be activated once.
 		if (OS.is_debug_build()):	# FOR DEBUGGING ONLY.
 			print ("Checkpoint at ", position, " crossed.")
-		$"Sprite/AnimationPlayer".play_backwards ("spin_green")
+		$"AnimationPlayer".play ("passed")
 		game_space.last_checkpoint = self
 		$"AudioStreamPlayer2D".play ()	# Play the checkpoint jingle.
 	return
@@ -59,4 +59,5 @@ func enter_checkpoint_body (body):
    As it says, returns the player character to this checkpoint.
 """
 func return_to_checkpoint ():
+	game_space.player_character.position = position
 	return

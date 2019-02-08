@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Levels/CDZ/CDZ_01.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Levels/CDZ/CDZ_Reverie_Island_Sign.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/Levels/Barrier.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Graphics/2D/Levels/CDZ/tls_CDZ_0.tres" type="TileSet" id=8]
 [ext_resource path="res://Scenes/Items/item_ring.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Items/item_checkpoint.tscn" type="PackedScene" id=10]
 
 [node name="Level" type="Node2D"]
 pause_mode = 1
@@ -42,9 +43,6 @@ position = Vector2( 3816, -1817 )
 
 [node name="Parallax_Background" parent="." instance=ExtResource( 6 )]
 
-[node name="Start_Position" type="Position2D" parent="."]
-position = Vector2( 42, -1973 )
-
 [node name="Barrier" parent="." instance=ExtResource( 7 )]
 position = Vector2( -2, -1976 )
 
@@ -71,4 +69,10 @@ position = Vector2( 248, -2024 )
 
 [node name="Ring3" parent="." instance=ExtResource( 9 )]
 position = Vector2( 285, -1973 )
+
+[node name="Checkpoint" parent="." instance=ExtResource( 10 )]
+position = Vector2( 416, -1984 )
+
+[node name="Startpoint" parent="." instance=ExtResource( 10 )]
+position = Vector2( 32, -1984 )
 
