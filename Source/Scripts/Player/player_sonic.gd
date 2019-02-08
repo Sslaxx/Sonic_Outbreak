@@ -35,14 +35,17 @@
 
 extends "res://Scripts/Player/player_generic.gd"
 
-func _ready () -> void:
+func _ready ():
 	if (OS.is_debug_build ()):	# FOR DEBUGGING ONLY. Ensure the debug HUD is added to the scene.
 		printerr ("Sonic - ", self, " - ready.")
-		position = Vector2 (42, -1973)
+		if (has_node ("/root/Level/Startpoint")):
+			position = $"/root/Level/Startpoint".position
+		else:
+			position = Vector2 (42, -1973)
 	return
 
-func _input (event) -> void:
+func _input (event):
 	return
 
-func _physics_process (delta) -> void:
+func _physics_process (delta):
 	return

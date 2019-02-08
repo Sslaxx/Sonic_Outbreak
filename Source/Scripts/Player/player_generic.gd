@@ -151,7 +151,8 @@ func _physics_process (delta):
 		movement_state_machine_air (delta)		# Being in the air.
 	velocity.x = (player_speed * movement_direction)	# Work out velocity from speed * direction.
 	if (is_on_floor ()):								# Make sure gravity applies.
-		velocity.y = (0 if velocity.y > 0.0 else (0 if velocity.y > -32 else velocity.y))
+		velocity.y = (0 if (velocity.y != 0 && moving_in == "nil" && player_speed < 0.1) else velocity.y)
+		velocity.y = (0 if velocity.y > 0.0 else (0 if velocity.y > -24 else velocity.y))
 		floor_snap = Vector2 (0, 32)
 	else:
 		velocity.y += (player_gravity/15)

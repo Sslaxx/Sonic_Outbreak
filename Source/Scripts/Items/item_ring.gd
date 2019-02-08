@@ -30,9 +30,9 @@
 
 extends Area2D
 
-var ring_taken = false
+var ring_taken: bool = false
 
-func _ready ():
+func _ready () -> void:
 	self.connect ("body_entered", self, "got_ring")
 	$"AudioStreamPlayer".connect ("finished", self, "ring_got")
 	return
@@ -42,7 +42,7 @@ func _ready ():
 
    If the body that enters the area is a player character, the item is collected.
 """
-func got_ring (body):
+func got_ring (body) -> void:
 	if (!ring_taken && body is preload ("res://Scripts/Player/player_generic.gd")):
 		ring_taken = true				# The player has picked up the ring! So make sure this ring is set as taken.
 		visible = false					# And then as invisible, because of playing the sound.
@@ -50,8 +50,8 @@ func got_ring (body):
 		$"AudioStreamPlayer".play ()	# And play the collected sound effect.
 	return
 
-# This doesn't really do much except remove the ring from the scene tree once the sound has finished playing.
-func ring_got ():
+# This doesn't do anything except remove the ring from the scene tree once the sound has finished playing.
+func ring_got () -> void:
 	if (OS.is_debug_build()):	# FOR DEBUGGING ONLY.
 		printerr ("Ring collected at ", position, ".")	# Report where the ring taken had been.
 	queue_free ()

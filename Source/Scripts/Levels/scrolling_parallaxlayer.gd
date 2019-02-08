@@ -45,6 +45,6 @@ func _ready () -> void:
 """
    Make the layer move!
 """
-func _process (delta) -> void:
+func _process (delta: float) -> void:
 	motion_offset += (movement_factor * delta)	# Move the background, in the directions and speed required.
 	return

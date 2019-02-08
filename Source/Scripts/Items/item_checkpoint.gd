@@ -31,9 +31,9 @@
 
 extends Area2D
 
-var taken = false
+var taken: bool = false
 
-func _ready ():
+func _ready () -> void:
 	self.connect ("body_entered", self, "enter_checkpoint_body")
 	return
 
@@ -42,9 +42,9 @@ func _ready ():
 
    The checkpoint has been passed by, so set positions and play animations as required.
 """
-func enter_checkpoint_body (body):
+func enter_checkpoint_body (body) -> void:
 	if (!taken && body is preload ("res://Scripts/Player/player_generic.gd")):
-		# The player has passed the checkpoint, change the animation and set checkpoint_pos vector to the checkpoint's position.
+		# The player has passed the checkpoint, change the animation and set the last_checkpoint variable to this checkpoint.
 		taken = true	# A checkpoint can only be activated once.
 		if (OS.is_debug_build()):	# FOR DEBUGGING ONLY.
 			print ("Checkpoint at ", position, " crossed.")
@@ -56,8 +56,9 @@ func enter_checkpoint_body (body):
 """
    return_to_checkpoint
 
-   As it says, returns the player character to this checkpoint.
+   As it says, returns the player character to this checkpoint. Also resets their state to idle.
 """
-func return_to_checkpoint ():
+func return_to_checkpoint () -> void:
 	game_space.player_character.position = position
+	game_space.player_character.player_movement_state = game_space.player_character.MovementState.STATE_IDLE
 	return
