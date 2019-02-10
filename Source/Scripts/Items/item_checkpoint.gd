@@ -56,9 +56,10 @@ func enter_checkpoint_body (body) -> void:
 """
    return_to_checkpoint
 
-   As it says, returns the player character to this checkpoint. Also resets their state to idle.
+   As it says, returns the player character to this checkpoint. Also resets their rotation and their state to idle.
 """
 func return_to_checkpoint () -> void:
 	game_space.player_character.position = position
+	game_space.player_character.rotation = 0
 	game_space.player_character.player_movement_state = game_space.player_character.MovementState.STATE_IDLE
 	return
