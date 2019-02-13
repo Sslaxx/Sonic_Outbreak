@@ -6,15 +6,15 @@ Sonic Outbreak is hosted on [GitHub](https://github.com/), and uses [Git](https:
 
 https://guides.github.com/activities/hello-world/ can help with using GitHub in general as well.
 
+There are GUIs like [TortoiseGit](https://tortoisegit.org/) or [Fork](https://git-fork.com/) out there if you don't want to have to deal with the command line. Git itself comes with a GUI. If you use a GUI, you should familiarise yourself with it; this guide only talks about doing things from the command line.
+
 ## So how do I add my stuff to Sonic Outbreak?
 
 **PM or message me (Sslaxx) on Discord if at any point you're stuck! I'll do my best to help.**
 
-It's not going to be massively straightforward, sorry, but I hope I can get across what you need to do.
+I hope I can get across what you need to do.
 
-First of all, **never commit directly to master**. The master branch is what's going to be used for stable builds of the game. Though it can never be guaranteed, avoiding merging everything into master straight off reduces the likelihood of it being unstable/making unplayable builds. Branches are only merged into master when they're working as expected, reliably.
-
-There are GUIs like [TortoiseGit](https://tortoisegit.org/) or [Fork](https://git-fork.com/) out there if you don't want to have to deal with the command line. [Git itself](https://git-scm.com/download/) comes with a GUI. If you use a GUI, you should familiarise yourself with it; this guide only talks about doing things from the command line.
+**Never commit directly to master**. The `master` branch is what's going to be used for stable builds of the game. Though it can never be guaranteed, avoiding merging everything into master straight off reduces the likelihood of it being unstable/making unplayable builds. Branches are only merged into master when they're working as expected, reliably.
 
 ## So what do I do, then?
 
@@ -38,6 +38,6 @@ You'll need to commit and then push your changes to the branch. https://git-scm.
 
 Don't worry so much about pushing broken code to any branch (that isn't master). **But** if you do, *please* make it clear (as much as you're able to) why and/or how the code is broken.
 
-When you think it's ready to be merged into master (or some other branch), go to https://github.com/Sslaxx/Sonic_Outbreak/pulls and create a new pull request. Describe what the changes to the branch are in general. https://help.github.com/articles/about-pull-requests/ has more info too.
+When you think it's ready to be merged into master (or some other branch), go to https://github.com/Sslaxx/Sonic_Outbreak/pulls and create a new pull request. Describe what the changes to the branch are in general. https://help.github.com/articles/about-pull-requests/ has more info too. You may need to rebase any other branches you're working on as a result - https://git-scm.com/docs/git-rebase gives more info on this.
 
 When it's all good, the changes will be merged in, and the branch will be deleted after - so remember to switch back to master or another branch on your local copy!

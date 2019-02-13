@@ -54,5 +54,5 @@ func got_ring (body) -> void:
 func ring_got () -> void:
 	if (OS.is_debug_build()):	# FOR DEBUGGING ONLY.
 		printerr ("Ring collected at ", position, ".")	# Report where the ring taken had been.
-	queue_free ()
+	queue_free ()										# Remove the ring from the scene tree.
 	return
