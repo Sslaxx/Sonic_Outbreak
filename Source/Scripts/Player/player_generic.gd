@@ -80,6 +80,8 @@ var floor_snap = Vector2 (0, 0)		# Adjusting the "snap" to the floor. (0, 0) for
 
 var max_floor_angle = deg2rad (45)			# For floor sanity checking.
 
+export var max_jump_height = -240			# Default max jumping height.
+
 var ground_angle = 0				# Controlling the angle the player is in relation to the floor.
 var ground_normal = Vector2 (0, 0)
 
@@ -155,6 +157,7 @@ func _physics_process (delta):
 		movement_state_machine_ground (delta)	# Being on the ground.
 	else:
 		movement_state_machine_air (delta)		# Being in the air.
+	movement_state_machine_rotation (delta)		# Deal with rotation.
 	velocity.x = (player_speed * movement_direction)	# Work out velocity from speed * direction.
 	if (is_on_floor ()):								# Make sure gravity applies.
 		velocity.y = (0 if (velocity.y != 0 && moving_in == "nil" && player_speed < 0.1) else velocity.y)
@@ -282,6 +285,32 @@ func movement_state_machine_speed (delta):
 	return
 
 """
+   movement_state_machine_rotation
+
+   Makes sure rotation is enabled where necessary, and as accurate as possible.
+"""
+func movement_state_machine_rotation (delta):
+	if (is_on_floor () && $"PlayerPivot".enabled == false):
+		$"PlayerPivot".enabled = true
+		$"FloorEdgeLeft".enabled = true
+		$"FloorEdgeRight".enabled = true
+		rotation = 0.0
+	elif (!is_on_floor() && $"PlayerPivot".enabled):
+		$"PlayerPivot".enabled = false
+		$"FloorEdgeLeft".enabled = false
+		$"FloorEdgeRight".enabled = false
+		rotation = 0.0
+		return
+	if (player_speed > (walk_limit/10)):
+		ground_normal = $"PlayerPivot".get_collision_normal ()
+		ground_angle = (floor_normal.angle_to (ground_normal))
+		rotation = (0.0 if player_speed < 0.05 else ground_angle)
+		rotation = (rotation if $"PlayerPivot".is_colliding () else 0.0)
+	else:
+		rotation = 0
+	return
+
+"""
    movement_state_machine_ground
 
    Sets movement direction according to player input, and does that based upon the current movement state. Also changes
@@ -290,15 +319,6 @@ func movement_state_machine_speed (delta):
 func movement_state_machine_ground (delta):
 	if (player_movement_state & MovementState.STATE_JUMPING):	# Finished jumping? Turn off the jump state.
 		player_movement_state &= ~MovementState.STATE_JUMPING
-		rotation = 0.0
-	if (!$"PlayerPivot".enabled):	# If on the ground and the pivot/floor edge detectors are not enabled, enable them.
-		$"PlayerPivot".enabled = true
-		$"FloorEdgeLeft".enabled = true
-		$"FloorEdgeRight".enabled = true
-	else:							# Make sure the player is angled to the ground.
-		ground_normal = $"PlayerPivot".get_collision_normal ()
-		ground_angle = (floor_normal.angle_to (ground_normal))
-		rotation = (rotation if player_speed < 0.05 else ground_angle)
 	# Change the currently playing animation based on the player's current speed...
 	if (player_speed > 0):
 		if (player_speed < walk_limit):	# ...walking...
@@ -322,15 +342,12 @@ func movement_state_machine_ground (delta):
 """
 func movement_state_machine_air (delta):
 	if ($PlayerPivot.enabled):	# If in the air and the pivot/floor edge detectors are enabled, disable them.
-		$PlayerPivot.enabled = false
-		$FloorEdgeLeft.enabled = false
-		$FloorEdgeRight.enabled = false
 		rotation = 0.0			# Avoid the player character being at odd angles when in the air and returning to the ground.
 	if (is_on_wall ()):		# Against a wall? Not on the ground? Then negate running speed.
 		player_speed = 0
 	# Change the currently playing animation based on the player's current speed...
-	if (velocity.y < -240 && player_movement_state & MovementState.STATE_JUMPING):	# Jumping sanity checking.
-		velocity.y = -240
+	if (velocity.y < max_jump_height && player_movement_state & MovementState.STATE_JUMPING):	# Jumping sanity checking.
+		velocity.y = max_jump_height
 	if (player_speed > 0 && !(player_movement_state & MovementState.STATE_JUMPING)):
 		# Not jumping, so animations can change.
 		if (player_speed < walk_limit):
