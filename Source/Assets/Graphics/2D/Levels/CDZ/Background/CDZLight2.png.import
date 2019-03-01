@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/CDZLight2.png-b4d280a2d398e95d4198232084af564f.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

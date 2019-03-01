@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/SolidSkyColorBig.png-660c967b0e4b6b8e565b4f8bb9dadb60.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

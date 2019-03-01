@@ -75,5 +75,5 @@ position = Vector2( 416, -1984 )
 
 [node name="Startpoint" parent="." instance=ExtResource( 10 )]
 visible = false
-position = Vector2( 25, -1984 )
+position = Vector2( 33, -1984 )
 
