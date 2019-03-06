@@ -137,6 +137,7 @@ pause_game={
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 viewport/default_environment="res://Assets/Graphics/3D/default_env.tres"
 
 [tiled_importer]
