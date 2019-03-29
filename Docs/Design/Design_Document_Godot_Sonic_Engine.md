@@ -228,6 +228,12 @@ Complexity is added if different characters with different abilities are playabl
 
 There may well be corner cases/situations that are not immediately obvious.
 
+## Looping the loop
+
+### In general
+
+Loops are, functionally, only half loops (quarter loops if they're taking the player downwards) as they are partially automated. Passing by a `loop_marker` trigger for the first time sets the `on_loop` flag to true if the player's movement speed is at least running. At this point the player state is set to `STATE_CUTSCENE` and the player character is set to follow a `Path2D` series until they reach another `loop_marker`, at which point player control is restored (`on_loop` is set to false).
+
 ## Jumping
 
 ### How it works:

@@ -2,7 +2,7 @@
    This file is part of:
    GODOT SONIC ENGINE
 
-   Copyright (c) 2018- Stuart Moore.
+   Copyright (c) 2019- Stuart Moore.
 
    Licenced under the terms of the MIT "expat" license.
 
@@ -82,8 +82,10 @@ var max_floor_angle = deg2rad (45)			# For floor sanity checking.
 
 export var max_jump_height = -240			# Default max jumping height.
 
-var ground_angle = 0				# Controlling the angle the player is in relation to the floor.
+var ground_angle = 0						# Controlling the angle the player is in relation to the floor.
 var ground_normal = Vector2.ZERO
+
+var on_loop = false							# Is the player on a loop or not?
 
 """
    Variables that control animation - like when to play walk/jog/run animations.
@@ -162,7 +164,7 @@ func _physics_process (delta):
 	velocity.x = (player_speed * movement_direction)	# Work out velocity from speed * direction.
 	if (is_on_floor ()):								# Make sure gravity applies.
 		velocity.y = (0 if (velocity.y != 0 && moving_in == "nil" && player_speed < 0.1) else velocity.y)
-		velocity.y = (0 if velocity.y > 0.0 else (0 if velocity.y > -32 else velocity.y))
+		velocity.y = (0 if velocity.y > 0.0 else (0 if velocity.y > -32.0 else velocity.y))
 		floor_snap = Vector2 (0, 32)
 	else:
 		velocity.y += (player_gravity/15)
@@ -203,7 +205,8 @@ func get_acceleration_mult ():
 	if (!is_on_floor ()):				# If not on the floor, emulate "air friction".
 		acceleration_mult -= 0.75
 	acceleration_mult = (0.01 if acceleration_mult < 0.0 else acceleration_mult)	# Ensure acceleration of some kind.
-	if (moving_in == "nil" || player_movement_state == MovementState.STATE_CUTSCENE):			# If not (supposed to be) moving, zero it.
+	if (moving_in == "nil" || player_movement_state == MovementState.STATE_CUTSCENE):
+		# If not (supposed to be) moving, zero it.
 		acceleration_mult = 0.0			# This MUST override any other calculations to acceleration rate.
 	return (acceleration_mult)
 

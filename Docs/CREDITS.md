@@ -41,3 +41,5 @@ Powered by the **[Godot Engine](https://godotengine.org/)**.
 - EggmanInc
 - Moki
 - Foxito
+
+Moving platform code by **Juan Linietsky, Ariel Manzur** from the Godot 2D platformer demo.
